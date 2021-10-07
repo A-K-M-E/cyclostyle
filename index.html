@@ -66,6 +66,7 @@
 <link href="icons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" >
 <link rel="stylesheet" href="./bootstrap.min.css">
 <link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./cropper.min.css">
 
 <!-- Startup Image  -->
 <!--<link href="touch-icon-start-up-320x480.png" rel="apple-touch-startup-image">-->
@@ -140,6 +141,65 @@
 
 
 </script>
+<script src="js/cropper.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    // vars
+    let result = document.querySelector('.result'),
+    img_result = document.querySelector('.img-result'),
+    img_w = document.querySelector('.img-w'),
+    img_h = document.querySelector('.img-h'),
+    options = document.querySelector('.options'),
+    save = document.querySelector('.save'),
+    cropped = document.querySelector('.cropped'),
+    upload = document.querySelector('#cover'),
+    cropper = '';
+
+    // on change show image with crop options
+    upload.addEventListener('change', (e) => {
+      if (e.target.files.length) {
+    		// start file reader
+        const reader = new FileReader();
+        reader.onload = (e)=> {
+          if(e.target.result){
+    				// create new image
+    				let img = document.createElement('img');
+    				img.id = 'image';
+    				img.src = e.target.result
+    				// clean result before
+    				result.innerHTML = '';
+    				// append new image
+            result.appendChild(img);
+    				// show save btn and options
+    				save.classList.remove('hide');
+
+    				// init cropper
+    				cropper = new Cropper(img, {
+              aspectRatio: 16 / 6
+            });
+          }
+        };
+        reader.readAsDataURL(e.target.files[0]);
+      }
+    });
+
+    // save on click
+    save.addEventListener('click',(e)=>{
+      e.preventDefault();
+      // get result to data uri
+      let imgSrc = cropper.getCroppedCanvas({
+    		width: img_w.value //
+    	}).toDataURL();
+      // remove hide class of img
+      cropped.classList.remove('hide');
+    	img_result.classList.remove('hide');
+    	// show image cropped
+      cropped.src = imgSrc;
+    });
+
+
+  });
+</script>
 </head>
 <body>
   <nav class="navbar pt-3">
@@ -177,14 +237,6 @@
       <label for="exampleColorInput" class="form-label">Main color</label>
       <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#0397BB" title="Choose your color">
       </div>
-    <!--  <div class="mb-3">
-        <input type="radio" class="btn-check " name="tempalte" id="option1" autocomplete="off" checked>
-        <label class="btn btn-outline-danger" for="option1">Default template</label>
-
-        <input type="radio" class="btn-check" name="tempalte" id="option2" autocomplete="off">
-        <label class="btn btn-outline-danger ms-1" for="option2">Second tempalte</label>
-
-     </div> -->
      <div class="input-group mb-3">
         <label class="input-group-text" for="inputGroupSelect01">Template</label>
         <select class="form-select" id="inputGroupSelect01">
@@ -193,9 +245,27 @@
           <option value="3">Three</option>
         </select>
       </div>
-    <div class="mb-5 pb-2">
-        <label for="formFile" class="form-label">Cover</label>
+    <div class="mb-5 pb-2 page">
+        <label for="formFile" class="form-label">Upload, Crop and save cover </label>
+        <small>(1024px min-width)</small>
         <input class="form-control" type="file" id="cover">
+        <div class="box-2">
+		   <div class="result mb-3"></div>
+    	</div>
+    	<!--rightbox-->
+    	<div class="box-2 img-result hide mb-3">
+    		<!-- result of crop -->
+    		<img class="cropped" src="" alt="">
+    	</div>
+    	<!-- input file -->
+    	<div class="box">
+    		<div class="options hide">
+    			<input type="number" class="img-w" value="1024" min="768" max="1024" />
+    		</div>
+    		<!-- save btn -->
+    		<button class="btn save hide btn-primary ">Save</button>
+
+    	</div>
       </div>
 
      <div class="row justify-content-center mb-5 pb-5">
