@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link rel="manifest" href="manifest.json">
-<title>Ciclostyle planetario</title>
+<title>Ciclostyle intergalattico</title>
 
 <!-- Android  -->
 <meta name="theme-color" content="white">
@@ -156,10 +156,6 @@
         <label for="exampleFormControlTextarea1" class="form-label">Testo del volantino</label>
         <textarea class="form-control" id="testo" rows="3"></textarea>
       </div>
-    <div class="mb-3">
-        <label for="formFile" class="form-label">Immagine di copertina</label>
-        <input class="form-control" type="file" id="cover">
-      </div>
       <div class="mb-3">
         <input type="radio" class="btn-check " name="tempalte" id="option1" autocomplete="off" checked>
         <label class="btn btn-outline-danger" for="option1">Default template</label>
@@ -168,8 +164,13 @@
         <label class="btn btn-outline-danger ms-1" for="option2">Second tempalte</label>
 
      </div>
+    <div class="mb-3">
+        <label for="formFile" class="form-label">Immagine di copertina</label>
+        <input class="form-control" type="file" id="cover">
+      </div>
+
      <div class="mb-3">
-        <button onclick="upload()" type="submit" class="btn btn-primary">CARICA</button>
+        <button onclick="upload()" type="submit" class="btn btn-secondary">CARICA</button>
         <div id="result"></div>
     </div>
     </div>
