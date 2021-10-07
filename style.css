@@ -1,0 +1,32 @@
+.navbar-brand {
+  background: #fff;
+  border-bottom: 3px solid #0397BB;
+  height: 77px;
+  width: 100%;
+  margin: 0 0 2em;
+}
+
+.btn-primary{
+  background-color: #0397BB;
+  border-color: #0397BB;
+}
+
+.btn-outline-danger{
+  color: #C5037E;
+  background-color: #fff;
+  border-color: #C5037E;
+}
+
+.btn-check:active + .btn-outline-danger, .btn-check:checked + .btn-outline-danger, .btn-outline-danger.active, .btn-outline-danger.dropdown-toggle.show, .btn-outline-danger:active, .btn-outline-danger:hover{
+  color: #fff;
+  background-color: #C5037E;
+  border-color: #C5037E;
+}
+
+.btn-check:focus + .btn-outline-danger, .btn-outline-danger:focus {
+    box-shadow: 0 0 0 .25rem rgba(197,3,126,.5);
+}
+
+.form-control{
+  border: 1px solid #B7DCE2;
+}

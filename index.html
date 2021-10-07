@@ -16,7 +16,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <!-- iOS -->
-<meta name="apple-mobile-web-app-title" content="Ciclostyle planetario">
+<meta name="apple-mobile-web-app-title" content="Ciclostyle intergalattico">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -27,8 +27,8 @@
 <meta name="msapplication-config" content="icons/browserconfig.xml">
 
 <!-- Pinned Sites  -->
-<meta name="application-name" content="Ciclostyle planetario">
-<meta name="msapplication-tooltip" content="Ciclostyle planetario">
+<meta name="application-name" content="Ciclostyle intergalattico">
+<meta name="msapplication-tooltip" content="Ciclostyle intergalattico">
 <meta name="msapplication-starturl" content="/">
 
 <!-- Tap highlighting  -->
@@ -42,7 +42,7 @@
 <meta name="nightmode" content="enable/disable">
 
 <!-- Fitscreen  -->
-<meta name="viewport" content="uc-fitscreen=yes"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Layout mode -->
 <meta name="layoutmode" content="fitscreen/standard">
@@ -65,6 +65,7 @@
 <link href="icons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
 <link href="icons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" >
 <link rel="stylesheet" href="./bootstrap.min.css">
+<link rel="stylesheet" href="./style.css">
 
 <!-- Startup Image  -->
 <!--<link href="touch-icon-start-up-320x480.png" rel="apple-touch-startup-image">-->
@@ -141,12 +142,36 @@
 </script>
 </head>
 <body>
-    <div id='main' style="display: none;">
-        <h1> upload an image and a text </h1>
-        <input type="file" id="cover"><br>
-        <textarea id="testo" rows="30" cols="100"></textarea><br>
-        <button onclick="upload()" >CARICA</button>
+  <nav class="navbar">
+      <a class="navbar-brand" href="#">
+        <img src="images/logo.svg" alt="" width="250" height="85">
+      </a>
+  </nav>
+    <div id='main' style="display: none;" class="container-fluid">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Titolo</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Testo del volantino</label>
+        <textarea class="form-control" id="testo" rows="3"></textarea>
+      </div>
+    <div class="mb-3">
+        <label for="formFile" class="form-label">Immagine di copertina</label>
+        <input class="form-control" type="file" id="cover">
+      </div>
+      <div class="mb-3">
+        <input type="radio" class="btn-check " name="tempalte" id="option1" autocomplete="off" checked>
+        <label class="btn btn-outline-danger" for="option1">Default template</label>
+
+        <input type="radio" class="btn-check" name="tempalte" id="option2" autocomplete="off">
+        <label class="btn btn-outline-danger ms-1" for="option2">Second tempalte</label>
+
+     </div>
+     <div class="mb-3">
+        <button onclick="upload()" type="submit" class="btn btn-primary">CARICA</button>
         <div id="result"></div>
+    </div>
     </div>
 </body>
 </html>
