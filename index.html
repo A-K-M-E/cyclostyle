@@ -142,37 +142,71 @@
 </script>
 </head>
 <body>
-  <nav class="navbar">
+  <nav class="navbar pt-3">
       <a class="navbar-brand" href="#">
         <img src="images/logo.svg" alt="" width="250" height="85">
       </a>
   </nav>
     <div id='main' style="display: none;" class="container-fluid">
+      <h1 class="mb-3">Create your flyer</h1>
       <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Titolo</label>
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
         <input type="text" class="form-control">
       </div>
       <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Testo del volantino</label>
+        <label for="exampleFormControlTextarea1" class="form-label">Text</label>
         <textarea class="form-control" id="testo" rows="3"></textarea>
       </div>
       <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Who?</label>
+        <textarea class="form-control" id="chi" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Where?</label>
+        <textarea class="form-control" id="dove" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">When?</label>
+        <input type="date" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Hours</label>
+        <input type="time" class="form-control">
+      </div>
+         <div class="mb-3">
+      <label for="exampleColorInput" class="form-label">Main color</label>
+      <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#0397BB" title="Choose your color">
+      </div>
+    <!--  <div class="mb-3">
         <input type="radio" class="btn-check " name="tempalte" id="option1" autocomplete="off" checked>
         <label class="btn btn-outline-danger" for="option1">Default template</label>
 
         <input type="radio" class="btn-check" name="tempalte" id="option2" autocomplete="off">
         <label class="btn btn-outline-danger ms-1" for="option2">Second tempalte</label>
 
-     </div>
-    <div class="mb-3">
-        <label for="formFile" class="form-label">Immagine di copertina</label>
+     </div> -->
+     <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">Template</label>
+        <select class="form-select" id="inputGroupSelect01">
+          <option selected value="1">Default</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+    <div class="mb-5 pb-2">
+        <label for="formFile" class="form-label">Cover</label>
         <input class="form-control" type="file" id="cover">
       </div>
 
-     <div class="mb-3">
-        <button onclick="upload()" type="submit" class="btn btn-secondary">CARICA</button>
-        <div id="result"></div>
-    </div>
+     <div class="row justify-content-center mb-5 pb-5">
+       <div class="col-4 text-center">
+        <button  type="submit" class="btn btn-outline-primary me-2">Preview</button>
+      </div>
+        <div class="col-4 text-center">
+        <button onclick="upload()" type="submit" class="btn btn-primary ">Upload</button>
+        </div>
+      </div>
+    <div id="result"></div>
     </div>
 </body>
 </html>
