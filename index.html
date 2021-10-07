@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+  
+<!-- Must -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="manifest" href="manifest.json">
+<title>Ciclostyle planetario</title>
+
+<!-- Android  -->
+<meta name="theme-color" content="white">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- iOS -->
+<meta name="apple-mobile-web-app-title" content="Ciclostyle planetario">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<!-- Windows  -->
+<meta name="msapplication-navbutton-color" content="white">
+<meta name="msapplication-TileColor" content="white">
+<meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+<meta name="msapplication-config" content="icons/browserconfig.xml">
+
+<!-- Pinned Sites  -->
+<meta name="application-name" content="Ciclostyle planetario">
+<meta name="msapplication-tooltip" content="Ciclostyle planetario">
+<meta name="msapplication-starturl" content="/">
+
+<!-- Tap highlighting  -->
+<meta name="msapplication-tap-highlight" content="no">
+
+<!-- UC Mobile Browser  -->
+<meta name="full-screen" content="yes">
+<meta name="browsermode" content="application">
+
+<!-- Disable night mode for this page  -->
+<meta name="nightmode" content="enable/disable">
+
+<!-- Fitscreen  -->
+<meta name="viewport" content="uc-fitscreen=yes"/>
+
+<!-- Layout mode -->
+<meta name="layoutmode" content="fitscreen/standard">
+
+<!-- imagemode - show image even in text only mode  -->
+<meta name="imagemode" content="force">
+
+<!-- Orientation  -->
+<meta name="screen-orientation" content="portrait">
+
+<!-- Main Link Tags  -->
+<link href="icons/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
+<link href="icons/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+<link href="icons/favicon-96x96.png" rel="icon" type="image/png" sizes="96x96">
+
+<!-- iOS  -->
+<link href="icons/apple-icon.png" rel="apple-touch-icon">
+<link href="icons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="icons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="icons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<link href="icons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" >
+
+<!-- Startup Image  -->
+<!--<link href="touch-icon-start-up-320x480.png" rel="apple-touch-startup-image">-->
+
+<!-- Pinned Tab  -->
+<!--<link href="path/to/icon.svg" rel="mask-icon" size="any" color="white">-->
+
+<!-- Android  -->
+<link href="icons/android-icon-192x192.png" rel="icon" sizes="192x192">
+<!--<link href="icon-128x128.png" rel="icon" sizes="128x128">-->
+
+<!-- Others -->
+<link href="icons/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+<!-- UC Browser  -->
+<link href="icons/apple-icon-57x57.png" rel="apple-touch-icon-precomposed" sizes="57x57">
+<link href="icons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+
+<!-- interfaccia http ipfs-->
+<script src="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau"></script>
+<!-- jQuery-slim-minified-->
+<script src="https://ipfs.io/ipfs/QmbDpzxuzY2eH8f1s7BqkGcHtBueju9CUWWdGse9YwbwSX"></script>
+<script> if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js') .then(function(registration) { console.log('Registration successful, scope is:', registration.scope); }) .catch(function(error) { console.log('Service worker registration failed, error:', error); }); } </script>
+
+<script>
+  // codice preso da qui:
+  // https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag
+  // al posto di usare il cdn ho usato ipfs per il file javascript di interfacca a ipfs
+  document.addEventListener('DOMContentLoaded', async () => {
+    const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() })
+    window.node = node
+    if(node.isOnline()) $("#main").show();
+    console.log(node)
+   
+      // You can write more code here to use it. Use methods like
+      // node.add, node.get. See the API docs here:
+      // https://github.com/ipfs/js-ipfs/tree/master/packages/interface-ipfs-core
+  });
+
+  function upload () {
+    var file = document.getElementById("cover").files[0];
+    if( typeof file != "undefined")
+    {
+      // oggeto di input per ipfs add
+      fileToUpload =[{
+          content : file
+      }]
+      sendToIpfs(fileToUpload);  
+    }
+      // c'è bisogno di un messaggio di alert in caso di mancata selezione del file 
+  }
+ 
+  async function sendToIpfs(files)
+  {
+    const cid  = await node.add(files);
+    console.log('successfully stored', cid);
+    var cover = "https://gateway.pinata.cloud/ipfs/"+cid.path;
+    var testo = $("#testo").val();
+    var cs = `<!DOCTYPE html>
+      <html>
+        <head></head>
+        <body>
+          <div style="margin: 0 auto">
+            <img style="margin:0 auto;" src="${cover}"><br>
+            <p>${testo}</p>
+          </div>
+        </body>
+    </html>`;
+    const cs_ipfs = await node.add(cs);
+    $("#result").html(`<a href='https://ipfs.io/ipfs/${cs_ipfs.path}' target='_blank'>vedi il risultato</a>`);
+  }
+          
+
+</script>
+</head>
+<body>
+    <div id='main' style="display: none;">
+        <h1> upload an image and a text </h1>
+        <input type="file" id="cover"><br>
+        <textarea id="testo" rows="30" cols="100"></textarea><br>
+        <button onclick="upload()" >CARICA</button>
+        <div id="result"></div>
+    </div>
+</body>
+</html>
+
+
