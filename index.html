@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  
+
 <!-- Must -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -64,6 +64,7 @@
 <link href="icons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
 <link href="icons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
 <link href="icons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" >
+<link rel="stylesheet" href="./bootstrap.min.css">
 
 <!-- Startup Image  -->
 <!--<link href="touch-icon-start-up-320x480.png" rel="apple-touch-startup-image">-->
@@ -97,7 +98,7 @@
     window.node = node
     if(node.isOnline()) $("#main").show();
     console.log(node)
-   
+
       // You can write more code here to use it. Use methods like
       // node.add, node.get. See the API docs here:
       // https://github.com/ipfs/js-ipfs/tree/master/packages/interface-ipfs-core
@@ -111,11 +112,11 @@
       fileToUpload =[{
           content : file
       }]
-      sendToIpfs(fileToUpload);  
+      sendToIpfs(fileToUpload);
     }
-      // c'è bisogno di un messaggio di alert in caso di mancata selezione del file 
+      // c'è bisogno di un messaggio di alert in caso di mancata selezione del file
   }
- 
+
   async function sendToIpfs(files)
   {
     const cid  = await node.add(files);
@@ -135,7 +136,7 @@
     const cs_ipfs = await node.add(cs);
     $("#result").html(`<a href='https://ipfs.io/ipfs/${cs_ipfs.path}' target='_blank'>vedi il risultato</a>`);
   }
-          
+
 
 </script>
 </head>
@@ -149,5 +150,3 @@
     </div>
 </body>
 </html>
-
-
