@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="h-100">
 <head>
 
 <!-- Must -->
@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="description" content="">
 <meta name="keywords" content="">
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="js/manifest.json">
 <title>Ciclostyle intergalattico</title>
 
 <!-- Android  -->
@@ -64,9 +64,7 @@
 <link href="icons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
 <link href="icons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
 <link href="icons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" >
-<link rel="stylesheet" href="./bootstrap.min.css">
-<link rel="stylesheet" href="./style.css">
-<link rel="stylesheet" href="./cropper.min.css">
+
 
 <!-- Startup Image  -->
 <!--<link href="touch-icon-start-up-320x480.png" rel="apple-touch-startup-image">-->
@@ -85,11 +83,19 @@
 <link href="icons/apple-icon-57x57.png" rel="apple-touch-icon-precomposed" sizes="57x57">
 <link href="icons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
 
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/cropper.min.css">
+
 <!-- interfaccia http ipfs-->
-<script src="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau"></script>
+<!-- <script src="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau"></script>-->
 <!-- jQuery-slim-minified-->
-<script src="https://ipfs.io/ipfs/QmbDpzxuzY2eH8f1s7BqkGcHtBueju9CUWWdGse9YwbwSX"></script>
-<script> if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js') .then(function(registration) { console.log('Registration successful, scope is:', registration.scope); }) .catch(function(error) { console.log('Service worker registration failed, error:', error); }); } </script>
+<script src="js/jquery-3.4.1.slim.min.js" ></script>
+
+
+
+<!-- <script> if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./js/sw.js') .then(function(registration) { console.log('Registration successful, scope is:', registration.scope); }) .catch(function(error) { console.log('Service worker registration failed, error:', error); }); } </script>
 
 <script>
   // codice preso da qui:
@@ -98,7 +104,7 @@
   document.addEventListener('DOMContentLoaded', async () => {
     const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() })
     window.node = node
-    if(node.isOnline()) $("#main").show();
+    if(node.isOnline()){ $("#main").show(); $("#testo").jeditor();}
     console.log(node)
 
       // You can write more code here to use it. Use methods like
@@ -136,11 +142,11 @@
         </body>
     </html>`;
     const cs_ipfs = await node.add(cs);
-    $("#result").html(`<a href='https://ipfs.io/ipfs/${cs_ipfs.path}' target='_blank'>vedi il risultato</a>`);
+    $("#fyler").html(`<a href='https://ipfs.io/ipfs/${cs_ipfs.path}' target='_blank'>vedi il risultato</a>`);
   }
 
 
-</script>
+</script> -->
 <script src="js/cropper.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', async () => {
@@ -149,8 +155,8 @@
     img_result = document.querySelector('.img-result'),
     img_w = document.querySelector('.img-w'),
     img_h = document.querySelector('.img-h'),
-    options = document.querySelector('.options'),
-    save = document.querySelector('.save'),
+    save = document.querySelector('.box-cropper'),
+    close = document.querySelector('.close'),
     cropped = document.querySelector('.cropped'),
     upload = document.querySelector('#cover'),
     cropper = '';
@@ -171,6 +177,8 @@
     				// append new image
             result.appendChild(img);
     				// show save btn and options
+            save.style.height = window.innerHeight;
+            result.style.top = save.scrollTop;
     				save.classList.remove('hide');
 
     				// init cropper
@@ -193,90 +201,153 @@
       // remove hide class of img
       cropped.classList.remove('hide');
     	img_result.classList.remove('hide');
+      close.classList.remove('hide');
     	// show image cropped
       cropped.src = imgSrc;
     });
-
-
+    close.addEventListener('click',(e)=>{
+      e.preventDefault();
+      save.classList.add('hide');
+      });
   });
 </script>
 </head>
-<body>
-  <nav class="navbar pt-3">
-      <a class="navbar-brand" href="#">
-        <img src="images/logo.svg" alt="" width="250" height="85">
-      </a>
-  </nav>
-    <div id='main' style="display: none;" class="container-fluid">
+<body class="d-flex flex-column h-100">
+
+    <main class="flex-shrink-0">
+      <header>
+      <nav class="navbar">
+          <a class="navbar-brand" href="#">
+            <img src="images/logo.svg" alt="" width="250" height="85">
+          </a>
+      </nav>
+    </header>
+      <div class="container pt-3">
+
       <h1 class="mb-3">Create your flyer</h1>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Title</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Text</label>
-        <textarea class="form-control" id="testo" rows="3"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Who?</label>
-        <textarea class="form-control" id="chi" rows="3"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Where?</label>
-        <textarea class="form-control" id="dove" rows="3"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">When?</label>
-        <input type="date" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Hours</label>
-        <input type="time" class="form-control">
-      </div>
-         <div class="mb-3">
-      <label for="exampleColorInput" class="form-label">Main color</label>
-      <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#0397BB" title="Choose your color">
-      </div>
-     <div class="input-group mb-3">
-        <label class="input-group-text" for="inputGroupSelect01">Template</label>
-        <select class="form-select" id="inputGroupSelect01">
-          <option selected value="1">Default</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-      </div>
-    <div class="mb-5 pb-2 page">
-        <label for="formFile" class="form-label">Upload, Crop and save cover </label>
-        <small>(1024px min-width)</small>
-        <input class="form-control" type="file" id="cover">
-        <div class="box-2">
-		   <div class="result mb-3"></div>
-    	</div>
-    	<!--rightbox-->
-    	<div class="box-2 img-result hide mb-3">
-    		<!-- result of crop -->
-    		<img class="cropped" src="" alt="">
-    	</div>
-    	<!-- input file -->
-    	<div class="box">
-    		<div class="options hide">
-    			<input type="number" class="img-w" value="1024" min="768" max="1024" />
-    		</div>
-    		<!-- save btn -->
-    		<button class="btn save hide btn-primary ">Save</button>
 
+      <!--cropper-->
+      <div class="box-cropper hide container-fluid">
+		   <div class="result mb-3" id="result"></div>
+       <div class="options hide">
+         <input type="number" class="img-w" value="1024" min="768" max="1024" />
+       </div>
+       <!-- save btn -->
+       <button class="btn save btn-primary ">Crop</button>
+       <button class="btn close hide btn-primary ">Done</button>
     	</div>
+      <div class="panel" id="panel-content">
+        <h2>Content</h2>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Testo</label>
+            <textarea class="form-control" id="testo" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Who?</label>
+            <textarea class="form-control" id="chi" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Where?</label>
+            <textarea class="form-control" id="dove" rows="3"></textarea>
+          </div>
       </div>
+      <div class="hide panel" id="panel-date">
+        <h2>Date</h2>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">When?</label>
+            <input type="date" class="form-control">
+          </div>
 
-     <div class="row justify-content-center mb-5 pb-5">
-       <div class="col-4 text-center">
-        <button  type="submit" class="btn btn-outline-danger me-2">Preview</button>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Hours</label>
+            <input type="time" class="form-control">
+          </div>
       </div>
-        <div class="col-4 text-center">
-        <button onclick="upload()" type="submit" class="btn btn-primary ">Upload</button>
+      <div class="hide panel" id="panel-template">
+        <h2>Template</h2>
+               <div class="mb-3">
+            <label for="exampleColorInput" class="form-label">Main color</label>
+            <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#0397BB" title="Choose your color">
+            </div>
+           <div class="input-group mb-3">
+              <label class="input-group-text" for="inputGroupSelect01">Template</label>
+              <select class="form-select" id="inputGroupSelect01">
+                <option selected value="1">Default</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          <div class="mb-5 pb-2 page">
+              <label for="formFile" class="form-label">Upload, Crop and save cover </label>
+              <small>(1024px min-width)</small>
+              <!-- input file -->
+              <input class="form-control" type="file" id="cover">
+
+
+
+            <!-- result of crop -->
+          	<div class="box-2 img-result hide mb-3 mt-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Preview cover</label>
+          		<img class="cropped" src="" alt="">
+          	</div>
+            </div>
+      </div>
+      </div>
+      <div id="flyer" class="hide"></div>
+  </main>
+      <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+        <div class="container">
+          <div class="menu-create text-center">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link active first" href="#" data-target="panel-content">Content</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-target="panel-date">Date</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-target="panel-template">Template</a>
+              </li>
+            </ul>
+          <button  type="submit" class="btn btn-outline-danger ms-2" id="preview" >Preview</button>
         </div>
-      </div>
-    <div id="result"></div>
-    </div>
+         <div class="text-end finalize hide">
+           <button type="submit" class="btn btn-outline-danger ms-2" id="back">Edit</button>
+            <button onclick="upload()" type="submit" class="btn btn-primary ">Upload On IPFS</button>
+          </div>
+        </div>
+      </footer>
+
+    <!-- jQuery-bootstrap-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+    $(function(){
+        $('.nav-link').click(function(){
+            var target = $(this).data('target');
+            $('.panel').hide();
+            $('.active').removeClass( "active" );
+            $(this).addClass( "active" );
+            $('#'+target).show();
+        });
+          $('#preview').click(function(){
+            $('.panel').hide();
+            $('.menu-create').hide();
+            $('.text-end').show();
+            $('#flyer').show();
+            $('.active').removeClass( "active" );
+          });
+          $('#back').click(function(){
+            $('#panel-content').show();
+            $('.menu-create').show();
+            $('.text-end').hide();
+            $('.first').addClass( "active" );
+            $('#flyer').hide();
+          });
+    });
+    </script>
 </body>
 </html>
