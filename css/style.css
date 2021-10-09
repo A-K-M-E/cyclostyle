@@ -236,17 +236,18 @@ img {
 
 .hash{
   word-break: break-all;
+  font-size: 12px;
+  color:#888;
 }
 
 .action-btn{
   width: 60px;
   height: 35px;
   display: block;
-  margin: 0 2px;
+  margin: 10px 5px 0 0;
   padding: 5px 0  0 30px;
   font-size: 12px;
   color: rgba(3,151,187,.5);
-  margin-right: 5px;
   text-decoration: none;
 }
 
@@ -258,7 +259,7 @@ img {
 .action-btn.delete{
   background: url('../icons/delete.svg') top left no-repeat;
   padding:0 0  0 30px;
-  margin: 0;
+  margin: 10px 0 0 0;
   width: 30px;
 }
 
