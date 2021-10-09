@@ -1,3 +1,7 @@
+body {
+  font-family: 'Montserrat Regular';
+}
+
 main{
   padding-bottom: 80px;
 }
@@ -11,12 +15,28 @@ main{
 .bg-logo{
   background: #fff;
   border-bottom: 3px solid #0397BB;
-  height: 77px;
+  height: 72px;
   width: 100%;
   max-width: 1024px;
   margin: 0 auto;
   padding: 0;
 
+}
+
+.home .bg-logo{
+    border-bottom:0;
+}
+.header-logo-home{transform: translate(-50%, -100%);}
+.logo{background: #fff;margin-left: -25px;}
+.logo-home{position: relative;}
+.line{
+    border-bottom: 4px solid #0397BB;
+    position: absolute;
+}
+.line-left{height: 44px;}
+.line-right{bottom:15px;}
+.home-content{
+  position: relative;
 }
 
 .navbar-toggler {
@@ -34,7 +54,7 @@ main{
 
 .offcanvas-header {
     padding: 1rem 1rem 0;
-    height: 90px;}
+    height: 85px;}
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(3, 151, 187, 1)' stroke-width='2' stroke-linecap='square' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E")
@@ -57,18 +77,25 @@ main{
 
 .offcanvas-body .navbar-nav .nav-link {
   padding-left: 15px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-family: 'Montserrat Medium';
   letter-spacing: 0.08em;
+  text-transform: none;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
   color: #C5037E;
-  text-transform: uppercase;
+font-family: 'Montserrat Regular';
 }
 
-h2, .h2{
+h2, .h2, h5, .h5{
   color:#0397BB;
+  font-family: 'Montserrat Medium';
+}
+
+.title-page{
+  margin-top: 25px;
+  margin-bottom: 30px;
 }
 
 .btn-outline-primary {
@@ -121,12 +148,40 @@ h2, .h2{
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
 
-.nav-link:focus, .nav-link:hover, .offcanvas-body .navbar-nav .nav-link {
+
+
+.nav-link:focus, .nav-link:hover, .offcanvas-body .navbar-nav .nav-link:hover, .offcanvas-body .navbar-nav .nav-link:focus, .offcanvas-body .navbar-nav .nav-link.active {
     color: #C5037E;
 }
 
-.offcanvas-body .navbar-nav .nav-link:hover, .offcanvas-body .navbar-nav .nav-link:focus, .offcanvas-body .navbar-nav .nav-link.active{
-  color: #0397BB;
+.offcanvas-body .navbar-nav .nav-link{
+  padding-left: 60px;
+}
+
+.offcanvas-body .navbar-nav .nav-link.favorites{
+  background: url('../icons/favorite.svg') 20px center no-repeat;
+}
+
+.offcanvas-body .navbar-nav .nav-link.drafts{
+  background: url('../icons/edit.svg') 20px center no-repeat;
+}
+
+.offcanvas-body .navbar-nav .nav-link.create{
+  background: url('../icons/create.svg') 21px center no-repeat;
+background-size: 28px;
+}
+
+.offcanvas-body .navbar-nav .nav-link.favorites.active{
+  background: url('../icons/favorite-active.svg') 20px center no-repeat;
+}
+
+.offcanvas-body .navbar-nav .nav-link.drafts.active{
+  background: url('../icons/edit-active.svg') 20px center no-repeat;
+}
+
+.offcanvas-body .navbar-nav .nav-link.create.active{
+  background: url('../icons/create-active.svg') 21px center no-repeat;
+background-size: 28px;
 }
 
 .nav {
@@ -136,13 +191,14 @@ h2, .h2{
 .form-label {
     font-size: 13px;
     text-transform: uppercase;
-    font-weight: 700;
+    font-family: 'Montserrat Medium';
     color: #888;
 }
 .btn {
-  font-size: 14px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-family: 'Montserrat Medium';
 }
 
 .box-cropper{
@@ -165,4 +221,43 @@ img {
 
 #preview{
   float: right;
+}
+
+.list-group-item {
+    border: 0;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    padding: .5rem 0;
+}
+
+.hash{
+  word-break: break-all;
+}
+
+.action-btn{
+  width: 35px;
+  height: 35px;
+  display: block;
+  padding: 15px;
+  margin: 0 2px;
+}
+
+.action-btn.delete{
+  background: url('../icons/delete.svg') center center no-repeat;
+
+}
+
+.action-btn.edit{
+  background: url('../icons/edit.svg') center center no-repeat;
+}
+
+.action-btn.copy{
+  background: url('../icons/copy.svg') center center no-repeat;
+}
+
+.action-btn.share{
+  background: url('../icons/share.svg') center center no-repeat;
+}
+
+.action-btn.qrcode{
+  background: url('../icons/qrcode.svg') center center no-repeat;
 }

@@ -93,14 +93,15 @@
 <script src="js/jquery-3.4.1.slim.min.js" ></script>
 
 </head>
-<body class="d-flex flex-column h-100  home">
+<body class="d-flex flex-column h-100">
 
-    <main class="flex-shrink-0 h-100">
+    <main class="flex-shrink-0">
       <header>
       <nav class="navbar">
-        <div class="container-fluid bg-logo ">
-          <div class="navbar-brand">
-          </div>
+        <div class="container-fluid bg-logo navbar-brand">
+          <a href="create.html">
+          <img src="images/logo.svg" alt="" width="250" height="85">
+        </a>
       <button class="btn overlay" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="navbar-toggler-icon"></span></button>
     </div>
     </nav>
@@ -117,21 +118,51 @@
         <a class="nav-link drafts" href="drafts.html">drafts</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link favorites" href="favorites.html">favorites</a>
+        <a class="nav-link active favorites" href="favorites.html">favorites</a>
       </li>
       </ul>
   </div>
 </div>
     </header>
-      <div class="container pt-3 home-content h-100">
-<div class="header-logo-home position-absolute top-50 start-50 w-100 text-center">
-  <div class="logo-home">
-  <div class="position-absolute top-0 start-0 w-50 line line-left p-0 m-0"></div>
-  <div class="position-absolute end-0 w-50 line line-right p-0 m-0"></div>
-  <div class="logo"><img src="images/logo.svg" alt="" width="295" height="100"></div>
-  </div>
-  <a href="create.html" class="btn btn-outline-danger mt-5">Create a flyer</a>
-</div>
+      <div class="container pt-3">
+
+      <h1 class="title-page">favorites</h1>
+      <div class="list-group">
+        <div class="list-group-item list-group-item-action">
+          <h5 class="mb-1 hash">COME PENSANO LE FORESTE – Per un’antropologia oltre l’umano / 10-10-2021</h5>
+          <p class="mb-1">DOMENICA 10 OTTOBRE 2021</p>
+          <small class="mb-1 hash">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
+          <div class="d-flex w-100 justify-content-end">
+            <a href="#" class="action-btn copy"></a>
+            <a href="#" class="action-btn share"></a>
+            <a href="#" class="action-btn qrcode"></a>
+            <a href="#" class="action-btn delete"></a>
+          </div>
+        </div>
+        <div class="list-group-item list-group-item-action">
+          <h5 class="mb-1">RYF + ?Alos / 09-10-2021</h5>
+          <p class="mb-1">SABATO 09 OTTOBRE 2021</p>
+          <small class="mb-1 hash">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
+          <div class="d-flex w-100 justify-content-end">
+            <a href="#" class="action-btn copy"></a>
+            <a href="#" class="action-btn share"></a>
+            <a href="#" class="action-btn qrcode"></a>
+            <a href="#" class="action-btn delete"></a>
+          </div>
+        </div>
+        <div class="list-group-item list-group-item-action">
+          <h5 class="mb-1">Part Time Punks October Party / 08-10-2021</h5>
+          <p class="mb-1">VENERDI’ 08 OTTOBRE 2021</p>
+          <small class="mb-1 hash">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
+          <div class="d-flex w-100 justify-content-end">
+            <a href="#" class="action-btn copy"></a>
+            <a href="#" class="action-btn share"></a>
+            <a href="#" class="action-btn qrcode"></a>
+            <a href="#" class="action-btn delete"></a>
+          </div>
+        </div>
+      </div>
+
       </div>
   </main>
 
