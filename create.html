@@ -93,64 +93,25 @@
 <!-- <script src="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau"></script>-->
 <!-- jQuery-slim-minified-->
 <script src="js/jquery-3.4.1.slim.min.js" ></script>
+<script src="js/ipfs.js" ></script>
+<script> if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./js/sw.js') .then(function(registration) { console.log('Registration successful, scope is:', registration.scope); }) .catch(function(error) { console.log('Service worker registration failed, error:', error); }); } </script>
 
-
-
-<!-- <script> if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./js/sw.js') .then(function(registration) { console.log('Registration successful, scope is:', registration.scope); }) .catch(function(error) { console.log('Service worker registration failed, error:', error); }); } </script>
-
-<script>
-  // codice preso da qui:
-  // https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag
-  // al posto di usare il cdn ho usato ipfs per il file javascript di interfacca a ipfs
-  document.addEventListener('DOMContentLoaded', async () => {
-    const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() })
-    window.node = node
-    if(node.isOnline()){ $("#main").show(); $("#testo").jeditor();}
-    console.log(node)
-
-      // You can write more code here to use it. Use methods like
-      // node.add, node.get. See the API docs here:
-      // https://github.com/ipfs/js-ipfs/tree/master/packages/interface-ipfs-core
-  });
-
-  function upload () {
-    var file = document.getElementById("cover").files[0];
-    if( typeof file != "undefined")
-    {
-      // oggeto di input per ipfs add
-      fileToUpload =[{
-          content : file
-      }]
-      sendToIpfs(fileToUpload);
-    }
-      // c'è bisogno di un messaggio di alert in caso di mancata selezione del file
-  }
-
-  async function sendToIpfs(files)
-  {
-    const cid  = await node.add(files);
-    console.log('successfully stored', cid);
-    var cover = "https://gateway.pinata.cloud/ipfs/"+cid.path;
-    var testo = $("#testo").val();
-    var cs = `<!DOCTYPE html>
-      <html>
-        <head></head>
-        <body>
-          <div style="margin: 0 auto">
-            <img style="margin:0 auto;" src="${cover}"><br>
-            <p>${testo}</p>
-          </div>
-        </body>
-    </html>`;
-    const cs_ipfs = await node.add(cs);
-    $("#fyler").html(`<a href='https://ipfs.io/ipfs/${cs_ipfs.path}' target='_blank'>vedi il risultato</a>`);
-  }
-
-
-</script> -->
 <script src="js/cropper.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', async () => {
+
+
+      // codice preso da qui:
+  // https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag
+  // al posto di usare il cdn ho usato ipfs per il file javascript di interfacca a ipfs
+    const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() })
+    window.node = node
+    //if(node.isOnline()) $("#main").show();
+    console.log(node)
+   
+      // You can write more code here to use it. Use methods like
+      // node.add, node.get. See the API docs here:
+      // https://github.com/ipfs/js-ipfs/tree/master/packages/interface-ipfs-core
     // vars
     let result = document.querySelector('.result'),
     img_result = document.querySelector('.img-result'),
