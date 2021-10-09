@@ -155,32 +155,32 @@ h2, .h2, h5, .h5{
 }
 
 .offcanvas-body .navbar-nav .nav-link{
-  padding-left: 60px;
+  padding-left: 50px;
 }
 
 .offcanvas-body .navbar-nav .nav-link.favorites{
-  background: url('../icons/favorite.svg') 20px center no-repeat;
+  background: url('../icons/favorite.svg') 10px center no-repeat;
 }
 
 .offcanvas-body .navbar-nav .nav-link.drafts{
-  background: url('../icons/edit.svg') 20px center no-repeat;
+  background: url('../icons/edit.svg') 10px center no-repeat;
 }
 
 .offcanvas-body .navbar-nav .nav-link.create{
-  background: url('../icons/create.svg') 21px center no-repeat;
+  background: url('../icons/create.svg') 11px center no-repeat;
 background-size: 28px;
 }
 
-.offcanvas-body .navbar-nav .nav-link.favorites.active{
-  background: url('../icons/favorite-active.svg') 20px center no-repeat;
+.offcanvas-body .navbar-nav .nav-link.favorites.active, .offcanvas-body .navbar-nav .nav-link.favorites:focus, .offcanvas-body .navbar-nav .nav-link.favorites:active, .offcanvas-body .navbar-nav .nav-link.favorites:hover{
+  background: url('../icons/favorite-active.svg') 10px center no-repeat;
 }
 
-.offcanvas-body .navbar-nav .nav-link.drafts.active{
-  background: url('../icons/edit-active.svg') 20px center no-repeat;
+.offcanvas-body .navbar-nav .nav-link.drafts.active, .offcanvas-body .navbar-nav .nav-link.drafts:focus, .offcanvas-body .navbar-nav .nav-link.drafts:active, .offcanvas-body .navbar-nav .nav-link.drafts:hover{
+  background: url('../icons/edit-active.svg') 10px center no-repeat;
 }
 
-.offcanvas-body .navbar-nav .nav-link.create.active{
-  background: url('../icons/create-active.svg') 21px center no-repeat;
+.offcanvas-body .navbar-nav .nav-link.create.active, .offcanvas-body .navbar-nav .nav-link.create.active:focus, .offcanvas-body .navbar-nav .nav-link.create:active, .offcanvas-body .navbar-nav .nav-link.create:hover{
+  background: url('../icons/create-active.svg') 11px center no-repeat;
 background-size: 28px;
 }
 
@@ -243,21 +243,35 @@ img {
 
 .action-btn.delete{
   background: url('../icons/delete.svg') center center no-repeat;
-
 }
 
 .action-btn.edit{
   background: url('../icons/edit.svg') center center no-repeat;
 }
 
+.action-btn.edit:active,.action-btn.edit:focus, .action-btn.edit:hover {
+  background: url('../icons/edit-active.svg') center center no-repeat;
+}
+
 .action-btn.copy{
   background: url('../icons/copy.svg') center center no-repeat;
+}
+
+.action-btn.copy:active, .action-btn.copy:focus,.action-btn.copy:hover{
+  background: url('../icons/copy-active.svg') center center no-repeat;
 }
 
 .action-btn.share{
   background: url('../icons/share.svg') center center no-repeat;
 }
 
+.action-btn.share:active, .action-btn.share:hover, .action-btn.share:focus{
+  background: url('../icons/share-active.svg') center center no-repeat;
+}
+
 .action-btn.qrcode{
   background: url('../icons/qrcode.svg') center center no-repeat;
+}
+.action-btn.qrcode:active,.action-btn.qrcode:hover,.action-btn.qrcode:focus {
+  background: url('../icons/qrcode-active.svg') center center no-repeat;
 }
