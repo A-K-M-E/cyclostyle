@@ -239,44 +239,59 @@ img {
 }
 
 .action-btn{
-  width: 35px;
+  width: 60px;
   height: 35px;
   display: block;
-  padding: 15px;
   margin: 0 2px;
+  padding: 5px 0  0 30px;
+  font-size: 12px;
+  color: rgba(3,151,187,.5);
+  margin-right: 5px;
+  text-decoration: none;
 }
 
+.action-btn:hover, .action-btn:active, .action-btn:focus{
+  color: rgba(197,3,126,.5);
+}
+
+
 .action-btn.delete{
-  background: url('../icons/delete.svg') center center no-repeat;
+  background: url('../icons/delete.svg') top left no-repeat;
+  padding:0 0  0 30px;
+  margin: 0;
+  width: 30px;
 }
 
 .action-btn.edit{
-  background: url('../icons/edit.svg') center center no-repeat;
+  background: url('../icons/edit.svg') top left no-repeat;
 }
 
 .action-btn.edit:active,.action-btn.edit:focus, .action-btn.edit:hover {
-  background: url('../icons/edit-active.svg') center center no-repeat;
+  background: url('../icons/edit-active.svg') top left no-repeat;
 }
 
 .action-btn.copy{
-  background: url('../icons/copy.svg') center center no-repeat;
+  background: url('../icons/copy.svg') top left no-repeat;
+  width: 86px;
 }
 
 .action-btn.copy:active, .action-btn.copy:focus,.action-btn.copy:hover{
-  background: url('../icons/copy-active.svg') center center no-repeat;
+  background: url('../icons/copy-active.svg') top left no-repeat;
 }
 
 .action-btn.share{
-  background: url('../icons/share.svg') center center no-repeat;
+  background: url('../icons/share.svg') top left no-repeat;
+  width: 65px;
 }
 
 .action-btn.share:active, .action-btn.share:hover, .action-btn.share:focus{
-  background: url('../icons/share-active.svg') center center no-repeat;
+  background: url('../icons/share-active.svg') top left no-repeat;
 }
 
 .action-btn.qrcode{
-  background: url('../icons/qrcode.svg') center center no-repeat;
+  background: url('../icons/qrcode.svg') top left no-repeat;
+  width: 75px;
 }
 .action-btn.qrcode:active,.action-btn.qrcode:hover,.action-btn.qrcode:focus {
-  background: url('../icons/qrcode-active.svg') center center no-repeat;
+  background: url('../icons/qrcode-active.svg') top left no-repeat;
 }
