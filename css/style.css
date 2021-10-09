@@ -234,6 +234,13 @@ img {
     padding: 1.5rem 0;
 }
 
+.list-group-item-action:active, .list-group-item-action:focus, .list-group-item-action:hover {
+    z-index: 1;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+}
+
 .hash{
   word-break: break-all;
   font-size: 12px;
@@ -244,7 +251,7 @@ img {
   width: 60px;
   height: 35px;
   display: block;
-  margin: 20px 5px 0 0;
+  margin: 20px 10px 0 0;
   padding: 5px 0  0 30px;
   font-size: 12px;
   color: rgba(3,151,187,.5);
