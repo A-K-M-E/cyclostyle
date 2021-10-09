@@ -217,14 +217,36 @@
     <main class="flex-shrink-0">
       <header>
       <nav class="navbar">
+        <div class="container-fluid bg-logo">
           <a class="navbar-brand" href="#">
             <img src="images/logo.svg" alt="" width="250" height="85">
           </a>
-      </nav>
+
+      <button class="btn overlay" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="navbar-toggler-icon"></span></button>
+    </div>
+    </nav>
+<div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body p-0">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Create a flyer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Drafts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Favorites</a>
+        </li>
+      </ul>
+  </div>
+</div>
     </header>
       <div class="container pt-3">
 
-      <h1 class="mb-3">Create your flyer</h1>
+      <h1 class="mb-3">Create a flyer</h1>
 
       <!--cropper-->
       <div class="box-cropper hide container-fluid">
@@ -316,8 +338,9 @@
           <button  type="submit" class="btn btn-outline-danger ms-2" id="preview" >Preview</button>
         </div>
          <div class="text-end finalize hide">
-           <button type="submit" class="btn btn-outline-danger ms-2" id="back">Edit</button>
-            <button onclick="upload()" type="submit" class="btn btn-primary ">Upload On IPFS</button>
+           <button type="submit" class="btn btn-outline-danger ms-1" id="back">Edit</button>
+           <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
+            <button onclick="upload()" type="submit" class="btn btn-primary ms-1">Stamp On IPFS</button>
           </div>
         </div>
       </footer>
@@ -326,7 +349,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script>
     $(function(){
-        $('.nav-link').click(function(){
+        $('.menu-create .nav-link').click(function(){
             var target = $(this).data('target');
             $('.panel').hide();
             $('.active').removeClass( "active" );
@@ -344,7 +367,7 @@
             $('#panel-content').show();
             $('.menu-create').show();
             $('.text-end').hide();
-            $('.first').addClass( "active" );
+            $('.menu-create .first').addClass( "active" );
             $('#flyer').hide();
           });
     });
