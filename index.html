@@ -89,53 +89,233 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/cropper.min.css">
 
+<!-- interfaccia http ipfs-->
+<!-- <script src="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau"></script>-->
 <!-- jQuery-slim-minified-->
 <script src="js/jquery-3.4.1.slim.min.js" ></script>
 
-</head>
-<body class="d-flex flex-column h-100  home">
+<!--  IPFS -->
+<script src="js/ipfs.js" ></script>
 
-    <main class="flex-shrink-0 h-100">
-      <header>
-      <nav class="navbar">
-        <div class="container-fluid bg-logo ">
-          <div class="navbar-brand">
-          </div>
-      <button class="btn overlay" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="navbar-toggler-icon"></span></button>
-    </div>
+<!-- Cropper delle immagini -->
+<script src="js/cropper.min.js"></script>
+
+<!-- Tutto il javascript custom -->
+<script src="js/custom-javascript.js"></script>
+
+</head>
+<body class="d-flex flex-column h-100">
+  <header>
+    <nav class="navbar home">
+      <div class="container-fluid bg-logo navbar-brand ">
+          <img src="images/logo.svg" alt="" width="250" height="85">
+        <button class="btn overlay" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="navbar-toggler-icon"></span></button>
+      </div>
     </nav>
-<div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-  <div class="offcanvas-header">
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body p-0">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link create" aria-current="page" href="create.html">create a flyer</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link drafts" href="drafts.html">drafts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link favorites" href="favorites.html">favorites</a>
-      </li>
-      </ul>
-  </div>
-</div>
-    </header>
-      <div class="container pt-3 home-content h-100">
-<div class="header-logo-home position-absolute top-50 start-50 w-100 text-center">
-  <div class="logo-home">
-  <div class="position-absolute top-0 start-0 w-50 line line-left p-0 m-0"></div>
-  <div class="position-absolute end-0 w-50 line line-right p-0 m-0"></div>
-  <div class="logo"><img src="images/logo.svg" alt="" width="295" height="100"></div>
-  </div>
-  <a href="create.html" class="btn btn-outline-danger mt-5">Create a flyer</a>
-</div>
+    <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+      <div class="offcanvas-header">
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-0">
+        <!-- main menu -->
+        <ul class="navbar-nav main-menu">
+          <li class="nav-item">
+            <a class="nav-link create" data-target="page-create" href="#" data-footer="true" data-bs-dismiss="offcanvas">create a flyer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link drafts" data-target="page-drafts" href="#" data-footer="false" data-bs-dismiss="offcanvas">drafts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link favorites" data-target="page-favorites" href="#" data-footer="false" data-bs-dismiss="offcanvas">favorites</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <main class="flex-shrink-0">
+    <!-- Homepage -->
+    <div class="container pt-3 h-100 pages" id="page-home">
+      <div class="header-logo-home position-absolute top-50 start-50 w-100 text-center">
+        <div class="logo-home">
+          <div class="position-absolute top-0 start-0 w-50 line line-left p-0 m-0"></div>
+          <div class="position-absolute end-0 w-50 line line-right p-0 m-0"></div>
+          <div class="logo"><img src="images/logo.svg" alt="" width="295" height="100"></div>
+        </div>
+        <a href="#" class="btn btn-outline-danger mt-5 home-create" >Create a flyer</a>
+      </div>
+    </div>
+    <!--Page create a flyer-->
+    <div class="container pt-3  hide pages" id="page-create">
+      <h1 class="title-page">create a flyer</h1>
+      <!--cropper-->
+        <div class="box-cropper hide container-fluid">
+  		   <div class="result mb-3" id="result"></div>
+         <div class="options hide">
+           <input type="number" class="img-w" value="1024" min="768" max="1024" />
+         </div>
+         <!-- save btn crop-->
+         <button class="btn save btn-primary ">Crop</button>
+         <button class="btn close hide btn-primary ">Done</button>
+      	</div>
+      <!--panel content-->
+      <div class="panel hide" id="panel-content">
+        <h2>content</h2>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Body</label>
+            <textarea class="form-control" id="testo" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Who?</label>
+            <textarea class="form-control" id="chi" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Where?</label>
+            <textarea class="form-control" id="dove" rows="3"></textarea>
+          </div>
+      </div>
+      <!--panel date-->
+      <div class="hide panel" id="panel-date">
+        <h2>date</h2>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">When?</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Hours</label>
+            <input type="time" class="form-control">
+          </div>
+      </div>
+      <!--panel tempalte-->
+      <div class="panel" id="panel-template">
+        <h2>template</h2>
+          <div class="mb-3">
+            <label for="exampleColorInput" class="form-label">Main color</label>
+            <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#0397BB" title="Choose your color">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Template</label>
+            <select class="form-select" id="inputGroupSelect01">
+              <option selected value="1">Default</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="mb-5 pb-2 page">
+            <label for="formFile" class="form-label">Upload, Crop and save cover </label>
+            <small>(1024px min-width)</small>
+            <!-- input file crop-->
+            <input class="form-control" type="file" id="cover">
+            <!-- result of crop -->
+          	<div class="box-2 img-result hide mb-3 mt-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Preview cover</label>
+          		<img class="cropped" src="" alt="">
+          	</div>
+            </div>
+          </div>
+        <!-- preview flyer -->
+        <div id="flyer" class="hide"></div>
+      </div>
+      <!--Page drafts-->
+      <div class="container pt-3 hide pages" id="page-drafts">
+        <h1 class="title-page">drafts</h1>
+        <div class="list-group">
+          <div class="list-group-item list-group-item-action">
+            <h5 class="mb-1">COME PENSANO LE FORESTE – Per un’antropologia oltre l’umano / 10-10-2021</h5>
+            <small>DOMENICA 10 OTTOBRE 2021</small>
+            <div class="d-flex w-100 justify-content-end">
+              <a href="#" class="action-btn edit" title="Edit">Edit</a>
+              <a href="#" class="action-btn delete" title="Delete"></a>
+            </div>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <h5 class="mb-1">RYF + ?Alos / 09-10-2021</h5>
+            <small>SABATO 09 OTTOBRE 2021</small>
+            <div class="d-flex w-100 justify-content-end">
+              <a href="#" class="action-btn edit" title="Edit">Edit</a>
+              <a href="#" class="action-btn delete" title="Delete"></a>
+            </div>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <h5 class="mb-1">Part Time Punks October Party / 08-10-2021</h5>
+            <small>VENERDI’ 08 OTTOBRE 2021</small>
+            <div class="d-flex w-100 justify-content-end">
+              <a href="#" class="action-btn edit" title="Edit">Edit</a>
+              <a href="#" class="action-btn delete" title="Delete"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Page favorites-->
+      <div class="container pt-3 hide pages" id="page-favorites">
+      <h1 class="title-page">favorites</h1>
+        <div class="list-group">
+          <div class="list-group-item list-group-item-action">
+            <h5 class="mb-1">COME PENSANO LE FORESTE – Per un’antropologia oltre l’umano / 10-10-2021</h5>
+            <p class="mb-0">DOMENICA 10 OTTOBRE 2021</p>
+            <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
+            <div class="d-flex w-100 justify-content-end">
+              <a href="#" class="action-btn copy" title="Copy link">Copy link</a>
+              <a href="#" class="action-btn share" title="Share">Share</a>
+              <a href="#" class="action-btn qrcode" title="Qrcode">Qrcode</a>
+              <a href="#" class="action-btn delete" title="Delete"></a>
+            </div>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <h5 class="mb-1">RYF + ?Alos / 09-10-2021</h5>
+            <p class="mb-0">SABATO 09 OTTOBRE 2021</p>
+            <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
+            <div class="d-flex w-100 justify-content-end">
+              <a href="#" class="action-btn copy" title="Copy link">Copy link</a>
+              <a href="#" class="action-btn share" title="Share">Share</a>
+              <a href="#" class="action-btn qrcode" title="Qrcode">Qrcode</a>
+              <a href="#" class="action-btn delete" title="Delete"></a>
+            </div>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <h5 class="mb-1">Part Time Punks October Party / 08-10-2021</h5>
+            <p class="mb-0">VENERDI’ 08 OTTOBRE 2021</p>
+            <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
+            <div class="d-flex w-100 justify-content-end">
+              <a href="#" class="action-btn copy" title="Copy link">Copy link</a>
+              <a href="#" class="action-btn share" title="Share">Share</a>
+              <a href="#" class="action-btn qrcode" title="Qrcode">Qrcode</a>
+              <a href="#" class="action-btn delete" title="Delete"></a>
+            </div>
+          </div>
+        </div>
       </div>
   </main>
-
-    <!-- jQuery-bootstrap-->
-    <script src="js/bootstrap.bundle.min.js"></script>
+  <!-- footer create a flyer -->
+  <footer class="footer mt-auto py-3 bg-light fixed-bottom hide">
+    <div class="container">
+      <div class="menu-create text-center">
+        <!-- menu footer create a flyer -->
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link active first" href="#" data-target="panel-template">Template</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#" data-target="panel-content">Content</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-target="panel-date">Date</a>
+          </li>
+        </ul>
+        <button  type="submit" class="btn btn-outline-danger ms-2" id="preview" >Preview</button>
+      </div>
+      <div class="text-end finalize hide">
+        <button type="submit" class="btn btn-outline-danger ms-1" id="back">Edit</button>
+        <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
+        <button onclick="upload()" type="submit" class="btn btn-primary ms-1">Print On IPFS</button>
+      </div>
+    </div>
+  </footer>
+<!-- jQuery-bootstrap-->
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/custom-jquery.js"></script>
 </body>
 </html>

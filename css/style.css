@@ -6,6 +6,13 @@ main{
   padding-bottom: 80px;
 }
 
+a, button{
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition:  0.3s;
+}
+
 .container {
   width: auto;
   max-width: 1024px;
@@ -26,6 +33,11 @@ main{
 .home .bg-logo{
     border-bottom:0;
 }
+
+.home .bg-logo img{
+    opacity: 0;
+}
+
 .header-logo-home{transform: translate(-50%, -100%);}
 .logo{background: #fff;margin-left: -25px;}
 .logo-home{position: relative;}
