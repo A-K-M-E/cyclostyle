@@ -145,7 +145,7 @@
       </div>
     </div>
     <!--Page create a flyer-->
-    <div class="container pt-3  hide pages" id="page-create">
+    <div class="container pt-3 pages hide" id="page-create">
       <h1 class="title-page">create a flyer</h1>
       <!--cropper-->
         <div class="box-cropper hide container-fluid">
@@ -157,65 +157,77 @@
          <button class="btn save btn-primary ">Crop</button>
          <button class="btn close hide btn-primary ">Done</button>
       	</div>
-      <!--panel content-->
-      <div class="panel hide" id="panel-content">
-        <h2>content</h2>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Title</label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Body</label>
-            <textarea class="form-control" id="testo" rows="3"></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Who?</label>
-            <textarea class="form-control" id="chi" rows="3"></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Where?</label>
-            <textarea class="form-control" id="dove" rows="3"></textarea>
-          </div>
-      </div>
-      <!--panel date-->
-      <div class="hide panel" id="panel-date">
-        <h2>date</h2>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">When?</label>
-            <input type="date" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Hours</label>
-            <input type="time" class="form-control">
-          </div>
-      </div>
-      <!--panel tempalte-->
-      <div class="panel" id="panel-template">
-        <h2>template</h2>
-          <div class="mb-3">
-            <label for="exampleColorInput" class="form-label">Main color</label>
-            <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#0397BB" title="Choose your color">
-          </div>
-          <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">Template</label>
-            <select class="form-select" id="inputGroupSelect01">
-              <option selected value="1">Default</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="mb-5 pb-2 page">
-            <label for="formFile" class="form-label">Upload, Crop and save cover </label>
-            <small>(1024px min-width)</small>
-            <!-- input file crop-->
-            <input class="form-control" type="file" id="cover">
-            <!-- result of crop -->
-          	<div class="box-2 img-result hide mb-3 mt-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Preview cover</label>
-          		<img class="cropped" src="" alt="">
-          	</div>
+      <!--carousel content-->
+      <div id="carousel-content" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="false">
+         <div class="carousel-inner ">
+           <!--panel tempalte-->
+           <div class="carousel-item active">
+             <h2>template</h2>
+               <div class="mb-3">
+                 <label for="exampleColorInput" class="form-label">Main color</label>
+                 <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#0397BB" title="Choose your color">
+               </div>
+               <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">Template</label>
+                 <select class="form-select" id="inputGroupSelect01">
+                   <option selected value="1">Default</option>
+                   <option value="2">Two</option>
+                   <option value="3">Three</option>
+                 </select>
+               </div>
+               <div class="mb-3 pb-2 page">
+                 <label for="formFile" class="form-label">Upload, Crop and save cover </label>
+                 <small>(1024px min-width)</small>
+                 <!-- input file crop-->
+                 <input class="form-control mb-3" type="file" id="cover">
+                 <button class="carousel-control-next" type="button" data-bs-target="#carousel-content" data-bs-slide="next">
+                   <span>Next ></span>
+                 </button>
+                 <!-- result of crop -->
+               	<div class="box-2 img-result hide mb-3 mt-3">
+                   <label for="exampleFormControlTextarea1" class="form-label">Preview cover</label>
+               		<img class="cropped" src="" alt="">
+               	</div>
             </div>
+
           </div>
+          <!--panel content-->
+          <div class="carousel-item">
+            <h2>content</h2>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Title</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+                <textarea class="form-control" id="testo" rows="3"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea2" class="form-label">Who?/Where?</label>
+                <textarea class="form-control" id="chi" rows="3"></textarea>
+              </div>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel-content" data-bs-slide="next">
+                <span>Next ></span>
+              </button>
+          </div>
+          <!--panel date-->
+          <div class="carousel-item">
+            <h2>date</h2>
+              <div class="mb-3">
+                <label for="exampleFormControlInput2" class="form-label">When?</label>
+                <input type="date" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput3" class="form-label">Hours</label>
+                <input type="time" class="form-control">
+              </div>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel-content" data-bs-slide="next">
+                <span>Next ></span>
+              </button>
+          </div>
+          </div>
+        </div>
+
         <!-- preview flyer -->
         <div id="flyer" class="hide"></div>
       </div>
@@ -294,18 +306,12 @@
     <div class="container">
       <div class="menu-create text-center">
         <!-- menu footer create a flyer -->
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link active first" href="#" data-target="panel-template">Template</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="#" data-target="panel-content">Content</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-target="panel-date">Date</a>
-          </li>
-        </ul>
-        <button  type="submit" class="btn btn-outline-danger ms-2" id="preview" >Preview</button>
+        <div id="indicators" class="carousel-indicators nav-pills">
+            <a class="nav-link active" data-bs-target="#carousel-content" data-bs-slide-to="0" aria-label="Slide 1">Template</a>
+            <a class="nav-link" data-bs-target="#carousel-content" data-bs-slide-to="1" aria-label="Slide 2">Content</a>
+            <a class="nav-link" data-bs-target="#carousel-content"  data-bs-slide-to="2" aria-label="Slide 3">Date</a>
+      </div>
+        <button  type="submit" class="btn btn-outline-danger ms-2" id="preview"  data-bs-slide-to="2">Preview</button>
       </div>
       <div class="text-end finalize hide">
         <button type="submit" class="btn btn-outline-danger ms-1" id="back">Edit</button>

@@ -171,6 +171,10 @@ h2, .h2, h5, .h5{
     color: #C5037E;
 }
 
+.nav-pills .nav-link:focus{
+  color: #0397BB;
+}
+
 .offcanvas-body .navbar-nav .nav-link{
   padding-left: 50px;
 }
@@ -314,4 +318,89 @@ img {
 }
 .action-btn.qrcode:active,.action-btn.qrcode:hover,.action-btn.qrcode:focus {
   background: url('../icons/qrcode-active.svg') top left no-repeat;
+}
+
+.carousel{
+  width: 100%;
+}
+
+footer .menu-create{
+  position: relative;
+}
+
+footer .carousel-indicators {
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: left;
+    padding: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left:0;
+    list-style: none;
+}
+
+footer .carousel-indicators [data-bs-target] {
+    box-sizing: content-box;
+    flex: 0 1 auto;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin-right: 10px;
+    margin-left:0;
+    text-indent: 0;
+    cursor: pointer;
+    background-color:  inherit;
+    background-clip: padding-box;
+    border: 0;
+    opacity: 1;
+    transition: opacity .6s ease;
+}
+
+#carousel-content .carousel-control-next, #carousel-content .carousel-control-prev {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 0;
+    color:  inherit;
+    text-align: center;
+    background: unset;
+    border: 0;
+    opacity: 1;
+    transition: opacity .15s ease;
+}
+
+#carousel-content .carousel-control-next, #carousel-content .carousel-control-prev {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    z-index: 1;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    background: unset;
+    border: 0;
+    opacity: 0.5;
+    transition: opacity .15s ease;
+    color:#0397BB;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+#carousel-content .carousel-control-next:focus, #carousel-content .carousel-control-next:hover, #carousel-content .carousel-control-prev:focus, #carousel-content .carousel-control-prev:hover {
+    color: #C5037E;
+    text-decoration: none;
+    outline: 0;
+    opacity: .9;
 }
