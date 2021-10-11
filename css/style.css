@@ -360,42 +360,26 @@ footer .carousel-indicators [data-bs-target] {
     transition: opacity .6s ease;
 }
 
-#carousel-content .carousel-control-next, #carousel-content .carousel-control-prev {
-    position: relative;
-    top: auto;
-    bottom: auto;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    padding: 0;
-    color:  inherit;
-    text-align: center;
-    background: unset;
-    border: 0;
-    opacity: 1;
-    transition: opacity .15s ease;
-}
+
 
 #carousel-content .carousel-control-next, #carousel-content .carousel-control-prev {
-    position: relative;
-    top: auto;
-    bottom: auto;
-    z-index: 1;
-    display: flex;
-    align-items: end;
-    justify-content: end;
-    width: 100%;
-    padding: 15px;
-    text-align: center;
-    background: unset;
-    border: 0;
-    opacity: 0.5;
-    transition: opacity .15s ease;
-    color:#0397BB;
-    text-transform: uppercase;
-    font-size: 13px;
+  position: absolute;
+  top: 0;
+  bottom: auto;
+  z-index: 1;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  width: 100%;
+  padding: 5px 15px;
+  text-align: center;
+  background: unset;
+  border: 0;
+  opacity: 0.5;
+  transition: opacity .15s ease;
+  color: #0397BB;
+  text-transform: uppercase;
+  font-size: 13px;
 }
 
 #carousel-content .carousel-control-next:focus, #carousel-content .carousel-control-next:hover, #carousel-content .carousel-control-prev:focus, #carousel-content .carousel-control-prev:hover {
