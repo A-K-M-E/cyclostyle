@@ -100,6 +100,9 @@
 <!-- Cropper delle immagini -->
 <script src="js/cropper.min.js"></script>
 
+<!--  Qrcode from https://www.cssscript.com/demo/pure-javascript-qr-code-generator-qrious/-->
+<script src="js/qrious.js" ></script>
+
 <!-- Tutto il javascript custom -->
 <script src="js/custom-javascript.js"></script>
 
@@ -237,7 +240,7 @@
             <small>DOMENICA 10 OTTOBRE 2021</small>
             <div class="d-flex w-100 justify-content-end">
               <a href="#" class="action-btn edit" title="Edit">Edit</a>
-              <a href="#" class="action-btn delete" title="Delete"></a>
+              <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
           <div class="list-group-item list-group-item-action">
@@ -245,7 +248,7 @@
             <small>SABATO 09 OTTOBRE 2021</small>
             <div class="d-flex w-100 justify-content-end">
               <a href="#" class="action-btn edit" title="Edit">Edit</a>
-              <a href="#" class="action-btn delete" title="Delete"></a>
+              <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
           <div class="list-group-item list-group-item-action">
@@ -253,7 +256,7 @@
             <small>VENERDI’ 08 OTTOBRE 2021</small>
             <div class="d-flex w-100 justify-content-end">
               <a href="#" class="action-btn edit" title="Edit">Edit</a>
-              <a href="#" class="action-btn delete" title="Delete"></a>
+              <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
         </div>
@@ -269,8 +272,8 @@
             <div class="d-flex w-100 justify-content-end">
               <a href="#" class="action-btn copy" title="Copy link">Copy link</a>
               <a href="#" class="action-btn share" title="Share">Share</a>
-              <a href="#" class="action-btn qrcode" title="Qrcode">Qrcode</a>
-              <a href="#" class="action-btn delete" title="Delete"></a>
+              <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" data-value="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau">Qrcode</a>
+              <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
           <div class="list-group-item list-group-item-action">
@@ -279,9 +282,9 @@
             <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
             <div class="d-flex w-100 justify-content-end">
               <a href="#" class="action-btn copy" title="Copy link">Copy link</a>
-              <a href="#" class="action-btn share" title="Share">Share</a>
-              <a href="#" class="action-btn qrcode" title="Qrcode">Qrcode</a>
-              <a href="#" class="action-btn delete" title="Delete"></a>
+              <a href="#" class="action-btn share" title="Share" >Share</a>
+              <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" data-value="https://ipfs.io/ipfs/prova1">Qrcode</a>
+              <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
           <div class="list-group-item list-group-item-action">
@@ -291,13 +294,49 @@
             <div class="d-flex w-100 justify-content-end">
               <a href="#" class="action-btn copy" title="Copy link">Copy link</a>
               <a href="#" class="action-btn share" title="Share">Share</a>
-              <a href="#" class="action-btn qrcode" title="Qrcode">Qrcode</a>
-              <a href="#" class="action-btn delete" title="Delete"></a>
+              <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" data-value="https://ipfs.io/ipfs/prova2">Qrcode</a>
+              <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
         </div>
       </div>
   </main>
+  <!-- Modal Delete -->
+  <div class="modal fade" id="infomodal" tabindex="-1" aria-labelledby="infomodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="infomodaLabel">Delete item</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        Are you sure you want to delete this item? You won't be able to recover it.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary">Yes, Delete it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Qrcode -->
+  <div class="modal fade" id="qrmodal"  tabindex="-1" aria-labelledby="qrmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="qrLabel">QR code</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img id="qrious">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+          <a type="button" class="btn btn-primary" href="" id="download-qr" target="_blank">download</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- footer create a flyer -->
   <footer class="footer mt-auto py-3 bg-light fixed-bottom hide">
     <div class="container">

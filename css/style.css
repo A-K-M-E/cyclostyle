@@ -287,7 +287,7 @@ img {
 .action-btn.delete{
   background: url('../icons/delete.svg') top left no-repeat;
   padding:0 0  0 30px;
-  margin: 20px 0 0 0;
+  margin: 20px 0 0 10px;
   width: 30px;
 }
 
@@ -397,4 +397,15 @@ footer .carousel-indicators [data-bs-target] {
     text-decoration: none;
     outline: 0;
     opacity: .9;
+}
+
+.modal-content {
+    border: 1px solid rgba(3,151,187,.25);
+    border-radius: 0;
+    outline: 0;
+}
+
+#qrious{
+  height: auto;
+  padding: 5%;
 }

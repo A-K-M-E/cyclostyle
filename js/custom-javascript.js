@@ -74,4 +74,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     save.classList.add('hide');
     });
+  // Qrcode
+  const qr_link = document.querySelectorAll('.qrcode');
+
+  var qr = window.qr = new QRious({
+      element: document.getElementById('qrious'),
+      size: 1000,
+      value: 'QRious'
+    });
+    qr_link.forEach(function(item) {
+    item.addEventListener('click', function() {
+      var qr_result = document.getElementById('qrious');
+      var download =document.getElementById('download-qr');
+        qr.value = item.getAttribute("data-value");
+        download.setAttribute("href", qr_result.src);
+      });
+     });
 });
