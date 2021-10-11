@@ -83,11 +83,56 @@ document.addEventListener('DOMContentLoaded', async () => {
       value: 'QRious'
     });
     qr_link.forEach(function(item) {
-    item.addEventListener('click', function() {
+    item.addEventListener('click', function(e) {
       var qr_result = document.getElementById('qrious');
       var download =document.getElementById('download-qr');
-        qr.value = item.getAttribute("data-value");
+        qr.value = e.target.parentNode.getAttribute("data-value");
         download.setAttribute("href", qr_result.src);
       });
      });
+
+  // Share
+  const shareButton = document.querySelectorAll('.share-button');
+  var shareDialog = document.querySelector('.share-dialog');
+  var closeButton = document.querySelector('.close-button');
+  var shareModal = new bootstrap.Modal(document.getElementById('sharemodal'), {
+  keyboard: false
+});
+
+
+
+  shareButton.forEach(function(item) {
+  item.addEventListener('click', function(e) {
+    var link_share= e.target.parentNode.getAttribute("data-value");
+    if (navigator.share) {
+     navigator.share({
+        title: 'WebShare',
+        url: link_share
+      }).then(() => {
+        console.log('Thanks for sharing!');
+      })
+      .catch(console.error);
+      } else {
+          shareModal.show();
+          //shareDialog.classList.add('is-open');
+          document.getElementById('url').innerHTML=link_share;
+          document.getElementById('url').parentNode.setAttribute("data-value", link_share);
+      }
+  });
+  });
+
+  // Copy link
+  const copylinkButton = document.querySelectorAll('.copy');
+
+  copylinkButton.forEach(function(item) {
+  item.addEventListener('click', function(e) {
+    copyText = e.target.parentNode.getAttribute("data-value");
+    /* Copy the text inside the text field */
+   navigator.clipboard.writeText(copyText);
+
+   /* Alert the copied text */
+   alert("Copied the text: " + copyText);
+  });
+  });
+
 });

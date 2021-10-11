@@ -381,7 +381,7 @@ footer .carousel-indicators [data-bs-target] {
   align-items: end;
   justify-content: end;
   width: auto;
-  padding: 8px 15px;
+  padding: 8px 0;
   text-align: center;
   background: unset;
   border: 0;
@@ -410,13 +410,38 @@ footer .carousel-indicators [data-bs-target] {
     opacity: .9;
 }
 
+/* modal */
+
 .modal-content {
     border: 1px solid rgba(3,151,187,.25);
     border-radius: 0;
     outline: 0;
 }
-
+/* qrcode */
 #qrious{
   height: auto;
   padding: 5%;
+}
+
+/* share box */
+
+
+.share-dialog .link {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+.share-dialog .pen-url {
+  margin-right: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.share-dialog .copy-link{
+  white-space: nowrap;
 }

@@ -275,10 +275,10 @@
             <h5 class="mb-1">COME PENSANO LE FORESTE – Per un’antropologia oltre l’umano / 10-10-2021</h5>
             <p class="mb-0">DOMENICA 10 OTTOBRE 2021</p>
             <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
-            <div class="d-flex w-100 justify-content-end">
+            <div class="d-flex w-100 justify-content-end" data-value="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau">
               <a href="#" class="action-btn copy" title="Copy link">Copy link</a>
-              <a href="#" class="action-btn share" title="Share">Share</a>
-              <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" data-value="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau">Qrcode</a>
+              <a href="#" class="action-btn share share-button" title="Share">Share</a>
+              <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" >Qrcode</a>
               <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
@@ -286,10 +286,10 @@
             <h5 class="mb-1">RYF + ?Alos / 09-10-2021</h5>
             <p class="mb-0">SABATO 09 OTTOBRE 2021</p>
             <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
-            <div class="d-flex w-100 justify-content-end">
+            <div class="d-flex w-100 justify-content-end" data-value="https://ipfs.io/ipfs/prova1">
               <a href="#" class="action-btn copy" title="Copy link">Copy link</a>
-              <a href="#" class="action-btn share" title="Share" >Share</a>
-              <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" data-value="https://ipfs.io/ipfs/prova1">Qrcode</a>
+              <a href="#" class="action-btn share share-button" title="Share" >Share</a>
+              <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" >Qrcode</a>
               <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
@@ -297,10 +297,10 @@
             <h5 class="mb-1">Part Time Punks October Party / 08-10-2021</h5>
             <p class="mb-0">VENERDI’ 08 OTTOBRE 2021</p>
             <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
-            <div class="d-flex w-100 justify-content-end">
+            <div class="d-flex w-100 justify-content-end" data-value="https://ipfs.io/ipfs/prova2">
               <a href="#" class="action-btn copy" title="Copy link">Copy link</a>
-              <a href="#" class="action-btn share" title="Share">Share</a>
-              <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" data-value="https://ipfs.io/ipfs/prova2">Qrcode</a>
+              <a href="#" class="action-btn share share-button" title="Share">Share</a>
+              <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" >Qrcode</a>
               <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
@@ -343,6 +343,24 @@
       </div>
     </div>
   </div>
+  <!-- Modal Share -->
+  <div class="modal share-dialog fade" id="sharemodal"  tabindex="-1" aria-labelledby="sharemodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="shareLabel">Share this link</h5>
+          <button type="button" class="btn-close close-button" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="link" data-value="">
+            <div class="pen-url" id="url"></div>
+            <button class="copy-link btn btn-primary copy">Copy Link</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- footer create a flyer -->
   <footer class="footer mt-auto py-3 bg-light fixed-bottom hide">
     <div class="container">
