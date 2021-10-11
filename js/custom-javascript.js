@@ -122,6 +122,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // Copy link
+
+  var copyModal = new bootstrap.Modal(document.getElementById('copymodal'), {
+  keyboard: false
+});
   const copylinkButton = document.querySelectorAll('.copy');
 
   copylinkButton.forEach(function(item) {
@@ -129,10 +133,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     copyText = e.target.parentNode.getAttribute("data-value");
     /* Copy the text inside the text field */
    navigator.clipboard.writeText(copyText);
-
    /* Alert the copied text */
-   alert("Copied the text: " + copyText);
+   copyModal.show();
   });
   });
-
+  document.getElementById('copymodal').addEventListener('show.bs.modal', function (event) {
+  setTimeout(function(){ copyModal.hide(); }, 700);
+  });
 });

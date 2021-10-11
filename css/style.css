@@ -283,6 +283,12 @@ img {
   color: rgba(197,3,126,.5);
 }
 
+.action-btn:active {
+    transition: transform .1s ease 0s;
+    transform: scale(.6);
+}
+
+
 
 .action-btn.delete{
   background: url('../icons/delete.svg') top left no-repeat;
@@ -417,6 +423,12 @@ footer .carousel-indicators [data-bs-target] {
     border-radius: 0;
     outline: 0;
 }
+
+#copymodal{
+  text-align: center;
+  border-bottom: 3px solid rgb(3, 151, 187);;
+}
+
 /* qrcode */
 #qrious{
   height: auto;
@@ -424,7 +436,6 @@ footer .carousel-indicators [data-bs-target] {
 }
 
 /* share box */
-
 
 .share-dialog .link {
   display: flex;
