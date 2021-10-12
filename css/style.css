@@ -112,7 +112,6 @@ h2, .h2, h5, .h5{
 
 .title-page{
   margin-top: 25px;
-  margin-bottom: 30px;
 }
 
 .btn-outline-primary {
@@ -295,6 +294,11 @@ img {
   padding:0 0  0 30px;
   margin: 20px 0 0 10px;
   width: 30px;
+  opacity: 0.5;
+}
+
+.action-btn.delete:hover, .action-btn.delete:active{
+  opacity: 1;
 }
 
 .action-btn.edit{
