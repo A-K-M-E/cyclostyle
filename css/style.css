@@ -11,6 +11,14 @@ main{
   height: 100%;
 }
 
+a{
+  color: #0397BB;
+}
+
+a:hover, a:active, a:focus{
+  color: #C5037E;
+}
+
 a, button{
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
