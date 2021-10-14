@@ -87,7 +87,6 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/cropper.min.css">
 
 <!-- interfaccia http ipfs-->
 <!-- <script src="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau"></script>-->
@@ -98,10 +97,16 @@
 <script src="js/ipfs.js" ></script>
 
 <!-- Cropper delle immagini -->
+<link rel="stylesheet" href="css/cropper.min.css">
 <script src="js/cropper.min.js"></script>
 
 <!--  Qrcode from https://www.cssscript.com/demo/pure-javascript-qr-code-generator-qrious/-->
 <script src="js/qrious.js" ></script>
+
+<!--  Richtext from https://github.com/webfashionist/RichText -->
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/richtext.min.css">
+<script src="js/jquery.richtext.min.js" ></script>
 
 <!-- Tutto il javascript custom -->
 <script src="js/custom-javascript.js"></script>
@@ -198,17 +203,14 @@
           <div class="carousel-item">
             <h2>content</h2>
               <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Title</label>
-                <input type="text" class="form-control">
+                <label for="titleInput" class="form-label">Title *</label>
+                <input type="text" class="form-control" id="titleInput" placeholder="Required title" required>
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Body</label>
-                <textarea class="form-control" id="testo" rows="3"></textarea>
+                <label for="bodyTextarea" class="form-label">Body *</label>
+                <textarea class="form-control" id="bodyTextarea" rows="3" placeholder="Required text" required></textarea>
               </div>
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea2" class="form-label">Who?/Where?</label>
-                <textarea class="form-control" id="chi" rows="3"></textarea>
-              </div>
+
               <button class="carousel-control-prev prev-content" type="button" data-bs-target="#carousel-content" data-bs-slide="prev">
                 <span>< Previous</span>
               </button>
@@ -218,14 +220,18 @@
           </div>
           <!--panel date-->
           <div class="carousel-item">
-            <h2>date</h2>
+            <h2>details</h2>
+            <div class="mb-3">
+              <label for="whereInput" class="form-label">Who?/Where?</label>
+              <textarea class="form-control" id="whereInput" rows="3"></textarea>
+            </div>
               <div class="mb-3">
-                <label for="exampleFormControlInput2" class="form-label">When?</label>
-                <input type="date" class="form-control">
+                <label for="dateInput" class="form-label">When?</label>
+                <input type="text" class="form-control" id="dateInput">
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlInput3" class="form-label">Hours</label>
-                <input type="time" class="form-control">
+                <label for="timeInput" class="form-label">Hours</label>
+                <input type="time" class="form-control" id="timeInput">
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carousel-content" data-bs-slide="prev">
                 <span>< Previous</span>
@@ -240,7 +246,7 @@
           <div class="text-end finalize hide float-end mb-1 mt-1">
             <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
             <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
-            <button onclick="upload()" type="submit" class="btn btn-primary ms-1">Print On IPFS</button>
+            <button onclick="upload()"  class="btn btn-primary ms-1">Print On IPFS</button>
           </div>
           <div class="float-none"></div>
           <div id="flyer"></div>
@@ -386,7 +392,7 @@
         <div id="indicators" class="carousel-indicators nav-pills">
             <a class="nav-link active" data-bs-target="#carousel-content" data-bs-slide-to="0" aria-label="Slide 1">Template</a>
             <a class="nav-link" data-bs-target="#carousel-content" data-bs-slide-to="1" aria-label="Slide 2">Content</a>
-            <a class="nav-link" data-bs-target="#carousel-content"  data-bs-slide-to="2" aria-label="Slide 3">Date</a>
+            <a class="nav-link" data-bs-target="#carousel-content"  data-bs-slide-to="2" aria-label="Slide 3">Details</a>
       </div>
         <button  type="submit" class="btn btn-outline-danger ms-2" id="preview"  data-bs-slide-to="2">Preview</button>
       </div>

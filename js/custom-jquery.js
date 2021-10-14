@@ -74,5 +74,16 @@ $( document ).ready(function() {
           $('.text-end').show();
           $('#content-flyer').show();
       });
+      // editor
+      $('#bodyTextarea').richText({
+            // uploads
+            imageUpload: false,
+            fileUpload: false,
+
+            // media
+            videoEmbed: false,
+            fonts: false,
+            table: false
+          });
 
 });
