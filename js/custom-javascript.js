@@ -93,8 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Share
   const shareButton = document.querySelectorAll('.share-button');
-  var shareDialog = document.querySelector('.share-dialog');
-  var closeButton = document.querySelector('.close-button');
+  var url_link = document.getElementById('url');
   var shareModal = new bootstrap.Modal(document.getElementById('sharemodal'), {
   keyboard: false
 });
@@ -113,10 +112,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       })
       .catch(console.error);
       } else {
+        console.log(link_share);
           shareModal.show();
-          //shareDialog.classList.add('is-open');
-          document.getElementById('url').innerHTML=link_share;
-          document.getElementById('url').parentNode.setAttribute("data-value", link_share);
+          url_link.innerHTML=link_share;
+          url_link.parentNode.setAttribute("data-value", link_share);
       }
   });
   });
