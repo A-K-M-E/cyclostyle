@@ -235,7 +235,16 @@
         </div>
 
         <!-- preview flyer -->
-        <div id="flyer" class="hide"></div>
+        <div id="content-flyer" class="hide mt-4">
+          <h2 class="float-start mb-2">preview</h2>
+          <div class="text-end finalize hide float-end mb-1 mt-1">
+            <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
+            <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
+            <button onclick="upload()" type="submit" class="btn btn-primary ms-1">Print On IPFS</button>
+          </div>
+          <div class="float-none"></div>
+          <div id="flyer"></div>
+        </div>
       </div>
       <!--Page drafts-->
       <div class="container pt-3 hide pages" id="page-drafts">
@@ -382,7 +391,7 @@
         <button  type="submit" class="btn btn-outline-danger ms-2" id="preview"  data-bs-slide-to="2">Preview</button>
       </div>
       <div class="text-end finalize hide">
-        <button type="submit" class="btn btn-outline-danger ms-1" id="back">Edit</button>
+        <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
         <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
         <button onclick="upload()" type="submit" class="btn btn-primary ms-1">Print On IPFS</button>
       </div>
