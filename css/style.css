@@ -118,8 +118,11 @@ h2, .h2, h5, .h5{
   font-family: 'Montserrat Medium';
 }
 
-.title-page{
+.title-page {
   margin-top: 25px;
+}
+.add {
+  margin-top: 14px;
 }
 
 .btn-outline-primary {
@@ -146,6 +149,11 @@ h2, .h2, h5, .h5{
 .form-control:focus, .form-select:focus, .btn-outline-primary:focus, .btn-primary:focus, .btn-primary.active {
     border-color: #0397BB;
     box-shadow: 0 0 0 .25rem rgba(3,151,187,.25);
+}
+
+.form-control::placeholder {
+    color: #0397bb73;
+    opacity: 1;
 }
 
 .btn-primary, .btn-primary:focus, .btn-primary:active, .btn-primary:hover, .btn-outline-primary:active, .btn-outline-primary:hover{
@@ -467,4 +475,10 @@ footer .carousel-indicators [data-bs-target] {
 
 .share-dialog .copy-link{
   white-space: nowrap;
+}
+
+.uploading{
+  position: absolute;
+  background-color: #fff;
+  z-index: 999999;
 }

@@ -1,5 +1,6 @@
 if ('serviceWorker' in navigator) { navigator.serviceWorker.register('../js/sw.js') .then(function(registration) { console.log('Registration successful, scope is:', registration.scope); }) .catch(function(error) { console.log('Service worker registration failed, error:', error); }); }
 
+// forse tutto ciò va inserito all'evento del click del bottone, così si sposta in quel momento il problema
 
 document.addEventListener('DOMContentLoaded', async () => {
     // codice preso da qui:
@@ -14,6 +15,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     // node.add, node.get. See the API docs here:
     // https://github.com/ipfs/js-ipfs/tree/master/packages/interface-ipfs-core
   // vars
+
+  // bottone per Ipfs
+  const ipsf_button = document.querySelectorAll('.printipfs');
+  var loadingCover = document.querySelector('.uploading');
+  var el=document.querySelector('footer.footer');
+
+  ipsf_button.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      loadingCover.classList.remove('hide');
+      el.style.display = 'none';
+    });
+  });
 
 // cropper
   let result = document.querySelector('.result'),

@@ -204,11 +204,11 @@
             <h2>content</h2>
               <div class="mb-3">
                 <label for="titleInput" class="form-label">Title *</label>
-                <input type="text" class="form-control" id="titleInput" placeholder="Required title" required>
+                <input type="text" class="form-control" id="titleInput" placeholder="required title" required>
               </div>
               <div class="mb-3">
                 <label for="bodyTextarea" class="form-label">Body *</label>
-                <textarea class="form-control" id="bodyTextarea" rows="3" placeholder="Required text" required></textarea>
+                <textarea class="form-control" id="bodyTextarea" rows="3" placeholder="required text" required></textarea>
               </div>
 
               <button class="carousel-control-prev prev-content" type="button" data-bs-target="#carousel-content" data-bs-slide="prev">
@@ -245,7 +245,7 @@
           <div class="text-end finalize hide float-end mb-1 mt-1">
             <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
             <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
-            <button onclick="upload()"  class="btn btn-primary ms-1">Print On IPFS</button>
+            <button  type="submit" class="btn btn-primary ms-1 printipfs">Print On IPFS</button>
           </div>
           <div class="float-none"></div>
           <div id="flyer"></div>
@@ -283,7 +283,10 @@
       </div>
       <!--Page favorites-->
       <div class="container pt-3 hide pages" id="page-favorites">
-      <h1 class="title-page">favorites</h1>
+        <div class="d-flex justify-content-between">
+          <h1 class="title-page">favorites</h1>
+          <button type="submit" class="btn btn-primary add" title="Add favorite" data-bs-toggle="modal" data-bs-target="#addmodal">Add</button>
+        </div>
         <div class="list-group">
           <div class="list-group-item list-group-item-action">
             <h5 class="mb-1"><a href="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau" class="out-link" target="_blank">COME PENSANO LE FORESTE – Per un’antropologia oltre l’umano / 10-10-2021</a></h5>
@@ -321,6 +324,27 @@
         </div>
       </div>
   </main>
+
+
+  <!-- footer create a flyer -->
+  <footer class="footer mt-auto py-3 bg-light fixed-bottom hide">
+    <div class="container">
+      <div class="menu-create text-center">
+        <!-- menu footer create a flyer -->
+        <div id="indicators" class="carousel-indicators nav-pills">
+            <a class="nav-link active" data-bs-target="#carousel-content" data-bs-slide-to="0" aria-label="Slide 1">Template</a>
+            <a class="nav-link" data-bs-target="#carousel-content" data-bs-slide-to="1" aria-label="Slide 2">Content</a>
+            <a class="nav-link" data-bs-target="#carousel-content"  data-bs-slide-to="2" aria-label="Slide 3">Details</a>
+      </div>
+        <button  type="submit" class="btn btn-outline-danger ms-2" id="preview"  data-bs-slide-to="2">Preview</button>
+      </div>
+      <div class="text-end finalize hide">
+        <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
+        <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
+        <button type="submit" class="btn btn-primary ms-1 printipfs">Print On IPFS</button>
+      </div>
+    </div>
+  </footer>
   <!-- Modal Delete -->
   <div class="modal fade" id="infomodal" tabindex="-1" aria-labelledby="infomodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -382,26 +406,42 @@
       </div>
     </div>
   </div>
-
-  <!-- footer create a flyer -->
-  <footer class="footer mt-auto py-3 bg-light fixed-bottom hide">
-    <div class="container">
-      <div class="menu-create text-center">
-        <!-- menu footer create a flyer -->
-        <div id="indicators" class="carousel-indicators nav-pills">
-            <a class="nav-link active" data-bs-target="#carousel-content" data-bs-slide-to="0" aria-label="Slide 1">Template</a>
-            <a class="nav-link" data-bs-target="#carousel-content" data-bs-slide-to="1" aria-label="Slide 2">Content</a>
-            <a class="nav-link" data-bs-target="#carousel-content"  data-bs-slide-to="2" aria-label="Slide 3">Details</a>
-      </div>
-        <button  type="submit" class="btn btn-outline-danger ms-2" id="preview"  data-bs-slide-to="2">Preview</button>
-      </div>
-      <div class="text-end finalize hide">
-        <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
-        <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
-        <button onclick="upload()" type="submit" class="btn btn-primary ms-1">Print On IPFS</button>
+  <!-- Modal Add -->
+  <div class="modal fade" id="addmodal" tabindex="-1" aria-labelledby="addmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="infomodaLabel">Add favorite</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="titleaddInput" class="form-label">Title *</label>
+            <input type="text" class="form-control" id="titleaddInput" placeholder="required title" required>
+          </div>
+          <div class="mb-3">
+            <label for="dateaddInput" class="form-label">Date</label>
+            <input type="text" class="form-control" id="dateaddInput"  required>
+          </div>
+          <div class="mb-3">
+            <label for="hashaddInput" class="form-label">Hash*</label>
+            <input type="text" class="form-control" id="hashaddInput" placeholder="required hash" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Add favorite</button>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+  <div class="uploading  h-100 w-100 hide">
+    <div class="position-relative h-100 w-100">
+      <div class="position-absolute top-50 start-50 translate-middle w-100 text-center">
+      <img src="images/loading.gif" alt="" style="cursor: default;" class="w-auto h-auto" width="300" height="100">
+      </div>
+    </div>
+  </div>
 <!-- jQuery-bootstrap-->
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/custom-jquery.js"></script>
