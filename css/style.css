@@ -313,8 +313,21 @@ img {
   opacity: 0.5;
 }
 
+#page-favorites .action-btn.delete{
+  margin: 0;
+}
+
 .action-btn.delete:hover, .action-btn.delete:active{
   opacity: 1;
+}
+
+.action-btn.pdf{
+  background: url('../icons/pdf.svg') top left no-repeat;
+  width: 53px;
+}
+
+.action-btn.pdf:active,.action-btn.pdf:focus, .action-btn.pdf:hover {
+  background: url('../icons/pdf-active.svg') top left no-repeat;
 }
 
 .action-btn.edit{
@@ -328,6 +341,7 @@ img {
 .action-btn.copy{
   background: url('../icons/copy.svg') top left no-repeat;
   width: 86px;
+  margin-right: 8px;
 }
 
 .action-btn.copy:active, .action-btn.copy:focus,.action-btn.copy:hover{
@@ -337,6 +351,7 @@ img {
 .action-btn.share{
   background: url('../icons/share.svg') top left no-repeat;
   width: 65px;
+  margin-right: 8px;
 }
 
 .action-btn.share:active, .action-btn.share:hover, .action-btn.share:focus{
