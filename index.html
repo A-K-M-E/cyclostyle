@@ -166,7 +166,7 @@
          <button class="btn close hide btn-primary ">Done</button>
       	</div>
       <!--carousel content-->
-      <div id="carousel-content" class="carousel carousel-dark slide mt-4" data-bs-ride="carousel" data-bs-interval="false">
+      <div id="carousel-content" class="carousel carousel-dark slide mt-3" data-bs-ride="carousel" data-bs-interval="false">
          <div class="carousel-inner ">
            <!--panel tempalte-->
            <div class="carousel-item active">
@@ -256,26 +256,32 @@
         <h1 class="title-page">drafts</h1>
         <div class="list-group">
           <div class="list-group-item list-group-item-action">
-            <h5 class="mb-1"><a href="#" class="edit-link">COME PENSANO LE FORESTE – Per un’antropologia oltre l’umano / 10-10-2021</a></h5>
+            <h5 class="mb-1">
+              <a href="#" class="edit-link">COME PENSANO LE FORESTE – oltre l’umano</a>
+            </h5>
             <small>DOMENICA 10 OTTOBRE 2021</small>
-            <div class="d-flex w-100 justify-content-end">
-              <a href="#" class="action-btn edit" title="Edit">Edit</a>
+            <div class="d-flex w-100 justify-content-between">
+              <a href="#" class="action-btn edit" title="Edit"></a>
               <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
           <div class="list-group-item list-group-item-action">
-            <h5 class="mb-1"><a href="#" class="edit-link">RYF + ?Alos / 09-10-2021</a></h5>
+            <h5 class="mb-1">
+              <a href="#" class="edit-link">RYF + ?Alos</a>
+            </h5>
             <small>SABATO 09 OTTOBRE 2021</small>
-            <div class="d-flex w-100 justify-content-end">
-              <a href="#" class="action-btn edit" title="Edit">Edit</a>
+            <div class="d-flex w-100 justify-content-between">
+              <a href="#" class="action-btn edit" title="Edit"></a>
               <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
           <div class="list-group-item list-group-item-action">
-            <h5 class="mb-1"><a href="#" class="edit-link">Part Time Punks October Party / 08-10-2021</a></h5>
+            <h5 class="mb-1">
+              <a href="#" class="edit-link">Part Time Punks October Party</a>
+            </h5>
             <small>VENERDI’ 08 OTTOBRE 2021</small>
-            <div class="d-flex w-100 justify-content-end">
-              <a href="#" class="action-btn edit" title="Edit">Edit</a>
+            <div class="d-flex w-100 justify-content-between">
+              <a href="#" class="action-btn edit" title="Edit"></a>
               <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
@@ -283,43 +289,57 @@
       </div>
       <!--Page favorites-->
       <div class="container pt-3 hide pages" id="page-favorites">
-        <div class="d-flex justify-content-between">
-          <h1 class="title-page">favorites</h1>
-          <button type="submit" class="btn btn-primary add" title="Add favorite" data-bs-toggle="modal" data-bs-target="#addmodal">Add</button>
+        <div class="d-flex justify-content-between title-page">
+          <h1>favorites</h1>
+          <button type="submit" class="btn btn-outline-danger add" title="Add favorite" data-bs-toggle="modal" data-bs-target="#addmodal">Add</button>
         </div>
         <div class="list-group">
           <div class="list-group-item list-group-item-action">
-            <h5 class="mb-1 d-flex justify-content-between"><a href="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau" class="out-link" target="_blank">COME PENSANO LE FORESTE – Per un’antropologia oltre l’umano / 10-10-2021</a><a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a></h5>
+            <h5 class="mb-1">
+              <a href="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau" class="out-link" target="_blank">COME PENSANO LE FORESTE – oltre l’umano</a>
+            </h5>
             <p class="mb-0">DOMENICA 10 OTTOBRE 2021</p>
             <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
-            <div class="d-flex w-100 justify-content-between justify-content-md-end" data-value="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau">
-              <a href="#" class="action-btn pdf" title="Download pdf">Pdf</a>
-              <a href="#" class="action-btn copy" title="Copy link">Copy link</a>
-              <a href="#" class="action-btn share share-button" title="Share">Share</a>
-              <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" >Qrcode</a>
-
+            <div class="d-flex justify-content-between">
+              <div class="d-flex w-100 justify-content-start" data-value="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau">
+                <a href="#" class="action-btn copy" title="Copy link"></a>
+                <a href="#" class="action-btn share share-button" title="Share" ></a>
+                <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" ></a>
+                <a href="#" class="action-btn pdf" title="Download pdf"></a>
+              </div>
+              <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
           <div class="list-group-item list-group-item-action">
-            <h5 class="mb-1 d-flex justify-content-between"><a href="https://ipfs.io/ipfs/prova1" class="out-link" target="_blank">RYF + ?Alos / 09-10-2021</a><a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a></h5>
+            <h5 class="mb-1">
+              <a href="https://ipfs.io/ipfs/prova1" class="out-link" target="_blank">RYF + ?Alos</a>
+            </h5>
             <p class="mb-0">SABATO 09 OTTOBRE 2021</p>
             <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
-            <div class="d-flex w-100 justify-content-between justify-content-md-end" data-value="https://ipfs.io/ipfs/prova1">
-              <a href="#" class="action-btn pdf" title="Download pdf">Pdf</a>
-              <a href="#" class="action-btn copy" title="Copy link">Copy link</a>
-              <a href="#" class="action-btn share share-button" title="Share" >Share</a>
-              <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" >Qrcode</a>
+            <div class="d-flex justify-content-between">
+              <div class="d-flex w-100 justify-content-start" data-value="https://ipfs.io/ipfs/prova1">
+                <a href="#" class="action-btn copy" title="Copy link"></a>
+                <a href="#" class="action-btn share share-button" title="Share" ></a>
+                <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" ></a>
+                <a href="#" class="action-btn pdf" title="Download pdf"></a>
+              </div>
+              <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
           <div class="list-group-item list-group-item-action">
-            <h5 class="mb-1 d-flex justify-content-between"><a href="https://ipfs.io/ipfs/prova2" class="out-link" target="_blank">Part Time Punks October Party / 08-10-2021</a><a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a></h5>
+            <h5 class="mb-1">
+              <a href="https://ipfs.io/ipfs/prova2" class="out-link" target="_blank">Part Time Punks October Party</a>
+            </h5>
             <p class="mb-0">VENERDI’ 08 OTTOBRE 2021</p>
             <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
-            <div class="d-flex w-100 justify-content-between justify-content-md-end" data-value="https://ipfs.io/ipfs/prova2">
-              <a href="#" class="action-btn pdf" title="Download pdf">Pdf</a>
-              <a href="#" class="action-btn copy" title="Copy link">Copy link</a>
-              <a href="#" class="action-btn share share-button" title="Share">Share</a>
-              <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" >Qrcode</a>
+            <div class="d-flex justify-content-between">
+              <div class="d-flex w-100 justify-content-start" data-value="https://ipfs.io/ipfs/prova2">
+                <a href="#" class="action-btn copy" title="Copy link"></a>
+                <a href="#" class="action-btn share share-button" title="Share" ></a>
+                <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" ></a>
+                <a href="#" class="action-btn pdf" title="Download pdf"></a>
+              </div>
+              <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
         </div>
@@ -403,7 +423,7 @@
   <div class="modal fade" id="copymodal"  tabindex="-1" aria-labelledby="copymodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-body">Copied on clipboard</div>
+        <div class="modal-body">Link copied on clipboard</div>
       </div>
     </div>
   </div>
@@ -425,8 +445,12 @@
             <input type="text" class="form-control" id="dateaddInput"  required>
           </div>
           <div class="mb-3">
-            <label for="hashaddInput" class="form-label">Hash*</label>
-            <input type="text" class="form-control" id="hashaddInput" placeholder="required hash" required>
+            <label for="urladdInput" class="form-label">URL*</label>
+            <input type="text" class="form-control" id="urladdInput" placeholder="required url" required>
+          </div>
+          <div class="mb-3">
+            <label for="pdfaddInput" class="form-label">Pdf link</label>
+            <input type="text" class="form-control" id="pdfaddInput">
           </div>
         </div>
         <div class="modal-footer">
