@@ -261,7 +261,11 @@
             </h5>
             <small>DOMENICA 10 OTTOBRE 2021</small>
             <div class="d-flex w-100 justify-content-between">
-              <a href="#" class="action-btn edit" title="Edit"></a>
+              <div class="d-flex w-100 justify-content-start">
+                <a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a>
+                <a href="#" class="action-btn preview edit-link" title="Preview"></a>
+                <a href="#" class="action-btn edit" title="Edit"></a>
+              </div>
               <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
@@ -271,7 +275,11 @@
             </h5>
             <small>SABATO 09 OTTOBRE 2021</small>
             <div class="d-flex w-100 justify-content-between">
-              <a href="#" class="action-btn edit" title="Edit"></a>
+              <div class="d-flex w-100 justify-content-start">
+                <a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a>
+                <a href="#" class="action-btn preview edit-link" title="Preview"></a>
+                <a href="#" class="action-btn edit" title="Edit"></a>
+              </div>
               <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
@@ -281,7 +289,11 @@
             </h5>
             <small>VENERDI’ 08 OTTOBRE 2021</small>
             <div class="d-flex w-100 justify-content-between">
-              <a href="#" class="action-btn edit" title="Edit"></a>
+              <div class="d-flex w-100 justify-content-start">
+                <a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a>
+                <a href="#" class="action-btn preview edit-link" title="Preview"></a>
+                <a href="#" class="action-btn edit" title="Edit"></a>
+              </div>
               <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
@@ -295,7 +307,7 @@
         </div>
         <div class="list-group">
           <div class="list-group-item list-group-item-action">
-            <h5 class="mb-1">
+            <h5>
               <a href="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau" class="out-link" target="_blank">COME PENSANO LE FORESTE – oltre l’umano</a>
             </h5>
             <p class="mb-0">DOMENICA 10 OTTOBRE 2021</p>
@@ -311,7 +323,7 @@
             </div>
           </div>
           <div class="list-group-item list-group-item-action">
-            <h5 class="mb-1">
+            <h5>
               <a href="https://ipfs.io/ipfs/prova1" class="out-link" target="_blank">RYF + ?Alos</a>
             </h5>
             <p class="mb-0">SABATO 09 OTTOBRE 2021</p>
@@ -327,7 +339,7 @@
             </div>
           </div>
           <div class="list-group-item list-group-item-action">
-            <h5 class="mb-1">
+            <h5>
               <a href="https://ipfs.io/ipfs/prova2" class="out-link" target="_blank">Part Time Punks October Party</a>
             </h5>
             <p class="mb-0">VENERDI’ 08 OTTOBRE 2021</p>
@@ -380,6 +392,24 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">No</button>
           <button type="button" class="btn btn-primary">Yes, Delete it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Print to Ipfs -->
+  <div class="modal fade" id="ipfsmodal" tabindex="-1" aria-labelledby="ipfsmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ipfsomodaLabel">Print on Ipfs</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        Are you sure you want to publish this item on Ipfs? You won't be able to edit it anymore.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary  printipfs">Yes, print!</button>
         </div>
       </div>
     </div>
