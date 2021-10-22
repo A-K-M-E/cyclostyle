@@ -368,20 +368,25 @@
       <div class="container pt-3 hide pages" id="page-settings">
         <h1 class="title-page">settings</h1>
         <div>
-        <form id="setting">
-          <div class="input-group mb-5">
+        <form id="language">
+          <div class="input-group mb-5 pt-3">
             <label class="input-group-text" for="inputGroupSelect02">Language</label>
             <select class="form-select" id="inputGroupSelect02">
               <option selected value="1">English</option>
               <option value="2">Italian</option>
               <option value="3">French</option>
             </select>
+            <button  type="submit" class="btn btn-primary">save</button>
           </div>
+          </form>
+          <form id="template">
           <div class="mb-3">
-            <label for="formFile" class="form-label">Upload template</label>
-            <input class="form-control" type="file" id="template">
-            <small>for template format see <a href="www.nostrogit" target="_blank">www.nostrogit</a></small><br>
-            <button  type="submit" class="btn btn-primary  mt-1">submit</button>
+            <h2 class="mb-3">template</h2>
+            <div class="input-group">
+              <input class="form-control" type="file" id="template">
+              <button  type="submit" class="btn btn-primary">upload</button>
+            </div>
+            <small>for template format see <a href="www.nostrogit" target="_blank">www.nostrogit</a></small>
           </div>
         </form>
         </div>
@@ -390,10 +395,10 @@
       <div class="container pt-3 hide pages" id="page-webpage">
         <h1 class="title-page">print webpage</h1>
         <div>
-          <div class="mb-3">
-            <label for="urlwebInput" class="form-label">URL*</label>
+          <div class="input-group pt-3">
+            <label for="urlwebInput" class="input-group-text">Url*</label>
             <input type="text" class="form-control" id="urlwebInput" placeholder="required url" required>
-            <button  type="submit" class="btn btn-primary  mt-3">submit</button>
+            <button  type="submit" class="btn btn-primary">submit</button>
           </div>
         </div>
       </div>

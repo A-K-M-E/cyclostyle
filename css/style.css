@@ -248,7 +248,9 @@ background-size: 28px;
   background: url('../icons/settings-active.svg') 7px center no-repeat;
 }
 
-
+.input-group button{
+  padding: .55rem .75rem;
+}
 
 .nav {
   float: left;
