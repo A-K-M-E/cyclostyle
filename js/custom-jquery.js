@@ -35,6 +35,11 @@ $( document ).ready(function() {
         $('#content-flyer').hide();
       });
 
+        $('.preview-device .action-btn').click(function(event){
+          $('.preview-device .action-btn').removeClass( "active" );
+          $(this).addClass( "active" );
+        });
+
       $('#carousel-content').on('slid.bs.carousel', function (e) {
         $('.carousel-indicators .nav-link').removeClass('active')
         var index = $(e.target).find('.active').index();

@@ -249,11 +249,13 @@
         </div>
 
         <!-- preview flyer -->
-        <div id="content-flyer" class="hide mt-4">
-          <div class="text-end finalize hide float-end mb-1 mt-1">
-            <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
-            <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
-            <button  type="submit" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#ipfsmodal">Print On IPFS</button>
+        <div id="content-flyer" class="hide mt-3">
+          <div class="text-end finalize hide mb-1 mt-1">
+            <div class="preview-device d-flex w-100 justify-content-center">
+              <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
+              <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
+              <button  type="submit" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#ipfsmodal">Print On IPFS</button>
+            </div>
           </div>
           <div class="float-none"></div>
           <div id="flyer"></div>
@@ -418,9 +420,16 @@
         <button  type="submit" class="btn btn-outline-danger ms-2" id="preview"  data-bs-slide-to="2">Preview</button>
       </div>
       <div class="text-end finalize hide">
+        <div class="preview-device d-flex w-100 justify-content-center">
+          <a href="#" class="action-btn mobile active" title="Mobile"></a>
+          <a href="#" class="action-btn desktop" title="Desktop"></a>
+          <a href="#" class="action-btn pdf-preview" title="Pdf"></a>
+        </div>
+        <div class="preview-device d-flex w-100 justify-content-center">
         <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
         <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
         <button type="submit" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#ipfsmodal">Print On IPFS</button>
+        </div>
       </div>
     </div>
   </footer>
