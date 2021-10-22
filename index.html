@@ -193,7 +193,7 @@
                  </button>
                  <!-- result of crop -->
                	<div class="box-2 img-result hide mb-3 mt-3">
-                   <label for="exampleFormControlTextarea1" class="form-label">Preview cover</label>
+                   <label for="cropImg" class="form-label">Preview cover</label>
                		<img class="cropped" src="" alt="">
                	</div>
             </div>
@@ -245,7 +245,7 @@
           <div class="text-end finalize hide float-end mb-1 mt-1">
             <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
             <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
-            <button  type="submit" class="btn btn-primary ms-1 printipfs">Print On IPFS</button>
+            <button  type="submit" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#ipfsmodal">Print On IPFS</button>
           </div>
           <div class="float-none"></div>
           <div id="flyer"></div>
@@ -374,7 +374,7 @@
       <div class="text-end finalize hide">
         <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
         <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
-        <button type="submit" class="btn btn-primary ms-1 printipfs">Print On IPFS</button>
+        <button type="submit" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#ipfsmodal">Print On IPFS</button>
       </div>
     </div>
   </footer>
@@ -409,7 +409,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">No</button>
-          <button type="button" class="btn btn-primary  printipfs">Yes, print!</button>
+          <button type="button" class="btn btn-primary  printipfs">Yes, print it!</button>
         </div>
       </div>
     </div>
