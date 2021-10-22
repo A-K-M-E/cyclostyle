@@ -13,11 +13,18 @@
   <body>
     <header>
       <div class="imagehead">
+        {{#cropped}}
         <img src="{{cropped}}"/>
+        {{/cropped}}
       </div>
       <h1>{{ titleInput }}</h1>
       <div class="data">
-        <p>{{dateInput}}</p><p>{{timeInput}}</p>
+        {{#dateInput}}
+        <p>{{dateInput}}</p>
+        {{/dateInput}}
+        {{#timeInput}}
+          <p>ore: {{timeInput}}</p>
+        {{/timeInput}}
       </div>
     </header>
     <main>
@@ -25,8 +32,10 @@
           {{bodyTextarea}}
         </div>
     </main>
+    {{#whereInput}}
     <footer>
       <p>{{whereInput}}</p>
     </footer>
+    {{/whereInput}}
   </body>
 </html>
