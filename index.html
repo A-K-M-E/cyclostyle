@@ -10,7 +10,6 @@
 <meta name="keywords" content="">
 <link rel="manifest" href="js/manifest.json">
 <title>Cyclostyle</title>
-
 <!-- Android  -->
 <meta name="theme-color" content="white">
 <meta name="mobile-web-app-capable" content="yes">
@@ -134,11 +133,12 @@
             <a class="nav-link drafts" data-target="page-drafts" href="#" data-footer="false" data-bs-dismiss="offcanvas">drafts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link favorites" data-target="page-favorites" href="#" data-footer="false" data-bs-dismiss="offcanvas">favorites</a>
+            <a class="nav-link bookmarks" data-target="page-bookmarks" href="#" data-footer="false" data-bs-dismiss="offcanvas">bookmarks</a>
           </li>
+          <!-- link funzione print webpage
           <li class="nav-item">
             <a class="nav-link webpage" data-target="page-webpage" href="#" data-footer="false" data-bs-dismiss="offcanvas">print webpage</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link settings" data-target="page-settings" href="#" data-footer="false" data-bs-dismiss="offcanvas">settings</a>
           </li>
@@ -251,7 +251,7 @@
         <!-- preview flyer -->
         <div id="content-flyer" class="hide mt-3">
           <div class="text-end finalize hide mb-1 mt-1">
-            <div class="preview-device d-flex w-100 justify-content-center">
+            <div class="preview-device d-flex w-100 justify-content-end">
               <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
               <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
               <button  type="submit" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#ipfsmodal">Print On IPFS</button>
@@ -309,11 +309,11 @@
           </div>
         </div>
       </div>
-      <!--Page favorites-->
-      <div class="container pt-3 hide pages" id="page-favorites">
+      <!--Page bookmarks-->
+      <div class="container pt-3 hide pages" id="page-bookmarks">
         <div class="d-flex justify-content-between title-page">
-          <h1>favorites</h1>
-          <button type="submit" class="btn btn-outline-danger add" title="Add favorite" data-bs-toggle="modal" data-bs-target="#addmodal">Add</button>
+          <h1>bookmarks</h1>
+          <button type="submit" class="btn btn-outline-danger add" title="Add bookmark" data-bs-toggle="modal" data-bs-target="#addmodal">Add</button>
         </div>
         <div class="list-group">
           <div class="list-group-item list-group-item-action">
@@ -393,7 +393,7 @@
         </form>
         </div>
       </div>
-      <!--Page print webpage -->
+      <!--Page print webpage
       <div class="container pt-3 hide pages" id="page-webpage">
         <h1 class="title-page">print webpage</h1>
         <div>
@@ -403,7 +403,7 @@
             <button  type="submit" class="btn btn-primary">submit</button>
           </div>
         </div>
-      </div>
+      </div> -->
   </main>
 
 
@@ -420,12 +420,13 @@
         <button  type="submit" class="btn btn-outline-danger ms-2" id="preview"  data-bs-slide-to="2">Preview</button>
       </div>
       <div class="text-end finalize hide">
+        <!-- Link preview
         <div class="preview-device d-flex w-100 justify-content-center">
           <a href="#" class="action-btn mobile active" title="Mobile"></a>
           <a href="#" class="action-btn desktop" title="Desktop"></a>
           <a href="#" class="action-btn pdf-preview" title="Pdf"></a>
-        </div>
-        <div class="preview-device d-flex w-100 justify-content-center">
+        </div> -->
+        <div class="preview-device d-flex w-100 justify-content-end">
         <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
         <button type="submit" class="btn btn-primary ms-1">Save Draft</button>
         <button type="submit" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#ipfsmodal">Print On IPFS</button>
@@ -516,9 +517,9 @@
   <div class="modal fade" id="addmodal" tabindex="-1" aria-labelledby="addmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <form id="add-favorite">
+        <form id="add-bookmarks">
         <div class="modal-header">
-          <h5 class="modal-title" id="infomodaLabel">Add favorite</h5>
+          <h5 class="modal-title" id="infomodaLabel">Add bookmark</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -541,7 +542,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Add favorite</button>
+          <button type="button" class="btn btn-primary">Add bookmark</button>
         </div>
         </form>
       </div>

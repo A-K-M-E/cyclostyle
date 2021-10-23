@@ -206,8 +206,8 @@ h5, .h5{
   padding-left: 50px;
 }
 
-.offcanvas-body .navbar-nav .nav-link.favorites{
-  background: url('../icons/favorite.svg') 9px center no-repeat;
+.offcanvas-body .navbar-nav .nav-link.bookmarks{
+  background: url('../icons/bookmarks.svg') 9px center no-repeat;
 }
 
 .offcanvas-body .navbar-nav .nav-link.drafts{
@@ -227,8 +227,8 @@ background-size: 28px;
   background: url('../icons/settings.svg') 7px center no-repeat;
 }
 
-.offcanvas-body .navbar-nav .nav-link.favorites.active, .offcanvas-body .navbar-nav .nav-link.favorites:focus, .offcanvas-body .navbar-nav .nav-link.favorites:active, .offcanvas-body .navbar-nav .nav-link.favorites:hover{
-  background: url('../icons/favorite-active.svg') 9px center no-repeat;
+.offcanvas-body .navbar-nav .nav-link.bookmarks.active, .offcanvas-body .navbar-nav .nav-link.bookmarks:focus, .offcanvas-body .navbar-nav .nav-link.bookmarks:active, .offcanvas-body .navbar-nav .nav-link.bookmarks:hover{
+  background: url('../icons/bookmarks-active.svg') 9px center no-repeat;
 }
 
 .offcanvas-body .navbar-nav .nav-link.drafts.active, .offcanvas-body .navbar-nav .nav-link.drafts:focus, .offcanvas-body .navbar-nav .nav-link.drafts:active, .offcanvas-body .navbar-nav .nav-link.drafts:hover{
