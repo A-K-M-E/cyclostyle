@@ -140,9 +140,10 @@ document.addEventListener('DOMContentLoaded', async () => {
    navigator.clipboard.writeText(copyText);
    /* Alert the copied text */
    copyModal.show();
+   shareModal.hide();
   });
   });
   document.getElementById('copymodal').addEventListener('show.bs.modal', function (event) {
-  setTimeout(function(){ copyModal.hide(); }, 700);
+  setTimeout(function(){ copyModal.hide(); }, 1000);
   });
 });
