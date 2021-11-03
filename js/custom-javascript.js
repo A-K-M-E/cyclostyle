@@ -107,38 +107,30 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Share
   const shareButton = document.querySelectorAll('.share-button');
-  var url_link = document.getElementById('url');
-  var shareModal = new bootstrap.Modal(document.getElementById('sharemodal'), {
-  keyboard: false
-});
-
-
+  var url_link = document.getElementById('share-url-text');
+  var shareModal = new bootstrap.Modal(document.getElementById('sharemodal'), {keyboard: false});
 
   shareButton.forEach(function(item) {
   item.addEventListener('click', function(e) {
     var link_share= e.target.parentNode.getAttribute("data-value");
     if (navigator.share) {
      navigator.share({
-        title: 'WebShare',
+        title: 'cyclostyle Share',
         url: link_share
       }).then(() => {
         console.log('Thanks for sharing!');
       })
       .catch(console.error);
       } else {
-        console.log(link_share);
           shareModal.show();
-          url_link.innerHTML=link_share;
+          url_link.textContent=link_share;
           url_link.parentNode.setAttribute("data-value", link_share);
       }
   });
   });
 
   // Copy link
-
-  var copyModal = new bootstrap.Modal(document.getElementById('copymodal'), {
-  keyboard: false
-});
+  var copyModal = new bootstrap.Modal(document.getElementById('copymodal'), {keyboard: false});
   const copylinkButton = document.querySelectorAll('.copy');
 
   copylinkButton.forEach(function(item) {
