@@ -1,0 +1,185 @@
+/*
+
+default color: #378ab4
+
+*/
+
+html, body {
+  width: 100%;
+  max-width:1024px;
+  margin: 0 auto;
+  font-family: Sans-serif;
+}
+
+header, main, footer {
+  position: relative;
+}
+
+a {color: #378ab4;}
+a:hover, a:focus, a:active{color:#000;}
+
+p {
+	font-size: 1.1rem;
+	margin: 10px 0 0;
+}
+
+p + p {
+	text-indent: 1rem;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+    font-size: 2rem;
+}
+
+h2
+{
+	font-size:1.2rem;
+	color: #ffffff;
+    background: #378ab4;
+	display:inline-block;
+	font-weight:400;
+	margin: 1rem 0 0.5rem;
+}
+
+h3, h4, h5, h6{
+  font-size:1.1rem;
+}
+
+ul {
+    list-style: none; /* Remove list bullets */
+    padding: 0;
+    margin: 1rem 0;
+}
+
+li {
+    padding-left: 0.3rem;
+	font-size: 1rem;
+	line-height:1.2rem;
+}
+
+li:before {
+  content: "\00ac ";
+  color: #378ab4;
+	padding-right: 8px;
+	font-weight: bold;
+	font-size: 1.3rem;
+}
+
+ul li ul {
+  padding-left: 1rem;
+  margin: 0 0 0.5rem;
+}
+
+ul li ul li:before {
+  content: "â€¢";
+  padding-right: 8px;
+	font-weight: normal;
+	font-size: 1rem;
+}
+
+header h1{
+	background: #000;
+	display:block;
+  margin: -4em 0 1em;
+	font-weight:400;
+	color:#fff;
+  padding: 0.8rem;
+	-webkit-transform: rotate(-5deg);
+	-moz-transform: rotate(-5deg);
+	-ms-transform: rotate(-5deg);
+	-o-transform: rotate(-5deg);
+}
+
+header .data{
+  background: #378ab4;
+  font-weight: 400;
+  color: #fff;
+  display: inline-block;
+  padding: 0.8rem;
+  margin: 0;
+	text-align:center;
+}
+
+header p{
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  display: inline;
+}
+
+.imagehead{
+	margin: 0;
+	position:relative;
+}
+
+.imagehead img{
+	object-fit: cover;
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  background-position: center bottom;
+}
+
+
+
+main, footer {
+	margin:0;
+  width: 96%;
+	padding: 3% 2%;
+}
+
+
+footer  p {
+	line-height:1.1rem;
+	margin:0;
+}
+
+
+  /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+   *  MEDIA QUERY                                                                 *
+   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+  @media(min-width:768px){
+  header  h1{
+    	position:absolute;
+    	bottom:-23px;
+    	left:11rem;
+    	background: #000;
+    	display:inline-block;
+    	font-weight:400;
+    	color:#fff;
+      padding: 0.8rem;
+    	-webkit-transform: rotate(-5deg);
+    	-moz-transform: rotate(-5deg);
+    	-ms-transform: rotate(-5deg);
+    	-o-transform: rotate(-5deg);
+    }
+
+  header  .data{
+    	position: absolute;
+        bottom: -2.1rem;
+        left: 1rem;
+        max-width: 9rem;
+        background: #378ab4;
+        font-weight: 400;
+        color: #fff;
+        display: inline;
+        padding: 0.8rem;
+        margin: 0;
+        font-size: 1.5rem;
+        line-height: 1.6rem;
+    	text-align:center;
+    }
+    main
+    {
+    	width:35rem;
+    	margin-left: 9.2rem;
+    	margin-top: 2%;
+    	padding-right: 2em;
+    }
+
+}

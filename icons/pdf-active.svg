@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 17.9 23.1" style="enable-background:new 0 0 17.9 23.1;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;}
+	.st1{fill:#C5037E;}
+	.st2{fill:#C5037E;stroke:#C5037E;stroke-width:0.5171;stroke-miterlimit:10;}
+</style>
+<g id="Freccia_26">
+	<polygon class="st0" points="-15.5,2.8 -15.5,18.5 -5.4,18.5 -5.4,8.8 	"/>
+	<g>
+		<g>
+			<polygon class="st1" points="2.2,11.8 2.2,13.8 0.4,13.8 3.9,18.5 7.4,13.8 5.6,13.8 5.6,11.8 			"/>
+		</g>
+		<rect x="3.6" y="7" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 12.6882 4.7211)" class="st1" width="0.8" height="3.3"/>
+
+			<rect x="3.3" y="8.8" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 14.4649 6.4979)" class="st1" width="1.4" height="3.3"/>
+	</g>
+	<g>
+		<polygon class="st2" points="3.4,7.6 3.4,1.4 11,1.4 14,4.4 14,16.8 6.4,16.8 6.4,17.7 14.9,17.7 14.9,4 11.3,0.5 2.6,0.5
+			2.6,7.6 		"/>
+		<path class="st1" d="M10.3,4.9h2.6l-2.6-2.6V4.9z M10.5,2.8l2,2"/>
+	</g>
+</g>
+</svg>
