@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="h-100">
 <head>
 
 <!-- Must -->
@@ -8,9 +8,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="description" content="">
 <meta name="keywords" content="">
-<link rel="manifest" href="manifest.json">
-<title>Ciclostyle intergalattico</title>
-
+<link rel="manifest" href="js/manifest.json">
+<title>Cyclostyle</title>
 <!-- Android  -->
 <meta name="theme-color" content="white">
 <meta name="mobile-web-app-capable" content="yes">
@@ -64,9 +63,7 @@
 <link href="icons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
 <link href="icons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
 <link href="icons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" >
-<link rel="stylesheet" href="./bootstrap.min.css">
-<link rel="stylesheet" href="./style.css">
-<link rel="stylesheet" href="./cropper.min.css">
+
 
 <!-- Startup Image  -->
 <!--<link href="touch-icon-start-up-320x480.png" rel="apple-touch-startup-image">-->
@@ -85,123 +82,19 @@
 <link href="icons/apple-icon-57x57.png" rel="apple-touch-icon-precomposed" sizes="57x57">
 <link href="icons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
 
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font.css">
+<link rel="stylesheet" href="css/style.css">
+
 <!-- interfaccia http ipfs-->
-<script src="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau"></script>
+<!-- <script src="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau"></script>-->
 <!-- jQuery-slim-minified-->
-<script src="https://ipfs.io/ipfs/QmbDpzxuzY2eH8f1s7BqkGcHtBueju9CUWWdGse9YwbwSX"></script>
-<script> if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js') .then(function(registration) { console.log('Registration successful, scope is:', registration.scope); }) .catch(function(error) { console.log('Service worker registration failed, error:', error); }); } </script>
+<script src="js/jquery-3.4.1.slim.min.js" ></script>
 
-<script>
-  // codice preso da qui:
-  // https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag
-  // al posto di usare il cdn ho usato ipfs per il file javascript di interfacca a ipfs
-  document.addEventListener('DOMContentLoaded', async () => {
-    const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() })
-    window.node = node
-    if(node.isOnline()) $("#main").show();
-    console.log(node)
+<!--  IPFS -->
+<script src="js/ipfs.js" ></script>
 
-      // You can write more code here to use it. Use methods like
-      // node.add, node.get. See the API docs here:
-      // https://github.com/ipfs/js-ipfs/tree/master/packages/interface-ipfs-core
-  });
-
-  function upload () {
-    var file = document.getElementById("cover").files[0];
-    if( typeof file != "undefined")
-    {
-      // oggeto di input per ipfs add
-      fileToUpload =[{
-          content : file
-      }]
-      sendToIpfs(fileToUpload);
-    }
-      // c'è bisogno di un messaggio di alert in caso di mancata selezione del file
-  }
-
-  async function sendToIpfs(files)
-  {
-    const cid  = await node.add(files);
-    console.log('successfully stored', cid);
-    var cover = "https://gateway.pinata.cloud/ipfs/"+cid.path;
-    var testo = $("#testo").val();
-    var cs = `<!DOCTYPE html>
-      <html>
-        <head></head>
-        <body>
-          <div style="margin: 0 auto">
-            <img style="margin:0 auto;" src="${cover}"><br>
-            <p>${testo}</p>
-          </div>
-        </body>
-    </html>`;
-    const cs_ipfs = await node.add(cs);
-    $("#result").html(`<a href='https://ipfs.io/ipfs/${cs_ipfs.path}' target='_blank'>vedi il risultato</a>`);
-  }
-
-<<<<<<< Updated upstream
-
-</script>
-<script src="js/cropper.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', async () => {
-    // vars
-    let result = document.querySelector('.result'),
-    img_result = document.querySelector('.img-result'),
-    img_w = document.querySelector('.img-w'),
-    img_h = document.querySelector('.img-h'),
-    options = document.querySelector('.options'),
-    save = document.querySelector('.save'),
-    cropped = document.querySelector('.cropped'),
-    upload = document.querySelector('#cover'),
-    cropper = '';
-
-    // on change show image with crop options
-    upload.addEventListener('change', (e) => {
-      if (e.target.files.length) {
-    		// start file reader
-        const reader = new FileReader();
-        reader.onload = (e)=> {
-          if(e.target.result){
-    				// create new image
-    				let img = document.createElement('img');
-    				img.id = 'image';
-    				img.src = e.target.result
-    				// clean result before
-    				result.innerHTML = '';
-    				// append new image
-            result.appendChild(img);
-    				// show save btn and options
-    				save.classList.remove('hide');
-
-    				// init cropper
-    				cropper = new Cropper(img, {
-              aspectRatio: 16 / 6
-            });
-          }
-        };
-        reader.readAsDataURL(e.target.files[0]);
-      }
-    });
-
-    // save on click
-    save.addEventListener('click',(e)=>{
-      e.preventDefault();
-      // get result to data uri
-      let imgSrc = cropper.getCroppedCanvas({
-    		width: img_w.value //
-    	}).toDataURL();
-      // remove hide class of img
-      cropped.classList.remove('hide');
-    	img_result.classList.remove('hide');
-    	// show image cropped
-      cropped.src = imgSrc;
-    });
-
-
-  });
-</script>
-=======
 <!-- Cropper delle immagini -->
 <link rel="stylesheet" href="css/cropper.min.css">
 <script src="js/cropper.min.js"></script>
@@ -214,42 +107,43 @@
 <link rel="stylesheet" href="css/richtext.min.css">
 <script src="js/jquery.richtext.min.js" ></script>
 
-<!-- Mustache -->
-<script src="js/mustache.js" ></script>
-
 <!-- Tutto il javascript custom -->
 <script src="js/custom-javascript.js"></script>
 
-<!--  IPFS -->
-<script src="js/ipfs.js" ></script>
-
->>>>>>> Stashed changes
 </head>
-<body>
-  <nav class="navbar pt-3">
-      <a class="navbar-brand" href="#">
-        <img src="images/logo.svg" alt="" width="250" height="85">
-      </a>
-  </nav>
-    <div id='main' style="display: none;" class="container-fluid">
-      <h1 class="mb-3">Create your flyer</h1>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Title</label>
-        <input type="text" class="form-control">
+<body class="d-flex flex-column h-100">
+  <header>
+    <nav class="navbar home">
+      <div class="container-fluid bg-logo navbar-brand ">
+          <img src="images/logo.svg" alt="" width="275" height="63">
+        <button class="btn overlay" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="navbar-toggler-icon"></span></button>
       </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Text</label>
-        <textarea class="form-control" id="testo" rows="3"></textarea>
+    </nav>
+    <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+      <div class="offcanvas-header">
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Who?</label>
-        <textarea class="form-control" id="chi" rows="3"></textarea>
+      <div class="offcanvas-body p-0">
+        <!-- main menu -->
+        <ul class="navbar-nav main-menu">
+          <li class="nav-item">
+            <a class="nav-link create" data-target="page-create" href="#" data-footer="true" data-bs-dismiss="offcanvas">create a flyer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link drafts" data-target="page-drafts" href="#" data-footer="false" data-bs-dismiss="offcanvas">drafts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link bookmarks" data-target="page-bookmarks" href="#" data-footer="false" data-bs-dismiss="offcanvas">bookmarks</a>
+          </li>
+          <!-- link funzione print webpage
+          <li class="nav-item">
+            <a class="nav-link webpage" data-target="page-webpage" href="#" data-footer="false" data-bs-dismiss="offcanvas">print webpage</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link settings" data-target="page-settings" href="#" data-footer="false" data-bs-dismiss="offcanvas">settings</a>
+          </li>
+        </ul>
       </div>
-<<<<<<< Updated upstream
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Where?</label>
-        <textarea class="form-control" id="dove" rows="3"></textarea>
-=======
     </div>
   </header>
   <main class="flex-shrink-0">
@@ -284,12 +178,12 @@
            <div class="carousel-item active">
              <h2>template</h2>
                <div class="mb-3">
-                 <label for="colorInput" class="form-label">Main color</label>
-                 <input type="color" class="form-control form-control-color" id="colorInput" value="#0397BB" title="Choose your color">
+                 <label for="exampleColorInput" class="form-label">Main color</label>
+                 <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#0397BB" title="Choose your color">
                </div>
                <div class="input-group mb-3">
-                 <label class="input-group-text" for="selectTemplate">Template</label>
-                 <select class="form-select" id="selectTemplate">
+                 <label class="input-group-text" for="inputGroupSelect01">Template</label>
+                 <select class="form-select" id="inputGroupSelect01">
                    <option selected value="1">Default</option>
                    <option value="2">Two</option>
                    <option value="3">Three</option>
@@ -306,7 +200,7 @@
                  <!-- result of crop -->
                	<div class="box-2 img-result hide mb-3 mt-3">
                    <label for="cropImg" class="form-label">Preview cover</label>
-               		<img id="croppedImage" class="cropped" src="" alt="">
+               		<img class="cropped" src="" alt="">
                	</div>
             </div>
 
@@ -365,56 +259,162 @@
           <div class="float-none"></div>
           <div id="flyer"></div>
         </div>
->>>>>>> Stashed changes
       </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">When?</label>
-        <input type="date" class="form-control">
+      <!--Page drafts-->
+      <div class="container pt-3 hide pages" id="page-drafts">
+        <h1 class="title-page">drafts</h1>
+        <div class="list-group">
+          <div class="list-group-item list-group-item-action">
+            <h5 class="mb-1">
+              <a href="#" class="edit-link">COME PENSANO LE FORESTE – oltre l’umano</a>
+            </h5>
+            <small>DOMENICA 10 OTTOBRE 2021</small>
+            <div class="d-flex w-100 justify-content-between">
+              <div class="d-flex w-100 justify-content-start">
+                <a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a>
+                <a href="#" class="action-btn preview edit-link" title="Preview"></a>
+                <a href="#" class="action-btn edit" title="Edit"></a>
+              </div>
+              <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
+            </div>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <h5 class="mb-1">
+              <a href="#" class="edit-link">CAPITALOCENE - Saran buone le zucche sul Pianeta B?</a>
+            </h5>
+            <small>SABATO 09 OTTOBRE 2021</small>
+            <div class="d-flex w-100 justify-content-between">
+              <div class="d-flex w-100 justify-content-start">
+                <a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a>
+                <a href="#" class="action-btn preview edit-link" title="Preview"></a>
+                <a href="#" class="action-btn edit" title="Edit"></a>
+              </div>
+              <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
+            </div>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <h5 class="mb-1">
+              <a href="#" class="edit-link">Part Time Punks October Party</a>
+            </h5>
+            <small>VENERDI’ 08 OTTOBRE 2021</small>
+            <div class="d-flex w-100 justify-content-between">
+              <div class="d-flex w-100 justify-content-start">
+                <a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a>
+                <a href="#" class="action-btn preview edit-link" title="Preview"></a>
+                <a href="#" class="action-btn edit" title="Edit"></a>
+              </div>
+              <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Hours</label>
-        <input type="time" class="form-control">
+      <!--Page bookmarks-->
+      <div class="container pt-3 hide pages" id="page-bookmarks">
+        <div class="d-flex justify-content-between title-page">
+          <h1>bookmarks</h1>
+          <button type="submit" class="btn btn-outline-danger add" title="Add bookmark" data-bs-toggle="modal" data-bs-target="#addmodal">Add</button>
+        </div>
+        <div class="list-group">
+          <div class="list-group-item list-group-item-action">
+            <h5>
+              <a href="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau" class="out-link" target="_blank">COME PENSANO LE FORESTE – oltre l’umano</a>
+            </h5>
+            <p class="mb-0">DOMENICA 10 OTTOBRE 2021</p>
+            <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
+            <div class="d-flex justify-content-between">
+              <div class="d-flex w-100 justify-content-start" data-value="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau">
+                <a href="#" class="action-btn copy" title="Copy link"></a>
+                <a href="#" class="action-btn share share-button" title="Share" ></a>
+                <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" ></a>
+                <a href="#" class="action-btn pdf" title="Download pdf"></a>
+              </div>
+              <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
+            </div>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <h5>
+              <a href="https://ipfs.io/ipfs/prova1" class="out-link" target="_blank">CAPITALOCENE - Saran buone le zucche sul Pianeta B?</a>
+            </h5>
+            <p class="mb-0">SABATO 09 OTTOBRE 2021</p>
+            <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
+            <div class="d-flex justify-content-between">
+              <div class="d-flex w-100 justify-content-start" data-value="https://ipfs.io/ipfs/prova1">
+                <a href="#" class="action-btn copy" title="Copy link"></a>
+                <a href="#" class="action-btn share share-button" title="Share" ></a>
+                <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" ></a>
+                <a href="#" class="action-btn pdf" title="Download pdf"></a>
+              </div>
+              <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
+            </div>
+          </div>
+          <div class="list-group-item list-group-item-action">
+            <h5>
+              <a href="https://ipfs.io/ipfs/prova2" class="out-link" target="_blank">Part Time Punks October Party</a>
+            </h5>
+            <p class="mb-0">VENERDI’ 08 OTTOBRE 2021</p>
+            <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
+            <div class="d-flex justify-content-between">
+              <div class="d-flex w-100 justify-content-start" data-value="https://ipfs.io/ipfs/prova2">
+                <a href="#" class="action-btn copy" title="Copy link"></a>
+                <a href="#" class="action-btn share share-button" title="Share" ></a>
+                <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" ></a>
+                <a href="#" class="action-btn pdf" title="Download pdf"></a>
+              </div>
+              <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
+            </div>
+          </div>
+        </div>
       </div>
-         <div class="mb-3">
-      <label for="exampleColorInput" class="form-label">Main color</label>
-      <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#0397BB" title="Choose your color">
+      <!--Page settings -->
+      <div class="container pt-3 hide pages" id="page-settings">
+        <h1 class="title-page">settings</h1>
+        <div>
+        <form id="language">
+          <div class="input-group mb-5 pt-3">
+            <label class="input-group-text" for="inputGroupSelect02">Language</label>
+            <select class="form-select" id="inputGroupSelect02">
+              <option selected value="1">English</option>
+              <option value="2">Italian</option>
+              <option value="3">French</option>
+            </select>
+            <button  type="submit" class="btn btn-primary">save</button>
+          </div>
+          </form>
+          <form id="template">
+          <div class="mb-3">
+            <h2 class="mb-3">template</h2>
+            <div class="input-group">
+              <input class="form-control" type="file" id="template">
+              <button  type="submit" class="btn btn-primary">upload</button>
+            </div>
+            <small>for template format see <a href="www.nostrogit" target="_blank">www.nostrogit</a></small>
+          </div>
+        </form>
+        </div>
       </div>
-     <div class="input-group mb-3">
-        <label class="input-group-text" for="inputGroupSelect01">Template</label>
-        <select class="form-select" id="inputGroupSelect01">
-          <option selected value="1">Default</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+      <div class="container pt-3 hide pages" id="page-webpage">
+        <h1 class="title-page">print webpage</h1>
+        <div>
+          <div class="input-group pt-3">
+            <label for="urlwebInput" class="input-group-text">Url*</label>
+            <input type="text" class="form-control" id="urlwebInput" placeholder="required url" required>
+            <button  type="submit" class="btn btn-primary">submit</button>
+          </div>
+        </div>
       </div>
-    <div class="mb-5 pb-2 page">
-        <label for="formFile" class="form-label">Upload, Crop and save cover </label>
-        <small>(1024px min-width)</small>
-        <input class="form-control" type="file" id="cover">
-        <div class="box-2">
-		   <div class="result mb-3"></div>
-    	</div>
-    	<!--rightbox-->
-    	<div class="box-2 img-result hide mb-3">
-    		<!-- result of crop -->
-    		<img class="cropped" src="" alt="">
-    	</div>
-    	<!-- input file -->
-    	<div class="box">
-    		<div class="options hide">
-    			<input type="number" class="img-w" value="1024" min="768" max="1024" />
-    		</div>
-    		<!-- save btn -->
-    		<button class="btn save hide btn-primary ">Save</button>
+  </main>
 
-    	</div>
-      </div>
-<<<<<<< Updated upstream
 
-     <div class="row justify-content-center mb-5 pb-5">
-       <div class="col-4 text-center">
-        <button  type="submit" class="btn btn-outline-danger me-2">Preview</button>
-=======
+  <!-- footer create a flyer -->
+  <footer class="footer mt-auto py-3 bg-light fixed-bottom hide">
+    <div class="container">
+      <div class="menu-create text-center">
+        <!-- menu footer create a flyer -->
+        <div id="indicators" class="carousel-indicators nav-pills">
+            <a class="nav-link active" data-bs-target="#carousel-content" data-bs-slide-to="0" aria-label="Slide 1">Template</a>
+            <a class="nav-link" data-bs-target="#carousel-content" data-bs-slide-to="1" aria-label="Slide 2">Content</a>
+            <a class="nav-link" data-bs-target="#carousel-content"  data-bs-slide-to="2" aria-label="Slide 3">Details</a>
+      </div>
         <button  type="submit" class="btn btn-outline-danger ms-2" id="preview" onclick="renderPreview()" data-bs-slide-to="2">Preview</button>
       </div>
       <div class="text-end finalize hide">
@@ -462,7 +462,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">No</button>
-          <button type="button" onclick="sendInSpace();" class="btn btn-primary  printipfs">Yes, print it!</button>
+          <button type="button" class="btn btn-primary  printipfs">Yes, print it!</button>
         </div>
       </div>
     </div>
@@ -507,13 +507,53 @@
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-body">  <img src="icons/link.svg" alt="" width="30" height="30" class="anim-copied" > Link copied on clipboard</div>
->>>>>>> Stashed changes
       </div>
-        <div class="col-4 text-center">
-        <button onclick="upload()" type="submit" class="btn btn-primary ">Upload</button>
-        </div>
-      </div>
-    <div id="result"></div>
     </div>
+  </div>
+  <!-- Modal Add -->
+  <div class="modal fade" id="addmodal" tabindex="-1" aria-labelledby="addmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <form id="add-bookmarks">
+        <div class="modal-header">
+          <h5 class="modal-title" id="infomodaLabel">Add bookmark</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="titleaddInput" class="form-label">Title *</label>
+            <input type="text" class="form-control" id="titleaddInput" placeholder="required title" required>
+          </div>
+          <div class="mb-3">
+            <label for="dateaddInput" class="form-label">Date</label>
+            <input type="text" class="form-control" id="dateaddInput"  required>
+          </div>
+          <div class="mb-3">
+            <label for="urladdInput" class="form-label">URL*</label>
+            <input type="text" class="form-control" id="urladdInput" placeholder="required url" required>
+          </div>
+          <div class="mb-3">
+            <label for="pdfaddInput" class="form-label">Pdf link</label>
+            <input type="text" class="form-control" id="pdfaddInput">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Add bookmark</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="uploading  h-100 w-100 hide">
+    <div class="position-relative h-100 w-100">
+      <div class="position-absolute top-50 start-50 translate-middle w-100 text-center">
+      <img src="images/loading.gif" alt="" style="cursor: default;" class="w-auto h-auto" width="350" height="118">
+      </div>
+    </div>
+  </div>
+<!-- jQuery-bootstrap-->
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/custom-jquery.js"></script>
 </body>
 </html>
