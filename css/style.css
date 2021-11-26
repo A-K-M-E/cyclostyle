@@ -35,7 +35,7 @@ a, button{
 .bg-logo{
   background: #fff;
   border-bottom: 3px solid #0397BB;
-  height: 72px;
+  height: 51px;
   width: 100%;
   max-width: 1024px;
   margin: 0 auto;
@@ -52,14 +52,14 @@ a, button{
 }
 
 .header-logo-home{transform: translate(-50%, -100%);}
-.logo{background: #fff;margin-left: -25px;}
-.logo-home{position: relative;}
+.logo{margin-left: -25px; z-index: 1;}
+.logo-home{position: relative; height: 68px;}
 .line{
     border-bottom: 4px solid #0397BB;
     position: absolute;
 }
 .line-left{height: 44px;}
-.line-right{bottom:15px;}
+.line-right{bottom:13px;}
 .home-content{
   position: relative;
 }
@@ -75,11 +75,12 @@ a, button{
 .overlay{
   padding: 0 25px 0 0;
   font-size: 16px !important;
+  margin-top: -15px;
 }
 
 .offcanvas-header {
     padding: 1rem 1rem 0;
-    height: 85px;}
+    height: 51px;}
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(3, 151, 187, 1)' stroke-width='2' stroke-linecap='square' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E")
