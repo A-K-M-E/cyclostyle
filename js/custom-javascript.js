@@ -154,12 +154,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         saveLocal();
     })
   }
-
   // add draft to the elementList
-  for(let i=0;i<localStorage.length;i++){
-    let draftEl=JSON.parse(localStorage[i+1])
-    addToDraft(draftEl);
-  }  
+  if(localStorage.length!=0){
+    for(let i=0;i<localStorage.length;i++){
+      let draftEl=JSON.parse(localStorage[i+1])
+      addToDraft(draftEl);
+    }  
+  }
 });
 
 var finalSpace;
@@ -196,17 +197,19 @@ async function sendInSpace()
 }
 
 // tempObj for drafts
-
 let tempObj = {};
 
 // save to localStorage
-
 function saveLocal(){
-
-  tempObj=JSON.stringify(tempObj)
-  // append to localStorage
-  localStorage.setItem(localStorage.length+1,tempObj)
-  tempObj={};
+  if(tempObj!={}){
+    if(tempObj.titleInput!=''){
+      addToDraft(tempObj);
+      tempObj=JSON.stringify(tempObj)
+      // append to localStorage
+      localStorage.setItem(localStorage.length+1,tempObj);
+      tempObj={};
+    } else { console.log("title vuoto")};
+  } else { console.log("oggetto vuoto")};
 }
 
 function addToDraft(obj){
