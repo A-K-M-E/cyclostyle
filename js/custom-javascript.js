@@ -146,6 +146,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('copymodal').addEventListener('show.bs.modal', function (event) {
   setTimeout(function(){ copyModal.hide(); }, 1000);
   });
+
+  // eventList su save-draft
+  let saveDraft = document.querySelectorAll(".save-draft")
+  for(let i=0;i<saveDraft.length;i++){
+    saveDraft[i].addEventListener('click', function(e){
+        saveLocal();
+    })
+  }
+
+  // add draft to the elementList
+  for(let i=0;i<localStorage.length;i++){
+    let draftEl=JSON.parse(localStorage[i+1])
+    addToDraft(draftEl);
+  }  
 });
 
 var finalSpace;
@@ -162,6 +176,10 @@ function renderPreview()
     post.dateInput = $("#dateInput").val();
     post.timeInput = $("#timeInput").val();
     console.log(post);
+
+    // save post to tempObj
+    tempObj=post;
+
     fetch('./templates/default.html')
     .then((response) => response.text())
     .then((template) => {
@@ -175,4 +193,26 @@ async function sendInSpace()
 {
     const cs_ipfs = await node.add(finalSpace);
     console.log(`https://ipfs.io/ipfs/${cs_ipfs.path}`);
+}
+
+// tempObj for drafts
+
+let tempObj = {};
+
+// save to localStorage
+
+function saveLocal(){
+
+  tempObj=JSON.stringify(tempObj)
+  // append to localStorage
+  localStorage.setItem(localStorage.length+1,tempObj)
+  tempObj={};
+}
+
+function addToDraft(obj){
+  let list=document.getElementById("page-drafts").getElementsByClassName("list-group")[0];
+  const parser = new DOMParser();
+  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5 class="mb-1"><a href="#" class="edit-link">'+obj.titleInput+'</a></h5><small>'+obj.dateInput+": "+obj.timeInput+'</small><div class="d-flex w-100 justify-content-between"><div class="d-flex w-100 justify-content-start"><a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a><a href="#" class="action-btn preview edit-link" title="Preview"></a><a href="#" class="action-btn edit" title="Edit"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
+  parsedS=parsedS.body.children[0];
+  list.append(parsedS);
 }
