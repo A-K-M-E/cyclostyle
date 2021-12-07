@@ -161,6 +161,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       addToDraft(draftEl);
     }  
   }
+
+  // check cookie 4 localStorage disclaimer
+  const cookieDisc = document.getElementById("disclaimer-storage");
+  let cookie = checkCookie("disclaimerStorage=closed");
+  if(!cookie){
+    cookieDisc.style.display="block";
+  }
+
+  // eventListener disclaimer cookie
+  document.getElementById("closeDisclaimer").addEventListener('click',closeDisclaimerStorage);
 });
 
 var finalSpace;
@@ -218,4 +228,19 @@ function addToDraft(obj){
   let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5 class="mb-1"><a href="#" class="edit-link">'+obj.titleInput+'</a></h5><small>'+obj.dateInput+": "+obj.timeInput+'</small><div class="d-flex w-100 justify-content-between"><div class="d-flex w-100 justify-content-start"><a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a><a href="#" class="action-btn preview edit-link" title="Preview"></a><a href="#" class="action-btn edit" title="Edit"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
   parsedS=parsedS.body.children[0];
   list.append(parsedS);
+}
+
+function closeDisclaimerStorage(){
+  document.getElementById('disclaimer-storage').style.display='none';
+  const date = new Date();
+  date.setTime(date.getTime()+8640000000);
+  let expireDate = date.toUTCString();
+  document.cookie = "disclaimerStorage=closed;expires="+expireDate;
+}
+
+function checkCookie(check){
+  let cookie = document.cookie.split(";");
+  if(cookie.includes(check)){
+    return true;
+  } else { return false; };
 }
