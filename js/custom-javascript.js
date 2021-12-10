@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // add draft to the elementList
   if(localStorage.length!=0){
     for(let i=0;i<localStorage.length;i++){
-      let draftEl=JSON.parse(localStorage[i+1])
+      let draftEl=JSON.parse(localStorage[i])
       addToDraft(draftEl);
     }  
   }
@@ -195,7 +195,7 @@ function renderPreview()
     .then((response) => response.text())
     .then((template) => {
       var rendered = Mustache.render(template, post);
-      document.getElementById('page-create').innerHTML = rendered;    
+      document.getElementById('flyer').innerHTML = rendered;    
       finalSpace = rendered;
     });
 }
@@ -208,16 +208,26 @@ async function sendInSpace()
 
 // tempObj for drafts
 let tempObj = {};
+let oldObj = "";
 
 // save to localStorage
 function saveLocal(){
-  if(tempObj!={}){
+  if(tempObj!=oldObj){
     if(tempObj.titleInput!=''){
       addToDraft(tempObj);
-      tempObj=JSON.stringify(tempObj)
+      tempObj=JSON.stringify(tempObj);
+      console.log(tempObj);
       // append to localStorage
-      localStorage.setItem(localStorage.length+1,tempObj);
-      tempObj={};
+      position = findIntoStorage(tempObj.titleInput);
+      if(position == -1)
+      {
+        localStorage.setItem(localStorage.length,tempObj);
+      }
+      else
+      {
+        localStorage.setItem(position,tempObj);
+      }
+      oldObj = tempObj;
     } else { console.log("title vuoto")};
   } else { console.log("oggetto vuoto")};
 }
@@ -243,4 +253,12 @@ function checkCookie(check){
   if(cookie.includes(check)){
     return true;
   } else { return false; };
+}
+
+function findIntoStorage(key)
+{ 
+  for(let i=0;i<localStorage.length;i++){
+    if(localStorage[i].includes('"titleInput":"'+key+'"')) return i;
+  }
+  return -1;
 }
