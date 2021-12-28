@@ -266,6 +266,7 @@
       <div class="container pt-3 hide pages" id="page-drafts">
         <h1 class="title-page">drafts</h1>
         <div class="list-group">
+          <!--
           <div class="list-group-item list-group-item-action">
             <h5 class="mb-1">
               <a href="#" class="edit-link">COME PENSANO LE FORESTE – oltre l’umano</a>
@@ -308,6 +309,7 @@
               <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
             </div>
           </div>
+          -->
         </div>
       </div>
       <!--Page bookmarks-->
@@ -562,6 +564,20 @@
       <button id="closeDisclaimer">Got it, thanks!</button>
       </div>
     </div>
+  </div>
+  <div class="modal" id="unsaved-changes">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" style="padding:10px">
+        <h2>Please note</h2>
+        <p>A flyer has not been saved.</p>
+        <p>Do you want to delete it?</p>
+        <div class="modal_save_button">
+          <button id="cleanStart">Yes, create a new flyer</button>
+          <button id="backtoEdit">No, let me edit it</button>
+        </div>
+      </div>
+    </div>
+  <div class="bg_gray"></div>
   </div>
 <!-- jQuery-bootstrap-->
 <script src="js/bootstrap.bundle.min.js"></script>

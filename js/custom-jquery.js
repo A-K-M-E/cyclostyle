@@ -1,3 +1,14 @@
+// Edit
+function editDiv($param) {
+  $('.pages').hide("fast");
+  $('footer').show("slow");
+  $('.main-menu .active').removeClass( "active" );
+  $('.main-menu .nav-link.create').addClass( "active" );
+  $('#page-create').show(2000);
+  $('#carousel-content').carousel(0);
+  $('#carousel-content').show();
+}
+
 $( document ).ready(function() {
 
   // menu sidebar
@@ -52,15 +63,7 @@ $( document ).ready(function() {
          //remove siblings active class and add it to current clicked item
          handled=true; //set global variable to true to identify whether indicator changing was handled or not.
       });
-      // Edit
-      function editDiv($param) {
-        $('.pages').hide("fast");
-        $('footer').show("slow");
-        $('.main-menu .active').removeClass( "active" );
-        $('.main-menu .nav-link.create').addClass( "active" );
-        $('#page-create').show(2000);
-        $('#carousel-content').carousel(0);
-      }
+
 
       $('.edit').click(function(event){
           event.preventDefault();
@@ -71,14 +74,6 @@ $( document ).ready(function() {
           $('#content-flyer').hide();
       });
 
-      $('.edit-link').click(function(event){
-          event.preventDefault();
-          editDiv();
-          $('.carousel').hide();
-          $('.menu-create').hide();
-          $('.text-end').show();
-          $('#content-flyer').show();
-      });
       // editor
       $('#bodyTextarea').richText({
             // uploads

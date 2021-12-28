@@ -571,3 +571,35 @@ footer .carousel-indicators [data-bs-target] {
   background-color: #fff;
   z-index: 999999;
 }
+
+/* check save modal */
+
+#unsaved-changes > .modal-dialog{
+  z-index:100;
+}
+
+.modal_save_button{
+  display: flex;
+  margin:10px 0 0 0;
+  flex-direction: row;
+}
+
+.modal_save_button > button {
+  width: 50%;
+  margin: 0 10px;
+}
+
+.bg_gray{
+  width: 100%;
+  height: 100%;
+  background: #ffffffcf;
+  position: absolute;
+  top: 0;
+}
+
+#unsaved-changes h2,#unsaved-changes p{
+  text-align: center;
+}
+#unsaved-changes p{
+  margin: 0;
+}
