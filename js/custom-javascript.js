@@ -358,6 +358,7 @@ function retrieveInfo(text){
   document.getElementById("whereInput").value=retrieved.whereInput;
   document.getElementById("dateInput").value=retrieved.dateInput;
   document.getElementById("timeInput").value=retrieved.timeInput;
+  checkSave=false;
 }
 
 function refreshEditListener(){
@@ -367,8 +368,8 @@ function refreshEditListener(){
     $('.menu-create').show();
     $('.text-end').hide();
     $('#content-flyer').show();
-    $('#croppedImage').parent().show();
-});
+    $('#croppedImage').parent().removeClass('hide');
+  });
 }
 
 function refreshDraft(){
@@ -384,6 +385,8 @@ function refreshDraft(){
 function newFlyer(){
   if(checkSave==false){
     $("#unsaved-changes").show(2000);
+  } else {
+    cleanFlyer(1);
   }
 }
 
@@ -393,7 +396,7 @@ function cleanFlyer(ctr){
     document.getElementById("selectTemplate").value='1';
     document.getElementById("colorInput").value='#0397BB';
     document.getElementById("croppedImage").setAttribute("src","");
-    document.getElementById("croppedImage").style.display='none';
+    document.getElementById("croppedImage").parentElement.classList.add("hide");
     document.getElementById("cover").value=null;
     document.getElementsByClassName("richText-editor")[0].textContent='';
     document.getElementById("whereInput").value='';
@@ -409,6 +412,11 @@ function cleanFlyer(ctr){
   k[0].classList.add("active");
   if(document.querySelector("#content-flyer").style.display=='block'){
     $("#content-flyer").hide(2000);
+  }
+  if(document.querySelector("#carousel-content").style.display=="none"){
+    $("#carousel-content").show();
+    $("#footer-create").show();
+    $("#footer-preview").hide();
   }
   $("#unsaved-changes").hide(2000);
 }
