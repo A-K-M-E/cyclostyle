@@ -154,14 +154,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         saveLocal();
     })
   }
+
   // add draft to the elementList
   if(localStorage.length!=0){
     for(let i=0;i<localStorage.length;i++){
-      let draftEl=JSON.parse(localStorage[i])
-      addToDraft(draftEl);
+      if(localStorage[i].includes('"status":"draft"')){
+        let draftEl=JSON.parse(localStorage[i])
+        addToDraft(draftEl);
+      }
+      if(localStorage[i].includes('"status":"bookmark"')){
+        let bookm=JSON.parse(localStorage[i])
+        addToBookmark(bookm);
+      }      
     }
+
     refreshEditListener();
   }
+
+
+
 
   // eventListener retrieveInfo on .edit-link
 
@@ -249,6 +260,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       checkSave=false;
     }
   });
+
+  //eventListener AddBookmark
+  document.getElementById("add-bookmarks").querySelector(".modal-footer").children[1].addEventListener('click',function(event){
+    event.preventDefault();
+    addBookmarktoStorage();
+  });  
 });
 
 var finalSpace;
@@ -296,6 +313,7 @@ async function sendInSpace()
 function saveLocal(){
   if(tempObj!=oldObj){
     if(tempObj.titleInput!=''){
+      tempObj.status='draft';
       console.log(tempObj);
       // append to localStorage
       position = findIntoStorage(tempObj.titleInput);
@@ -323,6 +341,18 @@ function addToDraft(obj){
   parsedS=parsedS.body.children[0];
   list.append(parsedS);
 }
+
+function addToBookmark(obj){
+  let list=document.getElementById("page-bookmarks").getElementsByClassName("list-group")[0];
+  const parser = new DOMParser();
+  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5><a href="'+obj.url+'" class="out-link" target="_blank">'+obj.title+'</a></h5><p class="mb-0">'+obj.date+'</p><small class="hash mb-1">'+obj.pdf+'</small><div class="d-flex justify-content-between"><div class="d-flex w-100 justify-content-start" data-value="${obj.pdf}"><a href="#" class="action-btn copy" title="Copy link"></a><a href="#" class="action-btn share share-button" title="Share"></a><a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal"></a><a href="#" class="action-btn pdf" title="Download pdf"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
+  parsedS=parsedS.body.children[0];
+  list.append(parsedS);
+  document.getElementById("titleaddInput").value='',
+  document.getElementById("dateaddInput").value='',
+  document.getElementById("urladdInput").value='',
+  document.getElementById("pdfaddInput").value=''
+};
 
 function closeDisclaimerStorage(){
   document.getElementById('disclaimer-storage').style.display='none';
@@ -433,3 +463,25 @@ function currentFlyer(){
     time:document.getElementById("timeInput").value
   };
 };
+
+function addBookmarktoStorage(){
+  let bookmark = {
+    title:document.getElementById("titleaddInput").value,
+    date:document.getElementById("dateaddInput").value,
+    url:document.getElementById("urladdInput").value,
+    pdf:document.getElementById("pdfaddInput").value,
+    status:'bookmark'
+  },
+  position = findIntoStorage(bookmark.title);
+  tempBook=JSON.stringify(bookmark);
+  if(position == -1)
+  {
+    localStorage.setItem(localStorage.length,tempBook);
+  }
+  else
+  {
+    localStorage.setItem(position,tempBook);
+  }
+  $("#addmodal").click();
+  addToBookmark(bookmark);
+}
