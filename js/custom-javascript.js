@@ -88,22 +88,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     save.classList.add('hide');
     });
-  // Qrcode
-  const qr_link = document.querySelectorAll('.qrcode');
-
-  var qr = window.qr = new QRious({
-      element: document.getElementById('qrious'),
-      size: 1000,
-      value: 'QRious'
-    });
-    qr_link.forEach(function(item) {
-    item.addEventListener('click', function(e) {
-      var qr_result = document.getElementById('qrious');
-      var download =document.getElementById('download-qr');
-        qr.value = e.target.parentNode.getAttribute("data-value");
-        download.setAttribute("href", qr_result.src);
-      });
-     });
 
   // Share
   const shareButton = document.querySelectorAll('.share-button');
@@ -171,8 +155,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     refreshEditListener();
   }
 
-
-
+  // Qrcode
+  // const qr_link = document.querySelectorAll('.qrcode');
+  var qr = window.qr = new QRious({
+      element: document.getElementById('qrious'),
+      size: 1000,
+      value: 'Cyclostyle'
+    });
+    /*
+    document.getElementsByClassName('qrlink').addEventListener('click', function(e) {
+      var qr_result = document.getElementById('qrious');
+      var download =document.getElementById('download-qr');
+        qr.value = e.target.parentNode.getAttribute("data-value");
+        download.setAttribute("href", qr_result.src);
+      });*/
 
   // eventListener retrieveInfo on .edit-link
 
@@ -278,6 +274,15 @@ let oldObj = "";
 let checkSave=true;
 let lastSave;
 
+function qrClick(e){
+  var qr_result = document.getElementById('qrious');
+  var download =document.getElementById('download-qr');
+  qr.value = e.parentNode.getAttribute("data-value").replace("https://","");
+  //qr.value = 'https://www.reddit.com';
+  console.log(e.parentNode.getAttribute("data-value"));
+  download.setAttribute("href", qr_result.src);
+}
+
 function renderPreview()
 {
     post = {};
@@ -298,7 +303,7 @@ function renderPreview()
     .then((response) => response.text())
     .then((template) => {
       var rendered = Mustache.render(template, post);
-      document.getElementById('flyer').innerHTML = rendered;    
+      document.getElementById('flyer').rasterizeHTML.drawHTML(rendered);    
       finalSpace = rendered;
     });
 }
@@ -345,7 +350,7 @@ function addToDraft(obj){
 function addToBookmark(obj){
   let list=document.getElementById("page-bookmarks").getElementsByClassName("list-group")[0];
   const parser = new DOMParser();
-  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5><a href="'+obj.url+'" class="out-link" target="_blank">'+obj.title+'</a></h5><p class="mb-0">'+obj.date+'</p><small class="hash mb-1">'+obj.pdf+'</small><div class="d-flex justify-content-between"><div class="d-flex w-100 justify-content-start" data-value="${obj.pdf}"><a href="#" class="action-btn copy" title="Copy link"></a><a href="#" class="action-btn share share-button" title="Share"></a><a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal"></a><a href="#" class="action-btn pdf" title="Download pdf"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
+  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5><a href="'+obj.url+'" class="out-link" target="_blank">'+obj.title+'</a></h5><p class="mb-0">'+obj.date+'</p><small class="hash mb-1">'+obj.url+'</small><div class="d-flex justify-content-between"><div class="d-flex w-100 justify-content-start" data-value="'+obj.url+'"><a href="#" class="action-btn copy" title="Copy link"></a><a href="#" class="action-btn share share-button" title="Share"></a><a href="#" onclick="qrClick(this)" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal"></a><a href="'+obj.pdf+'" class="action-btn pdf" title="Download pdf" target="_blank"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
   parsedS=parsedS.body.children[0];
   list.append(parsedS);
   document.getElementById("titleaddInput").value='',
@@ -474,6 +479,8 @@ function addBookmarktoStorage(){
   },
   position = findIntoStorage(bookmark.title);
   tempBook=JSON.stringify(bookmark);
+  console.log(bookmark);
+  console.log(tempBook);
   if(position == -1)
   {
     localStorage.setItem(localStorage.length,tempBook);
