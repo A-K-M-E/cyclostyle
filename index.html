@@ -502,7 +502,7 @@
         <div class="modal-body">
           <div class="link" data-value="">
             <div class="pen-url" id="share-url-text"></div>
-            <button class="copy-link btn btn-primary copy">Copy Link</button>
+            <button class="copy-link btn btn-primary copy" onclick="copyLink(this)" data-bs-dismiss="modal">Copy Link</button>
           </div>
         </div>
       </div>
@@ -551,6 +551,7 @@
       </div>
     </div>
   </div>
+  <!-- Upload animation -->
   <div class="uploading  h-100 w-100 hide">
     <div class="position-relative h-100 w-100">
       <div class="position-absolute top-50 start-50 translate-middle w-100 text-center">
@@ -558,29 +559,39 @@
       </div>
     </div>
   </div>
-  <div class="modal" id="disclaimer-storage">
+
+  <!-- Modal Note localStorage -->
+  <div class="modal fade" id="disclaimer-storage"  tabindex="-1" aria-labelledby="copymodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content" style="padding:10px">
-        <h2>Please note</h2>
-        <p>Cyclostyle uses localStorage for drafts and bookmarks. If you are in private mode, no data can be saved! </p>
-      <button id="closeDisclaimer">Got it, thanks!</button>
-      </div>
-    </div>
-  </div>
-  <div class="modal" id="unsaved-changes">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content" style="padding:10px">
-        <h2>Please note</h2>
-        <p>A flyer has not been saved.</p>
-        <p>Do you want to delete it?</p>
-        <div class="modal_save_button">
-          <button id="cleanStart">Yes, create a new flyer</button>
-          <button id="backtoEdit">No, let me edit it</button>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="shareLabel">Please note</h5>
+          <button type="button" class="btn-close close-button" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">Cyclostyle uses localStorage for drafts and bookmarks. If you are in private mode, no data can be saved!</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Got it, thanks!</button>
       </div>
     </div>
-  <div class="bg_gray"></div>
   </div>
+  </div>
+  <!-- Modal Note Unsavedflyer -->
+  <div class="modal fade" id="unsaved-changes"  tabindex="-1" aria-labelledby="copymodalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="shareLabel">Please note</h5>
+            <button type="button" class="btn-close close-button" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">A flyer has not been saved.<br>Do you want to delete it?</div>
+            <div class="modal-footer modal_save_button">
+                <button type="button" class="btn btn-outline-primary" id="cleanStart">Yes, create a new flyer</button>
+                <button type="button" class="btn btn-outline-primary" id="backtoEdit">No, let me edit it</button>
+            </div>
+          </div>
+      </div>
+    </div>
+
 <!-- jQuery-bootstrap-->
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/custom-jquery.js"></script>

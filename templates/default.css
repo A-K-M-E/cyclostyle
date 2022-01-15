@@ -4,36 +4,36 @@ default color: #378ab4
 
 */
 
-html, body {
+body.flyer-tempalte {
   width: 100%;
   max-width:1024px;
   margin: 0 auto;
   font-family: Sans-serif;
 }
 
-header, main, footer {
+.flyer-tempalte header, .flyer-tempalte main, .flyer-tempalte footer {
   position: relative;
 }
 
-a {color: #378ab4;}
-a:hover, a:focus, a:active{color:#000;}
+.flyer-tempalte a {color: #378ab4;}
+.flyer-tempalte a:hover, .flyer-tempalte a:focus, .flyer-tempalte a:active{color:#000;}
 
-p {
+.flyer-tempalte p {
 	font-size: 1.1rem;
 	margin: 10px 0 0;
 }
 
-p + p {
+.flyer-tempalte p + p {
 	text-indent: 1rem;
 }
 
-h1 {
+.flyer-tempalte h1 {
     margin-top: 0;
     margin-bottom: 0.3rem;
     font-size: 2rem;
 }
 
-h2
+.flyer-tempalte h2
 {
 	font-size:1.2rem;
 	color: #ffffff;
@@ -43,23 +43,23 @@ h2
 	margin: 1rem 0 0.5rem;
 }
 
-h3, h4, h5, h6{
+.flyer-tempalte h3, .flyer-tempalte  h4,.flyer-tempalte  h5,.flyer-tempalte  h6{
   font-size:1.1rem;
 }
 
-ul {
+.flyer-tempalte ul {
     list-style: none; /* Remove list bullets */
     padding: 0;
     margin: 1rem 0;
 }
 
-li {
+.flyer-tempalte li {
     padding-left: 0.3rem;
 	font-size: 1rem;
 	line-height:1.2rem;
 }
 
-li:before {
+.flyer-tempalte li:before {
   content: "\00ac ";
   color: #378ab4;
 	padding-right: 8px;
@@ -67,19 +67,19 @@ li:before {
 	font-size: 1.3rem;
 }
 
-ul li ul {
+.flyer-tempalte ul li ul {
   padding-left: 1rem;
   margin: 0 0 0.5rem;
 }
 
-ul li ul li:before {
+.flyer-tempalte ul li ul li:before {
   content: "â€¢";
   padding-right: 8px;
 	font-weight: normal;
 	font-size: 1rem;
 }
 
-header h1{
+.flyer-tempalte header h1{
 	background: #000;
 	display:block;
   margin: -4em 0 1em;
@@ -92,7 +92,7 @@ header h1{
 	-o-transform: rotate(-5deg);
 }
 
-header .data{
+.flyer-tempalte header .data{
   background: #378ab4;
   font-weight: 400;
   color: #fff;
@@ -102,7 +102,7 @@ header .data{
 	text-align:center;
 }
 
-header p{
+.flyer-tempalte header p{
   margin: 0;
   padding: 0;
   text-indent: 0;
@@ -111,12 +111,12 @@ header p{
   display: inline;
 }
 
-.imagehead{
+.flyer-tempalte .imagehead{
 	margin: 0;
 	position:relative;
 }
 
-.imagehead img{
+.flyer-tempalte .imagehead img{
 	object-fit: cover;
   width: 100%;
   height: auto;
@@ -126,14 +126,14 @@ header p{
 
 
 
-main, footer {
+.flyer-tempalte main, .flyer-tempalte footer {
 	margin:0;
   width: 96%;
 	padding: 3% 2%;
 }
 
 
-footer  p {
+.flyer-tempalte footer  p {
 	line-height:1.1rem;
 	margin:0;
 }
@@ -144,7 +144,7 @@ footer  p {
    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
   @media(min-width:768px){
-  header  h1{
+  .flyer-tempalte header  h1{
     	position:absolute;
     	bottom:-23px;
     	left:11rem;
@@ -159,7 +159,7 @@ footer  p {
     	-o-transform: rotate(-5deg);
     }
 
-  header  .data{
+  .flyer-tempalte header  .data{
     	position: absolute;
         bottom: -2.1rem;
         left: 1rem;
@@ -174,7 +174,7 @@ footer  p {
         line-height: 1.6rem;
     	text-align:center;
     }
-    main
+    .flyer-tempalte main
     {
     	width:35rem;
     	margin-left: 9.2rem;

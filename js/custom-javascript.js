@@ -89,47 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     save.classList.add('hide');
     });
 
-  // Share
-  const shareButton = document.querySelectorAll('.share-button');
-  var url_link = document.getElementById('share-url-text');
-  var shareModal = new bootstrap.Modal(document.getElementById('sharemodal'), {keyboard: false});
 
-  shareButton.forEach(function(item) {
-  item.addEventListener('click', function(e) {
-    var link_share= e.target.parentNode.getAttribute("data-value");
-    if (navigator.share) {
-     navigator.share({
-        title: 'cyclostyle Share',
-        url: link_share
-      }).then(() => {
-        console.log('Thanks for sharing!');
-      })
-      .catch(console.error);
-      } else {
-          shareModal.show();
-          url_link.textContent=link_share;
-          url_link.parentNode.setAttribute("data-value", link_share);
-      }
-  });
-  });
-
-  // Copy link
-  var copyModal = new bootstrap.Modal(document.getElementById('copymodal'), {keyboard: false});
-  const copylinkButton = document.querySelectorAll('.copy');
-
-  copylinkButton.forEach(function(item) {
-  item.addEventListener('click', function(e) {
-    copyText = e.target.parentNode.getAttribute("data-value");
-    /* Copy the text inside the text field */
-   navigator.clipboard.writeText(copyText);
-   /* Alert the copied text */
-   copyModal.show();
-   shareModal.hide();
-  });
-  });
-  document.getElementById('copymodal').addEventListener('show.bs.modal', function (event) {
-  setTimeout(function(){ copyModal.hide(); }, 1000);
-  });
 
   // eventList su save-draft
   let saveDraft = document.querySelectorAll(".save-draft")
@@ -149,28 +109,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       if(localStorage[i].includes('"status":"bookmark"')){
         let bookm=JSON.parse(localStorage[i])
         addToBookmark(bookm);
-      }      
+      }
     }
-
     refreshEditListener();
   }
 
-  // Qrcode
-  // const qr_link = document.querySelectorAll('.qrcode');
-  var qr = window.qr = new QRious({
-      element: document.getElementById('qrious'),
-      size: 1000,
-      value: 'Cyclostyle'
-    });
-    /*
-    document.getElementsByClassName('qrlink').addEventListener('click', function(e) {
-      var qr_result = document.getElementById('qrious');
-      var download =document.getElementById('download-qr');
-        qr.value = e.target.parentNode.getAttribute("data-value");
-        download.setAttribute("href", qr_result.src);
-      });*/
 
-  // eventListener retrieveInfo on .edit-link
 
   let edit_link=document.getElementsByClassName("edit-link");
   for(let el=0;el<edit_link.length;el++){
@@ -180,7 +124,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         event.preventDefault();
         retrieveInfo(element_draft_title);
       });
-    } 
+    }
     else {
       edit_link[el].addEventListener('click',function(event){
         event.preventDefault();
@@ -190,14 +134,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // check cookie 4 localStorage disclaimer
-  const cookieDisc = document.getElementById("disclaimer-storage");
+    var cookieDisc = new bootstrap.Modal(document.getElementById('disclaimer-storage'), {keyboard: false});
   let cookie = checkCookie("disclaimerStorage=closed");
   if(!cookie){
-    cookieDisc.style.display="block";
+    cookieDisc.show();
   }
 
+  document.getElementById('disclaimer-storage').addEventListener('hide.bs.modal', function (event) {
+  closeDisclaimerStorage();
+})
+
   // eventListener disclaimer cookie
-  document.getElementById("closeDisclaimer").addEventListener('click',closeDisclaimerStorage);
+  //document.getElementById("closeDisclaimer").addEventListener('click',closeDisclaimerStorage);
 
   // eventListener unsaved changes
   document.querySelector(".nav-link.create").addEventListener('click',function(event){
@@ -206,15 +154,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // eventListener cleanFlyer
+  var unsavedChanges = new bootstrap.Modal(document.getElementById('unsaved-changes'), {keyboard: false});
+
   document.getElementById("cleanStart").addEventListener('click',function(event){
     event.preventDefault();
-    cleanFlyer(1)});
+    cleanFlyer(1);
+    unsavedChanges.hide();
+    });
   document.getElementById("backtoEdit").addEventListener('click',function(event){
     event.preventDefault();
-    cleanFlyer(0)});
+    cleanFlyer(0);
+    unsavedChanges.hide();
+  });
 
   lastSave=currentFlyer();
-  
+
   // eventListener edits on create-flyer values
   document.getElementById("titleInput").addEventListener('change', function(event){
     if($("#titleInput").val()!=lastSave.title){
@@ -261,7 +215,35 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById("add-bookmarks").querySelector(".modal-footer").children[1].addEventListener('click',function(event){
     event.preventDefault();
     addBookmarktoStorage();
-  });  
+  });
+
+  // Qrcode
+  var qr = window.qr = new QRious({
+      element: document.getElementById('qrious'),
+      size: 1000,
+      value: 'Cyclostyle'
+    });
+
+  //document.getElementsByClassName('qrlink').addEventListener('click', function(e) {
+      //var qr_result = document.getElementById('qrious');
+      //var download =document.getElementById('download-qr');
+        //qr.value = e.target.parentNode.getAttribute("data-value");
+        //download.setAttribute("href", qr_result.src);
+    //  });
+
+  // eventListener retrieveInfo on .edit-link
+
+  // Share
+  //const shareButton = document.querySelectorAll('.share-button');
+  // var url_link = document.getElementById('share-url-text');
+  //var shareModal = new bootstrap.Modal(document.getElementById('sharemodal'), {keyboard: false});
+
+  // Copy link
+  // var copyModal = new bootstrap.Modal(document.getElementById('copymodal'), {keyboard: false});
+
+
+
+
 });
 
 var finalSpace;
@@ -275,12 +257,44 @@ let checkSave=true;
 let lastSave;
 
 function qrClick(e){
+  var qrModal = new bootstrap.Modal(document.getElementById('qrmodal'), {keyboard: false});
   var qr_result = document.getElementById('qrious');
-  var download =document.getElementById('download-qr');
-  qr.value = e.parentNode.getAttribute("data-value").replace("https://","");
-  //qr.value = 'https://www.reddit.com';
-  console.log(e.parentNode.getAttribute("data-value"));
-  download.setAttribute("href", qr_result.src);
+   var download =document.getElementById('download-qr');
+   qr.value = e.parentNode.getAttribute("data-value");
+   console.log(e.parentNode.getAttribute("data-value"));
+   download.setAttribute("href", qr_result.src);
+   qrModal.show();
+}
+
+
+
+function shareLink(e) {
+  var url_link = document.getElementById('share-url-text');
+  var shareModal = new bootstrap.Modal(document.getElementById('sharemodal'), {keyboard: false});
+  var link_share= e.parentNode.getAttribute("data-value");
+  if (navigator.share) {
+   navigator.share({
+      title: 'cyclostyle Share',
+      url: link_share
+    }).then(() => {
+      console.log('Thanks for sharing!');
+    })
+    .catch(console.error);
+    } else {
+        shareModal.show();
+        url_link.textContent=link_share;
+        url_link.parentNode.setAttribute("data-value", link_share);
+    }
+}
+
+function copyLink (e) {
+  var copyModal = new bootstrap.Modal(document.getElementById('copymodal'), {keyboard: false});
+  copyText = e.parentNode.getAttribute("data-value");
+  /* Copy the text inside the text field */
+ navigator.clipboard.writeText(copyText);
+ /* Alert the copied text */
+ copyModal.show();
+ setTimeout(function(){ copyModal.hide(); }, 1000);
 }
 
 function renderPreview()
@@ -303,7 +317,7 @@ function renderPreview()
     .then((response) => response.text())
     .then((template) => {
       var rendered = Mustache.render(template, post);
-      document.getElementById('flyer').rasterizeHTML.drawHTML(rendered);    
+      document.getElementById('flyer').rasterizeHTML.drawHTML(rendered);
       finalSpace = rendered;
     });
 }
@@ -350,7 +364,7 @@ function addToDraft(obj){
 function addToBookmark(obj){
   let list=document.getElementById("page-bookmarks").getElementsByClassName("list-group")[0];
   const parser = new DOMParser();
-  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5><a href="'+obj.url+'" class="out-link" target="_blank">'+obj.title+'</a></h5><p class="mb-0">'+obj.date+'</p><small class="hash mb-1">'+obj.url+'</small><div class="d-flex justify-content-between"><div class="d-flex w-100 justify-content-start" data-value="'+obj.url+'"><a href="#" class="action-btn copy" title="Copy link"></a><a href="#" class="action-btn share share-button" title="Share"></a><a href="#" onclick="qrClick(this)" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal"></a><a href="'+obj.pdf+'" class="action-btn pdf" title="Download pdf" target="_blank"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
+  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5><a href="'+obj.url+'" class="out-link" target="_blank">'+obj.title+'</a></h5><p class="mb-0">'+obj.date+'</p><small class="hash mb-1">'+obj.url+'</small><div class="d-flex justify-content-between"><div class="d-flex w-100 justify-content-start" data-value="'+obj.url+'"><a href="#" class="action-btn copy" onclick="copyLink(this)" title="Copy link"></a><a href="#" onclick="shareLink(this)" class="action-btn share share-button" title="Share"></a><a href="#" class="action-btn qrcode" onclick="qrClick(this)" title="Qrcode"></a><a href="'+obj.pdf+'" class="action-btn pdf" title="Download pdf" target="_blank"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
   parsedS=parsedS.body.children[0];
   list.append(parsedS);
   document.getElementById("titleaddInput").value='',
@@ -360,7 +374,7 @@ function addToBookmark(obj){
 };
 
 function closeDisclaimerStorage(){
-  document.getElementById('disclaimer-storage').style.display='none';
+  //document.getElementById('disclaimer-storage').style.display='none';
   const date = new Date();
   date.setTime(date.getTime()+8640000000);
   let expireDate = date.toUTCString();
@@ -375,7 +389,7 @@ function checkCookie(check){
 }
 
 function findIntoStorage(key)
-{ 
+{
   for(let i=0;i<localStorage.length;i++){
     if(localStorage[i].includes('"titleInput":"'+key+'"')) return i;
   }
