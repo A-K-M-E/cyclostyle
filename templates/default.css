@@ -4,7 +4,7 @@ default color: #378ab4
 
 */
 
-body.flyer-tempalte {
+body, .flyer-tempalte {
   width: 100%;
   max-width:1024px;
   margin: 0 auto;
@@ -83,7 +83,7 @@ body.flyer-tempalte {
 	background: #000;
 	display:block;
   margin: -4em 0 1em;
-	font-weight:400;
+	font-weight:800;
 	color:#fff;
   padding: 0.8rem;
 	-webkit-transform: rotate(-5deg);
@@ -108,7 +108,6 @@ body.flyer-tempalte {
   text-indent: 0;
   font-size: 1.5rem;
   line-height: 2.5rem;
-  display: inline;
 }
 
 .flyer-tempalte .imagehead{
@@ -150,7 +149,7 @@ body.flyer-tempalte {
     	left:11rem;
     	background: #000;
     	display:inline-block;
-    	font-weight:400;
+    	font-weight:800;
     	color:#fff;
       padding: 0.8rem;
     	-webkit-transform: rotate(-5deg);
@@ -170,7 +169,7 @@ body.flyer-tempalte {
         display: inline;
         padding: 0.8rem;
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         line-height: 1.6rem;
     	text-align:center;
     }

@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   upload = document.querySelector('#cover'),
   cropper = '';
 
+
+
   // on change show image with crop options
   upload.addEventListener('change', (e) => {
     if (e.target.files.length) {
@@ -317,7 +319,7 @@ function renderPreview()
     .then((response) => response.text())
     .then((template) => {
       var rendered = Mustache.render(template, post);
-      document.getElementById('flyer').rasterizeHTML.drawHTML(rendered);
+      document.getElementById('flyer').innerHTML = rendered;
       finalSpace = rendered;
     });
 }

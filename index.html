@@ -129,7 +129,7 @@
         <!-- main menu -->
         <ul class="navbar-nav main-menu">
           <li class="nav-item">
-            <a class="nav-link create" data-target="page-create" href="#" data-footer="true" data-bs-dismiss="offcanvas">create a flyer</a>
+            <a class="nav-link create" data-target="page-create" href="#" data-footer="true" data-bs-dismiss="offcanvas">new flyer</a>
           </li>
           <li class="nav-item">
             <a class="nav-link drafts" data-target="page-drafts" href="#" data-footer="false" data-bs-dismiss="offcanvas">drafts</a>
@@ -156,12 +156,12 @@
           <div class="logo position-absolute end-0 w-100"><img src="images/logo.svg" alt="" width="295" height="68"></div>
           <div class="position-absolute end-0 w-100 line line-right p-0 m-0"></div>
         </div>
-        <a href="#" class="btn btn-outline-danger mt-5 home-create" >Create a flyer</a>
+        <a href="#" class="btn btn-outline-danger mt-5 home-create">create a flyer</a>
       </div>
     </div>
     <!--Page create a flyer-->
     <div class="container pt-3 pages hide" id="page-create">
-      <h1 class="title-page">create a flyer</h1>
+      <h1 class="title-page">new flyer</h1>
       <form id="create-flyer">
       <!--cropper-->
         <div class="box-cropper hide container-fluid">
@@ -253,13 +253,13 @@
         <div id="content-flyer" class="hide mt-3">
           <div class="text-end finalize hide mb-1 mt-1">
             <div class="preview-device d-flex w-100 justify-content-end">
-              <button type="submit" class="btn btn-outline-danger ms-1 back" >Edit</button>
+              <button type="submit" class="btn btn-outline-danger ms-1 back">Edit</button>
               <button type="submit" class="btn btn-primary ms-1 save-draft">Save Draft</button>
               <button  type="submit" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#ipfsmodal">Print On IPFS</button>
             </div>
           </div>
           <div class="float-none"></div>
-          <canvas id="flyer"></canvas>
+          <div id="flyer"></div>
         </div>
       </div>
       <!--Page drafts-->
@@ -463,9 +463,7 @@
           <h5 class="modal-title" id="ipfsomodaLabel">Print on Ipfs</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-        Are you sure you want to publish this item on Ipfs? You won't be able to edit it anymore.
-        </div>
+        <div class="modal-body">Are you sure you want to publish this item on Ipfs? You won't be able to edit it anymore.</div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">No</button>
           <button type="button" class="btn btn-primary  printipfs">Yes, print it!</button>
@@ -485,7 +483,7 @@
           <img id="qrious">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">close</button>
           <a type="button" class="btn btn-primary" href="" id="download-qr" target="_blank">download</a>
         </div>
       </div>
@@ -512,7 +510,7 @@
   <div class="modal fade" id="copymodal"  tabindex="-1" aria-labelledby="copymodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-body">  <img src="icons/link.svg" alt="" width="30" height="30" class="anim-copied" > Link copied on clipboard</div>
+        <div class="modal-body">  <img src="icons/link.svg" alt="" width="30" height="30" class="anim-copied"> Link copied on clipboard</div>
       </div>
     </div>
   </div>
@@ -583,7 +581,7 @@
             <h5 class="modal-title" id="shareLabel">Please note</h5>
             <button type="button" class="btn-close close-button" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">A flyer has not been saved.<br>Do you want to delete it?</div>
+          <div class="modal-body">A flyer has not been saved. Do you want to delete it?</div>
             <div class="modal-footer modal_save_button">
                 <button type="button" class="btn btn-outline-primary" id="cleanStart">Yes, create a new flyer</button>
                 <button type="button" class="btn btn-outline-primary" id="backtoEdit">No, let me edit it</button>
