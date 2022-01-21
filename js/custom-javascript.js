@@ -2,6 +2,13 @@ if ('serviceWorker' in navigator) { navigator.serviceWorker.register('../js/sw.j
 
 // forse tutto ciò va inserito all'evento del click del bottone, così si sposta in quel momento il problema
 
+var unsavedChanges ="";
+var shareModal = "";
+var copyModal = "";
+var qrModal = "";
+var cookieDisc ="";
+var pannelli ="";
+
 document.addEventListener('DOMContentLoaded', async () => {
     // codice preso da qui:
 // https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag
@@ -113,12 +120,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         addToBookmark(bookm);
       }
     }
-    refreshEditListener();
   }
 
 
 
-  let edit_link=document.getElementsByClassName("edit-link");
+  /*let edit_link=document.getElementsByClassName("edit-link");
   for(let el=0;el<edit_link.length;el++){
     if(edit_link[el].classList.contains("preview")==true){
       let element_draft_title=edit_link[el].parentElement.parentElement.parentElement.getElementsByTagName("h5")[0].textContent;
@@ -133,10 +139,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         retrieveInfo(edit_link[el].textContent);
       });
     }
-  }
+  } */
 
   // check cookie 4 localStorage disclaimer
-    var cookieDisc = new bootstrap.Modal(document.getElementById('disclaimer-storage'), {keyboard: false});
+  cookieDisc = new bootstrap.Modal(document.getElementById('disclaimer-storage'), {keyboard: false});
   let cookie = checkCookie("disclaimerStorage=closed");
   if(!cookie){
     cookieDisc.show();
@@ -156,7 +162,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // eventListener cleanFlyer
-  var unsavedChanges = new bootstrap.Modal(document.getElementById('unsaved-changes'), {keyboard: false});
+ unsavedChanges = new bootstrap.Modal(document.getElementById('unsaved-changes'), {keyboard: false});
 
   document.getElementById("cleanStart").addEventListener('click',function(event){
     event.preventDefault();
@@ -226,25 +232,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       value: 'Cyclostyle'
     });
 
-  //document.getElementsByClassName('qrlink').addEventListener('click', function(e) {
-      //var qr_result = document.getElementById('qrious');
-      //var download =document.getElementById('download-qr');
-        //qr.value = e.target.parentNode.getAttribute("data-value");
-        //download.setAttribute("href", qr_result.src);
-    //  });
-
-  // eventListener retrieveInfo on .edit-link
-
-  // Share
-  //const shareButton = document.querySelectorAll('.share-button');
-  // var url_link = document.getElementById('share-url-text');
-  //var shareModal = new bootstrap.Modal(document.getElementById('sharemodal'), {keyboard: false});
-
-  // Copy link
-  // var copyModal = new bootstrap.Modal(document.getElementById('copymodal'), {keyboard: false});
-
-
-
+    shareModal = new bootstrap.Modal(document.getElementById('sharemodal'), {keyboard: false});
+    copyModal = new bootstrap.Modal(document.getElementById('copymodal'), {keyboard: false});
+    qrModal = new bootstrap.Modal(document.getElementById('qrmodal'), {keyboard: false});
+    pannelli = new bootstrap.Carousel(document.getElementById('carousel-content'));
 
 });
 
@@ -259,7 +250,6 @@ let checkSave=true;
 let lastSave;
 
 function qrClick(e){
-  var qrModal = new bootstrap.Modal(document.getElementById('qrmodal'), {keyboard: false});
   var qr_result = document.getElementById('qrious');
    var download =document.getElementById('download-qr');
    qr.value = e.parentNode.getAttribute("data-value");
@@ -272,7 +262,6 @@ function qrClick(e){
 
 function shareLink(e) {
   var url_link = document.getElementById('share-url-text');
-  var shareModal = new bootstrap.Modal(document.getElementById('sharemodal'), {keyboard: false});
   var link_share= e.parentNode.getAttribute("data-value");
   if (navigator.share) {
    navigator.share({
@@ -290,7 +279,6 @@ function shareLink(e) {
 }
 
 function copyLink (e) {
-  var copyModal = new bootstrap.Modal(document.getElementById('copymodal'), {keyboard: false});
   copyText = e.parentNode.getAttribute("data-value");
   /* Copy the text inside the text field */
  navigator.clipboard.writeText(copyText);
@@ -358,7 +346,7 @@ function saveLocal(){
 function addToDraft(obj){
   let list=document.getElementById("page-drafts").getElementsByClassName("list-group")[0];
   const parser = new DOMParser();
-  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5 class="mb-1"><a href="#" class="edit-link">'+obj.titleInput+'</a></h5><small>'+obj.dateInput+": "+obj.timeInput+'</small><div class="d-flex w-100 justify-content-between"><div class="d-flex w-100 justify-content-start"><a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a><a href="#" class="action-btn preview edit-link" title="Preview"></a><a href="#" class="action-btn edit" title="Edit"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
+  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5 class="mb-1"><a href="#" class="edit-link">'+obj.titleInput+'</a></h5><small>'+obj.dateInput+": "+obj.timeInput+'</small><div class="d-flex w-100 justify-content-between"><div class="d-flex w-100 justify-content-start"><a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a><a href="#" class="action-btn preview preview-link"   onclick="retrieveInfo(\''+obj.titleInput+'\');previewDiv();renderPreview();" title="Preview"></a><a href="#" onclick="retrieveInfo(\''+obj.titleInput+'\');editDiv();" class="action-btn edit edit-link" title="Edit"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
   parsedS=parsedS.body.children[0];
   list.append(parsedS);
 }
@@ -412,16 +400,6 @@ function retrieveInfo(text){
   checkSave=false;
 }
 
-function refreshEditListener(){
-  $('.edit-link').click(function(event){
-    event.preventDefault();
-    editDiv();
-    $('.menu-create').show();
-    $('.text-end').hide();
-    $('#content-flyer').show();
-    $('#croppedImage').parent().removeClass('hide');
-  });
-}
 
 function refreshDraft(){
   let TBC= document.getElementById("page-drafts").getElementsByClassName("list-group")[0];
@@ -430,12 +408,11 @@ function refreshDraft(){
     let draftEl=JSON.parse(localStorage[i])
     addToDraft(draftEl);
   }
-  refreshEditListener();
 }
 
 function newFlyer(){
   if(checkSave==false){
-    $("#unsaved-changes").show(2000);
+    unsavedChanges.show();
   } else {
     cleanFlyer(1);
   }
@@ -455,21 +432,22 @@ function cleanFlyer(ctr){
     document.getElementById("timeInput").value='';
     checkSave=true;
   }
-  let k = document.querySelectorAll(".carousel-inner")[0].children;
-  for(let i=0;i<k.length;i++){
-    if(k[i].classList.contains("active")){
-      k[i].classList.remove("active")
-    }};
-  k[0].classList.add("active");
+  //let k = document.querySelectorAll(".carousel-inner")[0].children;
+  //for(let i=0;i<k.length;i++){
+  //  if(k[i].classList.contains("active")){
+    //  k[i].classList.remove("active")
+    //}};
+  //k[0].classList.add("active");
+  pannelli.to(0);
   if(document.querySelector("#content-flyer").style.display=='block'){
-    $("#content-flyer").hide(2000);
+    $("#content-flyer").hide();
   }
   if(document.querySelector("#carousel-content").style.display=="none"){
     $("#carousel-content").show();
     $("#footer-create").show();
     $("#footer-preview").hide();
   }
-  $("#unsaved-changes").hide(2000);
+  unsavedChanges.hide();
 }
 
 function currentFlyer(){

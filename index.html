@@ -109,6 +109,7 @@
 <link rel="stylesheet" href="css/richtext.min.css">
 <script src="js/jquery.richtext.min.js" ></script>
 
+
 <!-- Tutto il javascript custom -->
 <script src="js/custom-javascript.js"></script>
 
@@ -129,20 +130,20 @@
         <!-- main menu -->
         <ul class="navbar-nav main-menu">
           <li class="nav-item">
-            <a class="nav-link create" data-target="page-create" href="#" data-footer="true" data-bs-dismiss="offcanvas">new flyer</a>
+            <a class="nav-link create" data-target="page-create" href="#" data-footer="true" data-bs-dismiss="offcanvas"><span data-mlr-text>new flyer</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link drafts" data-target="page-drafts" href="#" data-footer="false" data-bs-dismiss="offcanvas">drafts</a>
+            <a class="nav-link drafts" data-target="page-drafts" href="#" data-footer="false" data-bs-dismiss="offcanvas"><span data-mlr-text>drafts</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link bookmarks" data-target="page-bookmarks" href="#" data-footer="false" data-bs-dismiss="offcanvas">bookmarks</a>
+            <a class="nav-link bookmarks" data-target="page-bookmarks" href="#" data-footer="false" data-bs-dismiss="offcanvas"><span data-mlr-text>bookmarks</span></a>
           </li>
           <!-- link funzione print webpage
           <li class="nav-item">
             <a class="nav-link webpage" data-target="page-webpage" href="#" data-footer="false" data-bs-dismiss="offcanvas">print webpage</a>
           </li> -->
           <li class="nav-item">
-            <a class="nav-link settings" data-target="page-settings" href="#" data-footer="false" data-bs-dismiss="offcanvas">settings</a>
+            <a class="nav-link settings" data-target="page-settings" href="#" data-footer="false" data-bs-dismiss="offcanvas"><span data-mlr-text>settings</span></a>
           </li>
         </ul>
       </div>
@@ -161,7 +162,7 @@
     </div>
     <!--Page create a flyer-->
     <div class="container pt-3 pages hide" id="page-create">
-      <h1 class="title-page">new flyer</h1>
+      <h1 class="title-page"><span data-mlr-text>new flyer</span></h1>
       <form id="create-flyer">
       <!--cropper-->
         <div class="box-cropper hide container-fluid">
@@ -266,119 +267,25 @@
       <div class="container pt-3 hide pages" id="page-drafts">
         <h1 class="title-page">drafts</h1>
         <div class="list-group">
-          <!--
-          <div class="list-group-item list-group-item-action">
-            <h5 class="mb-1">
-              <a href="#" class="edit-link">COME PENSANO LE FORESTE – oltre l’umano</a>
-            </h5>
-            <small>DOMENICA 10 OTTOBRE 2021</small>
-            <div class="d-flex w-100 justify-content-between">
-              <div class="d-flex w-100 justify-content-start">
-                <a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a>
-                <a href="#" class="action-btn preview edit-link" title="Preview"></a>
-                <a href="#" class="action-btn edit" title="Edit"></a>
-              </div>
-              <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
-            </div>
-          </div>
-          <div class="list-group-item list-group-item-action">
-            <h5 class="mb-1">
-              <a href="#" class="edit-link">CAPITALOCENE - Saran buone le zucche sul Pianeta B?</a>
-            </h5>
-            <small>SABATO 09 OTTOBRE 2021</small>
-            <div class="d-flex w-100 justify-content-between">
-              <div class="d-flex w-100 justify-content-start">
-                <a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a>
-                <a href="#" class="action-btn preview edit-link" title="Preview"></a>
-                <a href="#" class="action-btn edit" title="Edit"></a>
-              </div>
-              <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
-            </div>
-          </div>
-          <div class="list-group-item list-group-item-action">
-            <h5 class="mb-1">
-              <a href="#" class="edit-link">Part Time Punks October Party</a>
-            </h5>
-            <small>VENERDI’ 08 OTTOBRE 2021</small>
-            <div class="d-flex w-100 justify-content-between">
-              <div class="d-flex w-100 justify-content-start">
-                <a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a>
-                <a href="#" class="action-btn preview edit-link" title="Preview"></a>
-                <a href="#" class="action-btn edit" title="Edit"></a>
-              </div>
-              <a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a>
-            </div>
-          </div>
-          -->
         </div>
       </div>
       <!--Page bookmarks-->
       <div class="container pt-3 hide pages" id="page-bookmarks">
         <div class="d-flex justify-content-between title-page">
-          <h1>bookmarks</h1>
+          <h1 data-mlr-text>bookmarks</h1>
           <button type="submit" class="btn btn-outline-danger add" title="Add bookmark" data-bs-toggle="modal" data-bs-target="#addmodal">Add</button>
         </div>
         <div class="list-group">
-          <!--
-          <div class="list-group-item list-group-item-action">
-            <h5>
-              <a href="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau" class="out-link" target="_blank">COME PENSANO LE FORESTE – oltre l’umano</a>
-            </h5>
-            <p class="mb-0">DOMENICA 10 OTTOBRE 2021</p>
-            <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
-            <div class="d-flex justify-content-between">
-              <div class="d-flex w-100 justify-content-start" data-value="https://ipfs.io/ipfs/QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau">
-                <a href="#" class="action-btn copy" title="Copy link"></a>
-                <a href="#" class="action-btn share share-button" title="Share" ></a>
-                <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" ></a>
-                <a href="#" class="action-btn pdf" title="Download pdf"></a>
-              </div>
-              <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
-            </div>
-          </div>
-          <div class="list-group-item list-group-item-action">
-            <h5>
-              <a href="https://ipfs.io/ipfs/prova1" class="out-link" target="_blank">CAPITALOCENE - Saran buone le zucche sul Pianeta B?</a>
-            </h5>
-            <p class="mb-0">SABATO 09 OTTOBRE 2021</p>
-            <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
-            <div class="d-flex justify-content-between">
-              <div class="d-flex w-100 justify-content-start" data-value="https://ipfs.io/ipfs/prova1">
-                <a href="#" class="action-btn copy" title="Copy link"></a>
-                <a href="#" class="action-btn share share-button" title="Share" ></a>
-                <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" ></a>
-                <a href="#" class="action-btn pdf" title="Download pdf"></a>
-              </div>
-              <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
-            </div>
-          </div>
-          <div class="list-group-item list-group-item-action">
-            <h5>
-              <a href="https://ipfs.io/ipfs/prova2" class="out-link" target="_blank">Part Time Punks October Party</a>
-            </h5>
-            <p class="mb-0">VENERDI’ 08 OTTOBRE 2021</p>
-            <small class="hash mb-1">QmRaSYnTBnKyYw83dDFvq8Rxwt4Qn5LRkCRdLJCAVxNgau</small>
-            <div class="d-flex justify-content-between">
-              <div class="d-flex w-100 justify-content-start" data-value="https://ipfs.io/ipfs/prova2">
-                <a href="#" class="action-btn copy" title="Copy link"></a>
-                <a href="#" class="action-btn share share-button" title="Share" ></a>
-                <a href="#" class="action-btn qrcode" title="Qrcode" data-bs-toggle="modal" data-bs-target="#qrmodal" ></a>
-                <a href="#" class="action-btn pdf" title="Download pdf"></a>
-              </div>
-              <a href="#" class="action-btn delete" title="Delete"  data-bs-toggle="modal" data-bs-target="#infomodal"></a>
-            </div>
-          </div>
-          -->
         </div>
       </div>
       <!--Page settings -->
       <div class="container pt-3 hide pages" id="page-settings">
-        <h1 class="title-page">settings</h1>
+        <h1 class="title-page" data-mlr-text>settings</h1>
         <div>
         <form id="language">
           <div class="input-group mb-5 pt-3">
             <label class="input-group-text" for="inputGroupSelect02">Language</label>
-            <select class="form-select" id="inputGroupSelect02">
+            <select class="form-select" id="mbPOCControlsLangDrop">
               <option selected value="1">English</option>
               <option value="2">Italian</option>
               <option value="3">French</option>
@@ -593,5 +500,6 @@
 <!-- jQuery-bootstrap-->
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/custom-jquery.js"></script>
+<script src="js/language-picker.js"></script>
 </body>
 </html>

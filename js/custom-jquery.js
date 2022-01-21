@@ -1,12 +1,28 @@
 // Edit
-function editDiv($param) {
+function initCarousel(){
   $('.pages').hide("fast");
   $('footer').show("slow");
   $('.main-menu .active').removeClass( "active" );
   $('.main-menu .nav-link.create').addClass( "active" );
   $('#page-create').show(2000);
   $('#carousel-content').carousel(0);
+}
+
+function editDiv() {
+  initCarousel();
+  $('.img-result').show();
   $('#carousel-content').show();
+  $('.menu-create').show();
+  $('.text-end').hide();
+  $('#content-flyer').hide();
+}
+
+function previewDiv(){
+  initCarousel();
+  $('#carousel-content').hide();
+  $('.menu-create').hide();
+  $('.text-end').show();
+  $('#content-flyer').show();
 }
 
 $( document ).ready(function() {
@@ -65,14 +81,6 @@ $( document ).ready(function() {
       });
 
 
-      $('.edit').click(function(event){
-          event.preventDefault();
-          editDiv();
-          $('.carousel').show();
-          $('.menu-create').show();
-          $('.text-end').hide();
-          $('#content-flyer').hide();
-      });
 
       // editor
       $('#bodyTextarea').richText({
