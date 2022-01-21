@@ -107,7 +107,7 @@ var mlr = function({
     }
 };
 
-function resolveMLString(stringToBeResolved: string, mLstrings) {
+function resolveMLString(stringToBeResolved, mLstrings) {
     var matchingStringIndex = mLstrings.find(function(stringObj) {
         // Create an array of the objects values:
         let stringValues = Object.values(stringObj);
