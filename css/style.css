@@ -553,6 +553,9 @@ footer .carousel-indicators [data-bs-target] {
   padding: 5%;
 }
 
+#firstSelctionLang{
+  opacity: 0;
+}
 /* share box */
 
 .share-dialog .link {

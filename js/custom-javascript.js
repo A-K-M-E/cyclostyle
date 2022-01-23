@@ -155,7 +155,7 @@ document.getElementById('disclaimer-storage').addEventListener('hide.bs.modal', 
   // check cookie 4 Language
   var lang = getCookie("chosenLang");
   if(!lang){
-    document.getElementById('firstSelctionLang').style.display = 'flex';
+    document.getElementById('firstSelctionLang').style.opacity = 1;
   }
 
   // eventListener disclaimer cookie
