@@ -143,14 +143,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // check cookie 4 localStorage disclaimer
   cookieDisc = new bootstrap.Modal(document.getElementById('disclaimer-storage'), {keyboard: false});
-  let cookie = checkCookie("disclaimerStorage=closed");
-  if(!cookie){
+  let storage = getCookie("disclaimerStorage");
+  if(!storage){
     cookieDisc.show();
   }
 
-  document.getElementById('disclaimer-storage').addEventListener('hide.bs.modal', function (event) {
+document.getElementById('disclaimer-storage').addEventListener('hide.bs.modal', function (event) {
   closeDisclaimerStorage();
-})
+});
+
+  // check cookie 4 Language
+  var lang = getCookie("chosenLang");
+  if(!lang){
+    document.getElementById('firstSelctionLang').style.display = 'flex';
+  }
 
   // eventListener disclaimer cookie
   //document.getElementById("closeDisclaimer").addEventListener('click',closeDisclaimerStorage);
@@ -365,17 +371,37 @@ function addToBookmark(obj){
 
 function closeDisclaimerStorage(){
   //document.getElementById('disclaimer-storage').style.display='none';
-  const date = new Date();
-  date.setTime(date.getTime()+8640000000);
-  let expireDate = date.toUTCString();
-  document.cookie = "disclaimerStorage=closed;expires="+expireDate;
+  setCookie("disclaimerStorage","closed",365);
 }
 
-function checkCookie(check){
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+
+/* function checkCookie(check){
   let cookie = document.cookie.split(";");
   if(cookie.includes(check)){
     return true;
   } else { return false; };
+}*/
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let ca = document.cookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return false;
 }
 
 function findIntoStorage(key)

@@ -253,6 +253,11 @@ background-size: 28px;
   padding: .55rem .75rem;
 }
 
+#page-home .input-group {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .nav {
   float: left;
 }
@@ -450,6 +455,10 @@ img {
   height: 100%;
 }
 
+.pages h2{
+  text-transform: lowercase;
+}
+
 footer .menu-create{
   position: relative;
 }
@@ -570,4 +579,10 @@ footer .carousel-indicators [data-bs-target] {
   position: absolute;
   background-color: #fff;
   z-index: 999999;
+}
+
+@media (min-width: 768px) {
+  #page-home .input-group {
+    width: 60%;
+  }
 }

@@ -6,17 +6,17 @@ var mlCodes = [
 
   {
     code: "it",
-    name: "Italian",
+    name: "Italiano",
   },
 
   {
     code: "es",
-    name: "Spanish",
+    name: "Español",
   },
 
   {
     code: "fr",
-    name: "French",
+    name: "Français",
   }
 
 ];
@@ -24,33 +24,307 @@ var mlCodes = [
 var MLstrings = [
     {
         English: "new flyer",
-        Italian: "nuovo volantino",
-        Spanish: "nuevo volante",
-        French: "nouveau dépliant",
+        Italiano: "nuovo volantino",
+        Español: "nuevo volante",
+        Français: "nouveau dépliant",
     },
     {
         English: "drafts",
-        Italian: "bozze",
-        Spanish: "borradores",
-        French: "brouillons",
+        Italiano: "bozze",
+        Español: "borradores",
+        Français: "brouillons",
     },
     {
         English: "bookmarks",
-        Italian: "segnalibri",
-        Spanish: "marcadores",
-        French: "signets",
+        Italiano: "segnalibri",
+        Español: "marcadores",
+        Français: "signets",
     },
     {
         English: "settings",
-        Italian: "impostazioni",
-        Spanish: "ajustes",
-        French: "réglages",
+        Italiano: "impostazioni",
+        Español: "ajustes",
+        Français: "réglages",
     },
-
+    {
+        English: "create a flyer",
+        Italiano: "crea un volantino",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Crop",
+        Italiano: "taglia",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Done",
+        Italiano: "Fatto",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Template",
+        Italiano: "Tema",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Content",
+        Italiano: "contenuto",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Details",
+        Italiano: "Dettagli",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Preview",
+        Italiano: "Anteprima",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Edit",
+        Italiano: "Modifica",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Save Draft",
+        Italiano: "Salva bozza",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Print On IPFS",
+        Italiano: "Stampa su IPFS",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Next >",
+        Italiano: "Succ. >",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "< Previous",
+        Italiano: "< Prec.",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Main color",
+        Italiano: "Colore principale",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Upload, Crop and save cover",
+        Italiano: "Carica, taglia e salva l'immagine di copertina",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Preview cover",
+        Italiano: "Anteprima immagine di copertina",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Title *",
+        Italiano: "Titolo *",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Body *",
+        Italiano: "Testo *",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Who?/Where?",
+        Italiano: "Chi?/Dove?",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "When?",
+        Italiano: "Quando?",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Hours",
+        Italiano: "Orario",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Language",
+        Italiano: "Lingua",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Save",
+        Italiano: "Salva",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Upload",
+        Italiano: "Carica",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Download",
+        Italiano: "Scarica",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Add",
+        Italiano: "Aggiungi",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "for template format see",
+        Italiano: "per il formato dei temi guarda",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Add bookmark",
+        Italiano: "Aggiungi segnalibro",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Date",
+        Italiano: "Data",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Pdf link",
+        Italiano: "Link al Pdf",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Close",
+        Italiano: "Chiudi",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Delete item",
+        Italiano: "Cancella oggetto",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Are you sure you want to delete this item? You won't be able to recover it.",
+        Italiano: "Sei sicuro di voler cancellare questo oggetto? Non sarai più in grado di recuperarlo.",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Yes, delete it!",
+        Italiano: "Sì, cancellalo!",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "No",
+        Italiano: "No",
+        Español: "No",
+        Français: "Non",
+    },
+    {
+        English: "Are you sure you want to publish this item on Ipfs? You won't be able to edit it anymore.",
+        Italiano: "Sei sicuro di voler pubblicare questo oggetto su Ipfs? Non potrai più modificarlo.",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Yes, print it!",
+        Italiano: "Sì, stampalo!",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Share this link",
+        Italiano: "Condividi questo link",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Copy Link",
+        Italiano: "Copia Link",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Link copied on clipboard",
+        Italiano: "Link copiato negli appunti",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Please note",
+        Italiano: "Attenzione",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "A flyer has not been saved. Do you want to delete it?",
+        Italiano: "C'è un volantino che non è stato salvato. Vuoi cancellarlo?",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Yes, create a new flyer.",
+        Italiano: "Sì, crea un nuovo volantino.",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "No, let me edit it.",
+        Italiano: "No, vai alla modifica.",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Cyclostyle uses localStorage for drafts and bookmarks. If you are in private mode, no data can be saved!",
+        Italiano: "Cyclostyle usa localStorage per momorizzare bosse e segnalibri. Se navighi in modalità anonima, nessun dato verrà salvato!",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Got it, thanks!",
+        Italiano: "Capito, grazie!",
+        Español: "",
+        Français: "",
+    },
 ];
 
 // Global var :(
 var mlrLangInUse;
+
+let selctedLang = getCookie("chosenLang");
+if(selctedLang==""){
+  selctedLang = "English"
+}
 
 var mlr = function({
     dropID = "mbPOCControlsLangDrop",
@@ -79,8 +353,12 @@ var mlr = function({
                 mbPOCControlsLangDrop.value = lang;
             }
         });
+        resolveAllMLStrings();
+        root.setAttribute("lang", updateCountryCodeOnHTML().code);
+
         mbPOCControlsLangDrop.addEventListener("change", function(e) {
             mlrLangInUse = mbPOCControlsLangDrop[mbPOCControlsLangDrop.selectedIndex].value;
+            setCookie("chosenLang", mlrLangInUse, 365);
             resolveAllMLStrings();
             // Here we update the 2-digit lang attribute if required
             if (countryCodes === true) {
@@ -91,6 +369,7 @@ var mlr = function({
                 root.setAttribute("lang", updateCountryCodeOnHTML().code);
             }
         });
+
     })();
 
     function updateCountryCodeOnHTML() {
@@ -125,10 +404,21 @@ function resolveMLString(stringToBeResolved, mLstrings) {
 mlr({
     dropID: "mbPOCControlsLangDrop",
     stringAttribute: "data-mlr-text",
-    chosenLang: "English",
+    chosenLang: selctedLang,
     mLstrings: MLstrings,
     countryCodes: true,
     countryCodeData: mlCodes,
 });
+
+mlr({
+    dropID: "mbPOCControlsLangDrop2",
+    stringAttribute: "data-mlr-text",
+    chosenLang: selctedLang,
+    mLstrings: MLstrings,
+    countryCodes: true,
+    countryCodeData: mlCodes,
+});
+
+
 
 // link https://codepen.io/benfrain/pen/GdKrVx
