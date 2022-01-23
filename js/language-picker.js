@@ -1,28 +1,26 @@
-var mlCodes = [
-  {
-    code: "en",
-    name: "English",
-  },
+var mlCodes = [{
+        code: "en",
+        name: "English",
+    },
 
-  {
-    code: "it",
-    name: "Italiano",
-  },
+    {
+        code: "it",
+        name: "Italiano",
+    },
 
-  {
-    code: "es",
-    name: "Español",
-  },
+    {
+        code: "es",
+        name: "Español",
+    },
 
-  {
-    code: "fr",
-    name: "Français",
-  }
+    {
+        code: "fr",
+        name: "Français",
+    }
 
 ];
 
-var MLstrings = [
-    {
+var MLstrings = [{
         English: "new flyer",
         Italiano: "nuovo volantino",
         Español: "nuevo volante",
@@ -49,80 +47,80 @@ var MLstrings = [
     {
         English: "create a flyer",
         Italiano: "crea un volantino",
-        Español: "",
-        Français: "",
+        Español: "crea un volante",
+        Français: "créer un dépliant",
     },
     {
         English: "Crop",
         Italiano: "taglia",
-        Español: "",
-        Français: "",
+        Español: "Corta",
+        Français: "Coupe",
     },
     {
         English: "Done",
         Italiano: "Fatto",
-        Español: "",
-        Français: "",
+        Español: "Hecho",
+        Français: "Terminé",
     },
     {
         English: "Template",
         Italiano: "Tema",
-        Español: "",
-        Français: "",
+        Español: "Plantilla",
+        Français: "Modèle",
     },
     {
         English: "Content",
         Italiano: "contenuto",
-        Español: "",
-        Français: "",
+        Español: "Contenido",
+        Français: "Contenu",
     },
     {
         English: "Details",
         Italiano: "Dettagli",
-        Español: "",
-        Français: "",
+        Español: "Detalles",
+        Français: "Détails",
     },
     {
         English: "Preview",
         Italiano: "Anteprima",
-        Español: "",
-        Français: "",
+        Español: "Vista previa",
+        Français: "Prévisualisation",
     },
     {
         English: "Edit",
         Italiano: "Modifica",
-        Español: "",
-        Français: "",
+        Español: "Revisar",
+        Français: "Modifier",
     },
     {
         English: "Save Draft",
         Italiano: "Salva bozza",
-        Español: "",
-        Français: "",
+        Español: "Guarda el borrador",
+        Français: "Sauver le brouillon",
     },
     {
         English: "Print On IPFS",
         Italiano: "Stampa su IPFS",
-        Español: "",
-        Français: "",
+        Español: "Imprimir sobre IPFS",
+        Français: "Imprimer sur IPFS",
     },
     {
         English: "Next >",
         Italiano: "Succ. >",
-        Español: "",
-        Français: "",
+        Español: "Pròximo >",
+        Français: "Prochain >",
     },
     {
         English: "< Previous",
         Italiano: "< Prec.",
-        Español: "",
-        Français: "",
+        Español: "< Previo",
+        Français: "< Dernier",
     },
     {
         English: "Main color",
         Italiano: "Colore principale",
-        Español: "",
-        Français: "",
+        Español: "Color principal",
+        Français: "Couleur principale",
     },
     {
         English: "Upload, Crop and save cover",
@@ -139,8 +137,8 @@ var MLstrings = [
     {
         English: "Title *",
         Italiano: "Titolo *",
-        Español: "",
-        Français: "",
+        Español: "Tìtulo *",
+        Français: "Titre *",
     },
     {
         English: "Body *",
@@ -169,14 +167,14 @@ var MLstrings = [
     {
         English: "Language",
         Italiano: "Lingua",
-        Español: "",
-        Français: "",
+        Español: "Idioma",
+        Français: "Langue",
     },
     {
         English: "Save",
         Italiano: "Salva",
-        Español: "",
-        Français: "",
+        Español: "Guardar",
+        Français: "Sauver",
     },
     {
         English: "Upload",
@@ -322,8 +320,8 @@ var MLstrings = [
 var mlrLangInUse;
 
 let selctedLang = getCookie("chosenLang");
-if(selctedLang==""){
-  selctedLang = "English"
+if (selctedLang == "") {
+    selctedLang = "English"
 }
 
 var mlr = function({
