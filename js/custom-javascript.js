@@ -103,7 +103,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // remove hide class of img
     cropped.classList.remove('hide');
     img_result.classList.remove('hide');
-    close.classList.remove('hide');
     // show image cropped
     cropped.src = imgSrc;
   });
@@ -114,7 +113,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // remove hide class of img
     cropped.classList.remove('hide');
     img_result.classList.remove('hide');
-    close.classList.remove('hide');
     // show image cropped
     cropped.src = imgSrc;
     });
