@@ -8,6 +8,10 @@ var copyModal = "";
 var qrModal = "";
 var cookieDisc ="";
 var pannelli ="";
+var cropModal = "";
+var cropBoxData;
+var canvasData;
+var cropper;
 
 document.addEventListener('DOMContentLoaded', async () => {
     // codice preso da qui:
@@ -45,8 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   close = document.querySelector('.close'),
   cropped = document.querySelector('.cropped'),
   upload = document.querySelector('#cover'),
-  cropper = '';
-
+  cropModal = new bootstrap.Modal(document.getElementById('cropmodal'), {keyboard: false});
 
 
   // on change show image with crop options
@@ -65,14 +68,25 @@ document.addEventListener('DOMContentLoaded', async () => {
           // append new image
           result.appendChild(img);
           // show save btn and options
-          save.style.height = window.innerHeight;
-          result.style.top = save.scrollTop;
-          save.classList.remove('hide');
+          save.style.top = 0;
+          save.style.padding = 0;
+          save.style.position = "relative";
+          result.style.top = 0;
+          cropModal.show();
+          document.getElementById('cropmodal').addEventListener('shown.bs.modal', function () {
+              cropper = new Cropper(img, {
+                aspectRatio: 16 / 6,
+                autoCropArea: 0.5,
+                ready: function () {
+                  //Should set crop box data first here
+                  cropper.setCropBoxData(cropBoxData).setCanvasData(canvasData);
+                }
+              });
+              cropBoxData = cropper.getCropBoxData();
+              canvasData = cropper.getCanvasData();
+            });
 
-          // init cropper
-          cropper = new Cropper(img, {
-            aspectRatio: 16 / 6
-          });
+
         }
       };
       reader.readAsDataURL(e.target.files[0]);
@@ -93,9 +107,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     // show image cropped
     cropped.src = imgSrc;
   });
-  close.addEventListener('click',(e)=>{
-    e.preventDefault();
-    save.classList.add('hide');
+  document.getElementById('cropmodal').addEventListener('hide.bs.modal', function () {
+    let imgSrc = cropper.getCroppedCanvas({
+      width: img_w.value //
+    }).toDataURL();
+    // remove hide class of img
+    cropped.classList.remove('hide');
+    img_result.classList.remove('hide');
+    close.classList.remove('hide');
+    // show image cropped
+    cropped.src = imgSrc;
     });
 
 

@@ -165,16 +165,7 @@
     <div class="container pt-3 pages hide" id="page-create">
       <h1 class="title-page" data-mlr-text>new flyer</h1>
       <form id="create-flyer">
-      <!--cropper-->
-        <div class="box-cropper hide container-fluid">
-  		   <div class="result mb-3" id="result"></div>
-         <div class="options hide">
-           <input type="number" class="img-w" value="1024" min="768" max="1024" />
-         </div>
-         <!-- save btn crop-->
-         <button class="btn save btn-primary" data-mlr-text>Crop</button>
-         <button class="btn close hide btn-primary " data-mlr-text>Done</button>
-      	</div>
+
       <!--carousel content-->
       <div id="carousel-content" class="carousel carousel-dark slide mt-3" data-bs-ride="carousel" data-bs-interval="false">
          <div class="carousel-inner ">
@@ -328,6 +319,29 @@
       </div>
     </div>
   </footer>
+  <!-- Modal Crop -->
+  <div class="modal fade" id="cropmodal" tabindex="-1" aria-labelledby="infomodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="infomodaLabel" data-mlr-text>Crop</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body"><!--cropper-->
+          <div class="box-cropper container-fluid">
+    		   <div class="result mb-3" id="result"></div>
+           <div class="options hide">
+             <input type="number" class="img-w" value="1024" min="768" max="1024" />
+           </div>
+        	</div></div>
+        <div class="modal-footer">
+          <!-- save btn crop-->
+          <button class="btn close btn-primary " data-mlr-text data-bs-dismiss="modal">Done</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Modal Delete -->
   <div class="modal fade" id="infomodal" tabindex="-1" aria-labelledby="infomodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -352,7 +366,14 @@
           <h5 class="modal-title" id="ipfsomodaLabel" data-mlr-text>Print On IPFS</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" data-mlr-text>Are you sure you want to publish this item on Ipfs? You won't be able to edit it anymore.</div>
+        <div class="modal-body"><!--cropper-->
+          <div class="box-cropper hide container-fluid">
+    		   <div class="result mb-3" id="result"></div>
+           <div class="options hide">
+             <input type="number" class="img-w" value="1024" min="768" max="1024" />
+           </div>
+
+        	</div></div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" data-mlr-text>No</button>
           <button type="button" class="btn btn-primary  printipfs" data-mlr-text>Yes, print it!</button>
