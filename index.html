@@ -164,7 +164,7 @@
     <!--Page create a flyer-->
     <div class="container pt-3 pages hide" id="page-create">
       <h1 class="title-page" data-mlr-text>new flyer</h1>
-      <form id="create-flyer">
+      <form id="create-flyer" class="needs-validation" novalidate>
 
       <!--carousel content-->
       <div id="carousel-content" class="carousel carousel-dark slide mt-3" data-bs-ride="carousel" data-bs-interval="false">
@@ -205,10 +205,12 @@
             <h2 data-mlr-text>Content</h2>
               <div class="mb-3">
                 <label for="titleInput" class="form-label" data-mlr-text>Title *</label>
+                <div class="invalid-feedback" data-mlr-text>Please provide a title.</div>
                 <input type="text" class="form-control" id="titleInput" placeholder="required title" required>
               </div>
               <div class="mb-3">
                 <label for="bodyTextarea" class="form-label" data-mlr-text>Body *</label>
+                <div class="invalid-feedback" data-mlr-text>Please provide a body.</div>
                 <textarea class="form-control" id="bodyTextarea" rows="3" placeholder="required text" required></textarea>
               </div>
 
@@ -428,7 +430,7 @@
   <div class="modal fade" id="addmodal" tabindex="-1" aria-labelledby="addmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <form id="add-bookmarks">
+        <form id="add-bookmarks" class="needs-validation" novalidate>
         <div class="modal-header">
           <h5 class="modal-title" id="infomodaLabel" data-mlr-text>Add bookmark</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -436,14 +438,16 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="titleaddInput" class="form-label" data-mlr-text>Title *</label>
+            <div class="invalid-feedback" data-mlr-text>Please provide a title.</div>
             <input type="text" class="form-control" id="titleaddInput" placeholder="required title" required>
           </div>
           <div class="mb-3">
             <label for="dateaddInput" class="form-label" data-mlr-text>Date</label>
-            <input type="text" class="form-control" id="dateaddInput"  required>
+            <input type="text" class="form-control" id="dateaddInput">
           </div>
           <div class="mb-3">
             <label for="urladdInput" class="form-label">URL *</label>
+            <div class="invalid-feedback" data-mlr-text>Please provide a url.</div>
             <input type="text" class="form-control" id="urladdInput" placeholder="required url" required>
           </div>
           <div class="mb-3">
@@ -453,7 +457,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" data-mlr-text>Close</button>
-          <button type="button" class="btn btn-primary" data-mlr-text>Add bookmark</button>
+          <button type="button" class="btn btn-primary" data-mlr-text id="btnAddbookmark">Add bookmark</button>
         </div>
         </form>
       </div>

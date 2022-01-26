@@ -52,7 +52,7 @@ var MLstrings = [{
     },
     {
         English: "Crop",
-        Italiano: "taglia",
+        Italiano: "Ritaglia",
         Español: "Corta",
         Français: "Coupe",
     },
@@ -124,7 +124,7 @@ var MLstrings = [{
     },
     {
         English: "Upload, Crop and save cover",
-        Italiano: "Carica, taglia e salva l'immagine di copertina",
+        Italiano: "Carica, ritaglia e salva l'immagine di copertina",
         Español: "",
         Français: "",
     },
@@ -311,6 +311,24 @@ var MLstrings = [{
     {
         English: "Got it, thanks!",
         Italiano: "Capito, grazie!",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Please provide a title.",
+        Italiano: "Per favore inserisci un titolo.",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Please provide a body.",
+        Italiano: "Per favore inserisci del testo.",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Please provide a url.",
+        Italiano: "Per favore inserisci un url.",
         Español: "",
         Français: "",
     },

@@ -160,9 +160,43 @@ h5, .h5{
 }
 
 .form-control::placeholder {
-    color: #0397bb73;
+    color: #ced4da;
     opacity: 1;
 }
+
+.invalid-feedback {
+  color: #C5037E;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    border-color: #C5037E;
+    background-image:none;
+  }
+
+  .form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
+    border-color: #C5037E;
+    box-shadow: 0 0 0 .25rem rgba(197,3,126,.25);
+}
+
+.form-control.is-valid, .was-validated .form-control:valid, .was-validated .form-select:valid:not([multiple]):not([size]) {
+    border-color: #ced4da;
+    background-image:none; }
+
+.form-control-color.is-valid, .was-validated .form-control-color:valid{
+    padding: .375rem;
+}
+
+  .form-control.is-valid:focus, .was-validated .form-control:valid:focus {
+      border-color: #0397BB;
+      box-shadow: 0 0 0 .25rem rgba(3,151,187,.25);
+  }
+
+  .was-validated .invalid-feedback {
+      display: block;
+  }
+  .was-validated .richText{
+    border-color: #C5037E;
+  }
 
 .btn-primary, .btn-primary:focus, .btn-primary:active, .btn-primary:hover, .btn-outline-primary:active, .btn-outline-primary:hover{
   color: #fff;
@@ -268,6 +302,9 @@ background-size: 28px;
     font-family: 'Montserrat Medium';
     color: #888;
 }
+
+
+
 .btn {
   font-size: 12px;
   text-transform: uppercase;

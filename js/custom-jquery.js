@@ -36,6 +36,8 @@ $( document ).ready(function() {
       if(v_footer){$('footer').show("slow");}else{$('footer').hide("fast");}
       $('.pages').hide("fast");
         $('.main-menu .active').removeClass( "active" );
+        $('#create-flyer').removeClass('was-validated');
+        $('#add-bookmarks').removeClass('was-validated');
         $(this).addClass( "active" );
         $('#'+target).show(2000);
   });
@@ -49,12 +51,7 @@ $( document ).ready(function() {
         $('#page-create').show(2000);
   });
   // menu footer create a flyer
-      $('#preview').click(function(){
-        $('.carousel').hide();
-        $('.menu-create').hide();
-        $('.text-end').show();
-        $('#content-flyer').show();
-      });
+
       $('.back').click(function(){
         $('.carousel').show();
         $('.menu-create').show();

@@ -7,38 +7,16 @@ var shareModal = "";
 var copyModal = "";
 var qrModal = "";
 var cookieDisc ="";
+var addModal="";
 var pannelli ="";
 var cropModal = "";
 var cropBoxData;
 var canvasData;
 var cropper;
+var formBookmark;
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // codice preso da qui:
-// https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag
-// al posto di usare il cdn ho usato ipfs per il file javascript di interfacca a ipfs
-  const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() })
-  window.node = node
-  //if(node.isOnline()) $("#main").show();
-  console.log(node)
 
-    // You can write more code here to use it. Use methods like
-    // node.add, node.get. See the API docs here:
-    // https://github.com/ipfs/js-ipfs/tree/master/packages/interface-ipfs-core
-  // vars
-
-  // bottone per Ipfs
-  const ipsf_button = document.querySelectorAll('.printipfs');
-  var loadingCover = document.querySelector('.uploading');
-  var el=document.querySelector('footer.footer');
-
-  ipsf_button.forEach(function(item) {
-    item.addEventListener('click', function(e) {
-      e.preventDefault();
-      loadingCover.classList.remove('hide');
-      el.style.display = 'none';
-    });
-  });
 
 // cropper
   let result = document.querySelector('.result'),
@@ -142,24 +120,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
 
-
-  /*let edit_link=document.getElementsByClassName("edit-link");
-  for(let el=0;el<edit_link.length;el++){
-    if(edit_link[el].classList.contains("preview")==true){
-      let element_draft_title=edit_link[el].parentElement.parentElement.parentElement.getElementsByTagName("h5")[0].textContent;
-      edit_link[el].addEventListener('click',function(event){
-        event.preventDefault();
-        retrieveInfo(element_draft_title);
-      });
-    }
-    else {
-      edit_link[el].addEventListener('click',function(event){
-        event.preventDefault();
-        retrieveInfo(edit_link[el].textContent);
-      });
-    }
-  } */
-
   // check cookie 4 localStorage disclaimer
   cookieDisc = new bootstrap.Modal(document.getElementById('disclaimer-storage'), {keyboard: false});
   let storage = getCookie("disclaimerStorage");
@@ -167,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     cookieDisc.show();
   }
 
-document.getElementById('disclaimer-storage').addEventListener('hide.bs.modal', function (event) {
+document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal', function (event) {
   closeDisclaimerStorage();
 });
 
@@ -244,11 +204,7 @@ document.getElementById('disclaimer-storage').addEventListener('hide.bs.modal', 
     }
   });
 
-  //eventListener AddBookmark
-  document.getElementById("add-bookmarks").querySelector(".modal-footer").children[1].addEventListener('click',function(event){
-    event.preventDefault();
-    addBookmarktoStorage();
-  });
+
 
   // Qrcode
   var qr = window.qr = new QRious({
@@ -260,7 +216,53 @@ document.getElementById('disclaimer-storage').addEventListener('hide.bs.modal', 
     shareModal = new bootstrap.Modal(document.getElementById('sharemodal'), {keyboard: false});
     copyModal = new bootstrap.Modal(document.getElementById('copymodal'), {keyboard: false});
     qrModal = new bootstrap.Modal(document.getElementById('qrmodal'), {keyboard: false});
+    addModal = new bootstrap.Modal(document.getElementById('addmodal'), {keyboard: false});
     pannelli = new bootstrap.Carousel(document.getElementById('carousel-content'));
+    formBookmark =document.getElementById("add-bookmarks");
+
+    //eventListener AddBookmark
+    document.getElementById("btnAddbookmark").addEventListener('click',function(event){
+      if (!formBookmark.checkValidity()) {
+            event.preventDefault();
+            formBookmark.classList.add('was-validated');
+          }else{
+            event.preventDefault();
+            addBookmarktoStorage();
+            formBookmark.classList.remove('was-validated');
+          }
+
+    });
+
+    document.getElementById('addmodal').addEventListener('hide.bs.modal', function (event) {
+      formBookmark.classList.remove('was-validated');
+    });
+
+
+    // codice preso da qui:
+    // https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag
+    // al posto di usare il cdn ho usato ipfs per il file javascript di interfacca a ipfs
+      const node = await Ipfs.create({ repo: 'ipfs-' + Math.random() })
+      window.node = node
+      //if(node.isOnline()) $("#main").show();
+      console.log(node)
+
+        // You can write more code here to use it. Use methods like
+        // node.add, node.get. See the API docs here:
+        // https://github.com/ipfs/js-ipfs/tree/master/packages/interface-ipfs-core
+      // vars
+
+      // bottone per Ipfs
+      const ipsf_button = document.querySelectorAll('.printipfs');
+      var loadingCover = document.querySelector('.uploading');
+      var el=document.querySelector('footer.footer');
+
+      ipsf_button.forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          loadingCover.classList.remove('hide');
+          el.style.display = 'none';
+        });
+      });
 
 });
 
@@ -312,29 +314,41 @@ function copyLink (e) {
  setTimeout(function(){ copyModal.hide(); }, 1000);
 }
 
-function renderPreview()
-{
-    post = {};
-    post.titleInput = $("#titleInput").val();
-    post.template = $("#selectTemplate").val();
-    post.colorInput = $("#colorInput").val();
-    post.cropped = $("#croppedImage").attr("src");
-    post.bodyTextarea = $(".richText-editor").first().text();
-    post.whereInput = $("#whereInput").val();
-    post.dateInput = $("#dateInput").val();
-    post.timeInput = $("#timeInput").val();
-    console.log(post);
+function renderPreview(){
+  if (!document.getElementById('create-flyer').checkValidity()) {
+        document.getElementById('create-flyer').classList.add('was-validated');
+        pannelli.to(1);
+      }else{
 
-    // save post to tempObj
-    tempObj=post;
+        document.getElementById('create-flyer').classList.remove('was-validated');
+        // jquery pannelli
+        $('.carousel').hide();
+        $('.menu-create').hide();
+        $('.text-end').show();
+        $('#content-flyer').show();
 
-    fetch('./templates/default.html')
-    .then((response) => response.text())
-    .then((template) => {
-      var rendered = Mustache.render(template, post);
-      document.getElementById('flyer').innerHTML = rendered;
-      finalSpace = rendered;
-    });
+        post = {};
+        post.titleInput = $("#titleInput").val();
+        post.template = $("#selectTemplate").val();
+        post.colorInput = $("#colorInput").val();
+        post.cropped = $("#croppedImage").attr("src");
+        post.bodyTextarea = $(".richText-editor").first().text();
+        post.whereInput = $("#whereInput").val();
+        post.dateInput = $("#dateInput").val();
+        post.timeInput = $("#timeInput").val();
+        console.log(post);
+
+        // save post to tempObj
+        tempObj=post;
+
+        fetch('./templates/default.html')
+        .then((response) => response.text())
+        .then((template) => {
+          var rendered = Mustache.render(template, post);
+          document.getElementById('flyer').innerHTML = rendered;
+          finalSpace = rendered;
+        });
+    }
 }
 
 async function sendInSpace()
@@ -465,6 +479,7 @@ function newFlyer(){
 
 function cleanFlyer(ctr){
   if(ctr==1){
+    document.getElementById('create-flyer').classList.remove('was-validated');
     document.getElementById("titleInput").value='';
     document.getElementById("selectTemplate").value='1';
     document.getElementById("colorInput").value='#0397BB';
@@ -528,6 +543,6 @@ function addBookmarktoStorage(){
   {
     localStorage.setItem(position,tempBook);
   }
-  $("#addmodal").click();
+  addModal.hide();
   addToBookmark(bookmark);
 }
