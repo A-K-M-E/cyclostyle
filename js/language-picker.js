@@ -332,20 +332,34 @@ var MLstrings = [{
         Español: "",
         Français: "",
     },
+    {
+        English: "There are no bookmarks saved yet.",
+        Italiano: "Non ci sono ancora segnalibri salvati.",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "There are no drafts saved yet.",
+        Italiano: "Non ci sono ancora bozze salvate.",
+        Español: "",
+        Français: "",
+    },
 ];
 
 // Global var :(
-var mlrLangInUse;
+
 
 let selctedLang = getCookie("chosenLang");
 if (selctedLang == "") {
     selctedLang = "English"
 }
 
+var mlrLangInUse;
+
 var mlr = function({
     dropID = "mbPOCControlsLangDrop",
     stringAttribute = "data-mlr-text",
-    chosenLang = "English",
+    chosenLang = selctedLang,
     mLstrings = MLstrings,
     countryCodes = false,
     countryCodeData = [],
@@ -426,6 +440,8 @@ mlr({
     countryCodeData: mlCodes,
 });
 
+
+
 mlr({
     dropID: "mbPOCControlsLangDrop2",
     stringAttribute: "data-mlr-text",
@@ -435,6 +451,8 @@ mlr({
     countryCodeData: mlCodes,
 });
 
-
+document.getElementById("mbPOCControlsLangDrop").addEventListener("change", function(e) {
+    document.getElementById("mbPOCControlsLangDrop2").value = document.getElementById("mbPOCControlsLangDrop").value;
+});
 
 // link https://codepen.io/benfrain/pen/GdKrVx

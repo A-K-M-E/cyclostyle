@@ -261,6 +261,7 @@
       <div class="container pt-3 hide pages" id="page-drafts">
         <h1 class="title-page" data-mlr-text>drafts</h1>
         <div class="list-group">
+          <span data-mlr-text class="empty-records">There are no drafts saved yet.</span>
         </div>
       </div>
       <!--Page bookmarks-->
@@ -270,6 +271,7 @@
           <button type="submit" class="btn btn-outline-danger add" title="Add bookmark" data-bs-toggle="modal" data-bs-target="#addmodal" data-mlr-text>Add</button>
         </div>
         <div class="list-group">
+          <span data-mlr-text class="empty-records">There are no bookmarks saved yet.</span>
         </div>
       </div>
       <!--Page settings -->
@@ -321,6 +323,14 @@
       </div>
     </div>
   </footer>
+  <!-- Upload animation -->
+  <div class="uploading  h-100 w-100 hide">
+    <div class="position-relative h-100 w-100">
+      <div class="position-absolute top-50 start-50 translate-middle w-100 text-center">
+      <img src="images/loading.gif" alt="" style="cursor: default;" class="w-auto h-auto" width="350" height="118">
+      </div>
+    </div>
+  </div>
   <!-- Modal Crop -->
   <div class="modal fade" id="cropmodal" tabindex="-1" aria-labelledby="infomodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -339,7 +349,6 @@
         <div class="modal-footer">
           <!-- save btn crop-->
           <button class="btn close btn-primary " data-mlr-text data-bs-dismiss="modal">Done</button>
-
         </div>
       </div>
     </div>
@@ -368,14 +377,7 @@
           <h5 class="modal-title" id="ipfsomodaLabel" data-mlr-text>Print On IPFS</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body"><!--cropper-->
-          <div class="box-cropper hide container-fluid">
-    		   <div class="result mb-3" id="result"></div>
-           <div class="options hide">
-             <input type="number" class="img-w" value="1024" min="768" max="1024" />
-           </div>
-
-        	</div></div>
+        <div class="modal-body" data-mlr-text>Are you sure you want to publish this item on Ipfs? You won't be able to edit it anymore.</div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" data-mlr-text>No</button>
           <button type="button" class="btn btn-primary  printipfs" data-mlr-text>Yes, print it!</button>
@@ -426,7 +428,7 @@
       </div>
     </div>
   </div>
-  <!-- Modal Add -->
+  <!-- Modal Add Bookmark -->
   <div class="modal fade" id="addmodal" tabindex="-1" aria-labelledby="addmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -460,14 +462,6 @@
           <button type="button" class="btn btn-primary" data-mlr-text id="btnAddbookmark">Add bookmark</button>
         </div>
         </form>
-      </div>
-    </div>
-  </div>
-  <!-- Upload animation -->
-  <div class="uploading  h-100 w-100 hide">
-    <div class="position-relative h-100 w-100">
-      <div class="position-absolute top-50 start-50 translate-middle w-100 text-center">
-      <img src="images/loading.gif" alt="" style="cursor: default;" class="w-auto h-auto" width="350" height="118">
       </div>
     </div>
   </div>

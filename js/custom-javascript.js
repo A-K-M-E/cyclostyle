@@ -384,14 +384,16 @@ function saveLocal(){
 
 function addToDraft(obj){
   let list=document.getElementById("page-drafts").getElementsByClassName("list-group")[0];
+  $('#page-drafts .empty-records').hide();
   const parser = new DOMParser();
-  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5 class="mb-1"><a href="#" class="edit-link">'+obj.titleInput+'</a></h5><small>'+obj.dateInput+": "+obj.timeInput+'</small><div class="d-flex w-100 justify-content-between"><div class="d-flex w-100 justify-content-start"><a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a><a href="#" class="action-btn preview preview-link"   onclick="retrieveInfo(\''+obj.titleInput+'\');previewDiv();renderPreview();" title="Preview"></a><a href="#" onclick="retrieveInfo(\''+obj.titleInput+'\');editDiv();" class="action-btn edit edit-link" title="Edit"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
+  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5 class="mb-1"><a href="#" onclick="retrieveInfo(\''+obj.titleInput+'\');previewDiv();renderPreview();" class="edit-link">'+obj.titleInput+'</a></h5><small>'+obj.dateInput+" "+obj.timeInput+'</small><div class="d-flex w-100 justify-content-between"><div class="d-flex w-100 justify-content-start"><a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a><a href="#" class="action-btn preview preview-link"   onclick="retrieveInfo(\''+obj.titleInput+'\');previewDiv();renderPreview();" title="Preview"></a><a href="#" onclick="retrieveInfo(\''+obj.titleInput+'\');editDiv();" class="action-btn edit edit-link" title="Edit"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
   parsedS=parsedS.body.children[0];
   list.append(parsedS);
 }
 
 function addToBookmark(obj){
   let list=document.getElementById("page-bookmarks").getElementsByClassName("list-group")[0];
+  $('#page-bookmarks .empty-records').hide();
   const parser = new DOMParser();
   let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5><a href="'+obj.url+'" class="out-link" target="_blank">'+obj.title+'</a></h5><p class="mb-0">'+obj.date+'</p><small class="hash mb-1">'+obj.url+'</small><div class="d-flex justify-content-between"><div class="d-flex w-100 justify-content-start" data-value="'+obj.url+'"><a href="#" class="action-btn copy" onclick="copyLink(this)" title="Copy link"></a><a href="#" onclick="shareLink(this)" class="action-btn share share-button" title="Share"></a><a href="#" class="action-btn qrcode" onclick="qrClick(this)" title="Qrcode"></a><a href="'+obj.pdf+'" class="action-btn pdf" title="Download pdf" target="_blank"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
   parsedS=parsedS.body.children[0];
