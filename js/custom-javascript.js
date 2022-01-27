@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           cropModal.show();
           document.getElementById('cropmodal').addEventListener('shown.bs.modal', function () {
               cropper = new Cropper(img, {
-                aspectRatio: 16 / 6,
                 autoCropArea: 0.5,
                 ready: function () {
                   //Should set crop box data first here
@@ -183,13 +182,18 @@ document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal'
       checkSave=false;
     }
   });
+  document.getElementById("whoInput").addEventListener('change', function(event){
+    if($("#whoInput").val()!=lastSave.where){
+      checkSave=false;
+    }
+  });
   document.getElementById("whereInput").addEventListener('change', function(event){
     if($("#whereInput").val()!=lastSave.where){
       checkSave=false;
     }
   });
   document.getElementById("cover").addEventListener('change', function(event){
-    if($("#whereInput").val()!=lastSave.where){
+    if($("#cover").val()!=lastSave.cropped){
       checkSave=false;
     }
   });
@@ -236,7 +240,6 @@ document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal'
     document.getElementById('addmodal').addEventListener('hide.bs.modal', function (event) {
       formBookmark.classList.remove('was-validated');
     });
-
 
     // codice preso da qui:
     // https://github.com/ipfs/js-ipfs/tree/master/examples/browser-script-tag
@@ -332,7 +335,8 @@ function renderPreview(){
         post.template = $("#selectTemplate").val();
         post.colorInput = $("#colorInput").val();
         post.cropped = $("#croppedImage").attr("src");
-        post.bodyTextarea = $(".richText-editor").first().text();
+        post.bodyTextarea = $(".richText-editor").first().html();
+        post.whoInput = $("#whoInput").val();
         post.whereInput = $("#whereInput").val();
         post.dateInput = $("#dateInput").val();
         post.timeInput = $("#timeInput").val();
@@ -340,8 +344,10 @@ function renderPreview(){
 
         // save post to tempObj
         tempObj=post;
-
-        fetch('./templates/default.html')
+        var template_url = './templates/default.html';
+        if($("#selectTemplate").val()){
+        var template_url = './templates/'+$("#selectTemplate").val()+'.html';}
+        fetch(template_url)
         .then((response) => response.text())
         .then((template) => {
           var rendered = Mustache.render(template, post);
@@ -454,7 +460,9 @@ function retrieveInfo(text){
   document.getElementById("selectTemplate").value=retrieved.template;
   document.getElementById("colorInput").value=retrieved.colorInput;
   document.getElementById("croppedImage").setAttribute("src",retrieved.cropped);
-  document.getElementsByClassName("richText-editor")[0].textContent=retrieved.bodyTextarea;
+  $(".richText-editor").first().html(retrieved.bodyTextarea);
+//  document.getElementById("bodyTextarea").value=retrieved.bodyTextarea;
+  document.getElementById("whoInput").value=retrieved.whoInput;
   document.getElementById("whereInput").value=retrieved.whereInput;
   document.getElementById("dateInput").value=retrieved.dateInput;
   document.getElementById("timeInput").value=retrieved.timeInput;
@@ -489,6 +497,7 @@ function cleanFlyer(ctr){
     document.getElementById("croppedImage").parentElement.classList.add("hide");
     document.getElementById("cover").value=null;
     document.getElementsByClassName("richText-editor")[0].textContent='';
+    document.getElementById("whoInput").value='';
     document.getElementById("whereInput").value='';
     document.getElementById("dateInput").value='';
     document.getElementById("timeInput").value='';
@@ -519,6 +528,7 @@ function currentFlyer(){
     color:document.getElementById("colorInput").value,
     img:document.getElementById("croppedImage").attributes.src.value,
     upload:document.getElementById("cover").value,
+    who:document.getElementById("whoInput").value,
     where:document.getElementById("whereInput").value,
     date:document.getElementById("dateInput").value,
     time:document.getElementById("timeInput").value

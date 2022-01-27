@@ -179,9 +179,9 @@
                <div class="input-group mb-3">
                  <label class="input-group-text" for="selectTemplate" data-mlr-text>Template</label>
                  <select class="form-select" id="selectTemplate">
-                   <option selected value="1">Default</option>
-                   <option value="2">Two</option>
-                   <option value="3">Three</option>
+                   <option selected value="default">Default</option>
+                   <option value="boring-manifesto">Boring manifesto</option>
+                   <option value="cyberpunk-sam">Sam cyberpunk</option>
                  </select>
                </div>
                <div class="mb-3 pb-2 page">
@@ -225,8 +225,12 @@
           <div class="carousel-item">
             <h2 data-mlr-text>Details</h2>
             <div class="mb-3">
-              <label for="whereInput" class="form-label" data-mlr-text>Who?/Where?</label>
-              <textarea class="form-control" id="whereInput" rows="3"></textarea>
+              <label for="whoInput" class="form-label" data-mlr-text>Who?</label>
+              <input type="text" id="whoInput" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="whereInput" class="form-label" data-mlr-text>Where?</label>
+              <input type="text" id="whereInput" class="form-control">
             </div>
               <div class="mb-3">
                 <label for="dateInput" class="form-label" data-mlr-text>When?</label>
@@ -424,7 +428,7 @@
   <div class="modal fade" id="copymodal"  tabindex="-1" aria-labelledby="copymodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-body">  <img src="icons/link.svg" alt="" width="30" height="30" class="anim-copied" data-mlr-text>Link copied on clipboard</div>
+        <div class="modal-body">  <img src="icons/link.svg" alt="" width="30" height="30" class="anim-copied" ><span data-mlr-text>Link copied on clipboard</span></div>
       </div>
     </div>
   </div>

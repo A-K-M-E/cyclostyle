@@ -35,6 +35,11 @@
     margin: 10px 0 0;
 }
 
+.flyer-template .container{
+  margin: 0;
+  padding: 0;
+}
+
 .flyer-template h1,
 .flyer-template h2,
 .flyer-template h3,
@@ -42,29 +47,36 @@
 .flyer-template h5,
 .flyer-template h6 {
   font-family: Helvetica, Arial, Sans-Serif !important;
-  font-weight: 600;
+  font-weight: bold;
   margin: 1rem 0 0.3rem;
   color: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
 }
 
 .flyer-template h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .flyer-template h2 {
-    font-size: 1.7rem;
+    font-size: 2.1rem ;
 }
 
-.flyer-template h3,
+.flyer-template h3{
+  font-size: 1.8rem ;
+}
+
+.flyer-template h1.manifesto{
+  text-align: center;
+  font-weight: 800;
+}
+
 .flyer-template h4,
 .flyer-template h5,
 .flyer-template h6 {
     font-size: 1.5rem;
-
 }
 
 .flyer-template ul {
-    list-style: square;
+    list-style: circle;
     padding: 1rem;
     margin: 1rem 0;
 }
@@ -83,27 +95,10 @@
 }
 
 
-.flyer-template header h1 {
-    background: #fff;
-    display: block;
-
-    font-weight: 600;
+.flyer-template header .who {
     color: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
-    padding: 0.8rem;
-}
-
-.flyer-template header .imagehead + h1{
-  margin: -2em 0 1em;
-}
-
-.flyer-template header .data {
-    background: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
-    font-weight: 600;
-    color: #fff;
-    display: inline-block;
-    padding: 0.8rem;
-    margin: 0;
-    text-align: center;
+    text-align:center;
+    font-size: 1.5rem;
 }
 
 .flyer-template header p {
@@ -112,20 +107,18 @@
     text-indent: 0;
     font-size: 1.3rem;
     line-height: 1.6rem;
-
 }
 
 .flyer-template .imagehead {
     margin: 0;
     position: relative;
-    z-index: -10;
 }
 
 .flyer-template .imagehead img {
     object-fit: cover;
     width: 100%;
     height: auto;
-    max-height: 350px;
+    max-height: 100px;
     background-position: center bottom;
 }
 
@@ -136,69 +129,38 @@
     padding: 3% 2%;
 }
 
-.flyer-template footer{
-  background: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
+.flyer-template .who {
+  font-weight: bold;
 }
 
 .flyer-template footer p {
     line-height: 1.1rem;
     margin: 0;
-    color: #fff;
+    color: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
 }
 
-.flyer-template .who {
+.flyer-template .where {
     font-size: 1.3rem;
     font-weight: bolder;
     line-height: 1.2;
 }
 
-
-@media(min-width:768px) {
-
-
-    .flyer-template header h1 {
-
-        padding-left: 11rem;
-    }
-    .flyer-template header .imagehead + h1{
-      bottom: -28px;
-      position: absolute;
-      left: 11rem;
-        padding:0.38rem;
-    }
-
-    .flyer-template header .data {
-        position: absolute;
-        bottom: -2.1rem;
-        left: 1rem;
-        max-width: 9rem;
-    }
-    .flyer-template main {
-        width: 81%;
-        margin-left: 9.2rem;
-        margin-top: 2%;
-        padding-right: 2em;
-    }
-}
     </style>
     <title>{{ titleInput }}</title>
   </head>
   <body >
   <div class="flyer-template">
     <header>
-      {{#cropped}}
       <div class="imagehead">
+        {{#cropped}}
         <img src="{{cropped}}"/>
+        {{/cropped}}
       </div>
-      {{/cropped}}
-      <h1>{{ titleInput }}</h1>
-      <div class="data">
-        {{#dateInput}}
-        <p>{{dateInput}}</p>
-        {{/dateInput}}
-        {{#timeInput}}
-          <p>{{timeInput}}</p>
-        {{/timeInput}}
+      <h1 class="manifesto">{{ titleInput }}</h1>
+      <div class="who">
+        {{#whoInput}}
+        <p class="who">{{whoInput}}</p>
+        {{/whoInput}}
       </div>
     </header>
     <main>
@@ -208,9 +170,7 @@
     </main>
 
     <footer>
-      {{#whoInput}}
-      <p class="who">{{whoInput}}</p>
-      {{/whoInput}}
+      <p>{{#dateInput}}{{dateInput}}{{/dateInput}} {{#timeInput}}{{timeInput}}{{/timeInput}}</p>
       {{#whereInput}}
       <p class="where">{{whereInput}}</p>
       {{/whereInput}}

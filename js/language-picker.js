@@ -147,8 +147,14 @@ var MLstrings = [{
         Français: "",
     },
     {
-        English: "Who?/Where?",
-        Italiano: "Chi?/Dove?",
+        English: "Who?",
+        Italiano: "Chi?",
+        Español: "",
+        Français: "",
+    },
+    {
+        English: "Where?",
+        Italiano: "Dove?",
         Español: "",
         Français: "",
     },

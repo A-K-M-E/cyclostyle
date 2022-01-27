@@ -333,6 +333,10 @@ img {
 #preview{
   float: right;
 }
+#flyer{
+  margin-top: 10px;
+  margin-bottom: 74px;
+}
 
 .list-group-item {
     border: 0;
@@ -620,6 +624,8 @@ footer .carousel-indicators [data-bs-target] {
   background-color: #fff;
   z-index: 999999;
 }
+
+
 
 @media (min-width: 768px) {
   #page-home .input-group {

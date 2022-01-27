@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+    /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none} /*end normalize */
+    body.flyer-template {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    font-family: Helvetica, Arial, Sans-Serif !important;
+    }
+    .flyer-template,
+    .flyer-template header,
+    .flyer-template main,
+    .flyer-template footer {
+    position: relative;
+    font-family: Helvetica, Arial, Sans-Serif !important;
+    }
+    .flyer-template header{padding: 1rem 3rem;}
+
+    .flyer-template a {
+    color: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
+    }
+
+    .flyer-template a:hover,
+    .flyer-template a:focus,
+    .flyer-template a:active {
+    color: #fff;
+    }
+
+    .flyer-template p {
+    font-size: 1.1rem;
+    margin: 10px 0 0;
+    }
+
+    .flyer-template h1 {
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+    font-size: 2.5rem;
+    font-family: Helvetica, Arial, Sans-Serif !important;
+    color: #000;
+    background: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
+    }
+
+    .flyer-template h2 {
+    font-size: 1.2rem;
+    color: #000;
+    background: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
+    display: inline-block;
+    font-weight: 400;
+    margin: 1rem 0 0.5rem;
+    font-family: Helvetica, Arial, Sans-Serif !important;
+    }
+
+    .flyer-template h3,
+    .flyer-template h4,
+    .flyer-template h5,
+    .flyer-template h6 {
+    font-size: 1.1rem;
+    color: #000;
+    background: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
+    font-family: Helvetica, Arial, Sans-Serif !important;
+    }
+
+    .flyer-template ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem;
+    list-style-position: outside;
+    }
+
+    .flyer-template li {
+    padding-left: 20px;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    }
+
+    .flyer-template li:before {
+    content: "\20e4";
+    color: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
+    padding-right: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    position:absolute;
+    left: 5px;
+    }
+
+    .flyer-template ul li ul {
+    padding-left: 1rem;
+    margin: 0 0 0.5rem;
+    list-style-position: outside;
+    }
+
+    .flyer-template ul li ul li:before {
+    content: "â€¢";
+    padding-right: 8px;
+    font-weight: normal;
+    font-size: 1rem;
+    }
+
+    .flyer-template header h1 {
+    background: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
+    display: block;
+    margin: 3em 0 0;
+    font-weight: 800;
+    color: #000;
+    padding: 0.8rem;
+    -webkit-transform: rotate(-9deg);
+    -moz-transform: rotate(-9deg);
+    -ms-transform: rotate(-9deg);
+    -o-transform: rotate(-9deg);
+    }
+
+    .flyer-template header .data {
+    display: inline-block;
+    margin: 0 0 0 6rem;
+    text-align: center;
+    -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+    }
+
+    .flyer-template header .data p {
+    background: #000;
+    font-weight: 600;
+    color: #fff;
+    padding: 0.8rem;
+    display: inline;
+    line-height: 2.5;
+    }
+
+    .flyer-template header p {
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+    }
+
+    .flyer-template .imagehead {
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    }
+
+    .flyer-template .imagehead img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    }
+
+    .flyer-template main,
+    .flyer-template footer {
+    margin: 0;
+    width: 100%;
+    padding: 3% 10%;
+    }
+
+    .flyer-template main .container p,
+    .flyer-template main .container div,
+    .flyer-template footer p{
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      display:inline-block;
+      margin: 0.5rem;
+      padding: 0.5rem;
+    }
+
+
+    .flyer-template footer p {
+    line-height: 1.1rem;
+    color: #000;
+    }
+
+    .flyer-template .who {
+    font-size: 1.3rem;
+    font-weight: bolder;
+    line-height: 1.2;
+    background:  {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
+    }
+
+    .flyer-template .where {
+    color: #fff;
+    background: #000;
+    }
+
+    @media(min-width:520px) {
+        .flyer-template header .data {
+        margin: 0.5rem 0 0 6rem;
+      }
+    }
+
+    @media(min-width:768px) {
+        .flyer-template header h1 {
+          margin: 2em 0 1em;
+        }
+        .flyer-template header .data {
+        margin: 0.5rem 0 0 11rem;
+      }
+    }
+
+    </style>
+    <title>{{ titleInput }}</title>
+  </head>
+  <body >
+  <div class="flyer-template">
+    <div class="imagehead">
+      {{#cropped}}
+      <img src="{{cropped}}"/>
+      {{/cropped}}
+    </div>
+    <header>
+      <h1>{{ titleInput }}</h1>
+      <div class="data">
+      {{#dateInput}}<p>{{dateInput}}</p>{{/dateInput}} {{#timeInput}}<p>{{timeInput}}</p>{{/timeInput}}
+      </div>
+    </header>
+    <main>
+		    <div class="container">
+          {{{bodyTextarea}}}
+        </div>
+    </main>
+
+    <footer>
+      {{#whoInput}}
+      <p class="who">{{whoInput}}</p>
+      {{/whoInput}}
+      {{#whereInput}}
+      <p class="where">{{whereInput}}</p>
+      {{/whereInput}}
+    </footer>
+  </div>
+  </body>
+</html>
