@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // get result to data uri
     let imgSrc = cropper.getCroppedCanvas({
       width: img_w.value //
-    }).toDataURL();
+    }).toDataURL('image/jpeg');
     // remove hide class of img
     cropped.classList.remove('hide');
     img_result.classList.remove('hide');
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('cropmodal').addEventListener('hide.bs.modal', function () {
     let imgSrc = cropper.getCroppedCanvas({
       width: img_w.value //
-    }).toDataURL();
+    }).toDataURL('image/jpeg');
     // remove hide class of img
     cropped.classList.remove('hide');
     img_result.classList.remove('hide');
