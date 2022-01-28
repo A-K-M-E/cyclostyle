@@ -1,0 +1,20 @@
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  PRINT                                                                  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+@media print {
+
+	@page {
+	    /* dimensions for the whole page */
+	    size: A5;
+	    margin: 0;
+	}
+
+	body {
+	    /* A5 dimensions */
+	    height: 210mm;
+	    width: 148.5mm;
+	    margin: 0;
+	}
+}
