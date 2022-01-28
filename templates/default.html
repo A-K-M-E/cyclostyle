@@ -11,6 +11,8 @@
     max-width: 1024px;
     margin: 0 auto;
     font-family: Helvetica, Arial, Sans-Serif !important;
+    font-size: 18px;
+    line-height: 1.3;
 }
 
 .flyer-template header,
@@ -49,10 +51,11 @@
   font-weight: 600;
   margin: 1rem 0 0.3rem;
   color: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
+  text-transform:none;
 }
 
 .flyer-template h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
 
 .flyer-template h2 {
@@ -75,7 +78,7 @@
 
 .flyer-template li {
   font-size: 1rem;
-  line-height: 1.2rem;
+  line-height: 1.3;
   margin-bottom: 0.5rem;
   position: relative;
 }
@@ -90,14 +93,13 @@
 .flyer-template header h1 {
     background: #fff;
     display: block;
-
     font-weight: 600;
     color: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
-    padding: 0.8rem;
+    padding: 1rem;
 }
 
 .flyer-template header .imagehead + h1{
-  margin: -2em 0 1em;
+  margin: -2em 0 0;
 }
 
 .flyer-template header .data {
@@ -106,7 +108,7 @@
     color: #fff;
     display: inline-block;
     padding: 0.8rem;
-    margin: 0;
+    margin: 0 0 0 1rem;
     text-align: center;
 }
 
@@ -136,7 +138,7 @@
 .flyer-template main,
 .flyer-template footer {
     margin: 0;
-    padding: 3% 2%;
+    padding: 3% 4%;
 }
 
 .flyer-template footer{
@@ -173,7 +175,6 @@
     .flyer-template header .data {
         position: absolute;
         bottom: -2.1rem;
-        left: 1rem;
         max-width: 9rem;
     }
     .flyer-template main {

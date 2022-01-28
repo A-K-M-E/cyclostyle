@@ -10,14 +10,15 @@
     width: 100%;
     max-width: 1024px;
     margin: 0 auto;
-    font-family: Helvetica, Arial, Sans-Serif !important;
+    font-family: Courier, Monaco, monospace !important;
+    font-size:19px;
     }
     .flyer-template,
     .flyer-template header,
     .flyer-template main,
     .flyer-template footer {
     position: relative;
-    font-family: Helvetica, Arial, Sans-Serif !important;
+    font-family: Courier, Monaco, monospace !important;
     }
     .flyer-template header{padding: 1rem 3rem;}
 
@@ -35,37 +36,35 @@
     font-size: 1.1rem;
     margin: 10px 0 0;
     }
+    .flyer-template h1,
+    .flyer-template h2,
+    .flyer-template h3,
+    .flyer-template h4,
+    .flyer-template h5,
+    .flyer-template h6 {
+      font-family: Courier, Monaco, monospace !important;
+      color: #000;
+      background: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
+      text-transform: none;
+      font-weight: bold;
+    }
 
     .flyer-template h1 {
     margin-top: 0;
     margin-bottom: 0.3rem;
-    font-size: 2.5rem;
-    font-family: Helvetica, Arial, Sans-Serif !important;
-    color: #000;
-    background: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
-    text-transform: none;
+    font-size: 3rem;
     }
 
     .flyer-template h2 {
-    font-size: 1.2rem;
-    color: #000;
-    background: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
-    display: inline-block;
-    font-weight: 400;
+    font-size: 2.2rem;
     margin: 1rem 0 0.5rem;
-    font-family: Helvetica, Arial, Sans-Serif !important;
-    text-transform: none;
     }
 
     .flyer-template h3,
     .flyer-template h4,
     .flyer-template h5,
     .flyer-template h6 {
-    font-size: 1.1rem;
-    color: #000;
-    background: {{#colorInput}}{{colorInput}}{{/colorInput}}{{^colorInput}}#378ab4{{/colorInput}};
-    font-family: Helvetica, Arial, Sans-Serif !important;
-    text-transform: none;
+    font-size: 1.8rem;
     }
 
     .flyer-template ul {
