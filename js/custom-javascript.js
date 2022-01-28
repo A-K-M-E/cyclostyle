@@ -8,6 +8,7 @@ var copyModal = "";
 var qrModal = "";
 var cookieDisc ="";
 var addModal="";
+var ipsfModal="";
 var pannelli ="";
 var cropModal = "";
 var cropBoxData;
@@ -97,12 +98,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
   // eventList su save-draft
-  let saveDraft = document.querySelectorAll(".save-draft")
-  for(let i=0;i<saveDraft.length;i++){
-    saveDraft[i].addEventListener('click', function(e){
+  //let saveDraft = document.querySelectorAll(".save-draft")
+  //for(let i=0;i<saveDraft.length;i++){
+  document.getElementById('save-draft').addEventListener('click', function(e){
         saveLocal();
-    })
-  }
+    });
+  //}
 
   // add draft to the elementList
   if(localStorage.length!=0){
@@ -223,7 +224,7 @@ document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal'
     addModal = new bootstrap.Modal(document.getElementById('addmodal'), {keyboard: false});
     pannelli = new bootstrap.Carousel(document.getElementById('carousel-content'));
     formBookmark =document.getElementById("add-bookmarks");
-
+    ipfsModal = new bootstrap.Modal(document.getElementById('ipfsmodal'), {keyboard: false});
     //eventListener AddBookmark
     document.getElementById("btnAddbookmark").addEventListener('click',function(event){
       if (!formBookmark.checkValidity()) {
@@ -255,17 +256,22 @@ document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal'
       // vars
 
       // bottone per Ipfs
-      const ipsf_button = document.getElementById('.printipfs');
+      var ipsf_button = document.getElementById('printipfs');
       var loadingCover = document.querySelector('.uploading');
-      var el=document.querySelector('footer.footer');
 
-     document.getElementById('.printipfs').addEventListener('click', function(e) {
+     ipsf_button.addEventListener('click', function(e) {
           e.preventDefault();
           loadingCover.classList.remove('hide');
-          el.style.display = 'none';
+          $('footer').hide();
+          ipfsModal.hide();
           // qui va la funzione per stampare su ipfs, se vuoi puoi mettere tutto in un altra funzione e onclick
           // c'è solo un bosttone per pubblicare su ipfs, è quello dentro la finestra modale #ipfsmodal
           // si attiva sempre la stessa modale anche in draft (riempie i campi e genera la preview);
+
+          // quando ha finito di caricare per andare a bookmarks il seguente codice:
+          /*   $('nav-link.bookmarks').click();
+              loadingCover.classList.add('hide');
+          */
       });
 
 });
@@ -346,8 +352,7 @@ function renderPreview(){
         // save post to tempObj
         tempObj=post;
         var template_url = './templates/default.html';
-        if($("#selectTemplate").val()){
-        var template_url = './templates/'+$("#selectTemplate").val()+'.html';}
+        if($("#selectTemplate").val()){var template_url = './templates/'+$("#selectTemplate").val()+'.html';}
         fetch(template_url)
         .then((response) => response.text())
         .then((template) => {
