@@ -314,15 +314,17 @@
       <button  type="submit" class="btn btn-outline-danger ms-2" id="preview" onclick="renderPreview()" data-bs-slide-to="2" data-mlr-text>Preview</button>
       </div>
       <div id="footer-preview" class="text-end finalize hide">
-        <!-- <div class="preview-device d-flex w-100 justify-content-center">
-          <a href="#" class="action-btn mobile active" title="Mobile"></a>
-          <a href="#" class="action-btn desktop" title="Desktop"></a>
-          <a href="#" class="action-btn pdf-preview" title="Pdf"></a>
-        </div> -->
-        <div class="preview-device d-flex w-100 justify-content-end">
-        <button type="submit" class="btn btn-outline-danger ms-1 back" data-mlr-text>Edit</button>
-        <button type="submit" class="btn btn-primary ms-1 save-draft" data-mlr-text>Save Draft</button>
-        <button type="submit" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#ipfsmodal" data-mlr-text>Print On IPFS</button>
+        <div class="d-flex w-100 justify-content-between">
+            <div class="preview-device w-50 justify-content-start">
+              <!-- <a href="#" class="action-btn mobile active" title="Mobile"></a
+              <a href="#" class="action-btn desktop" title="Desktop"></a> -->
+              <a href="#" class="action-btn pdf-preview" title="Pdf" data-mlr-text>Download</a>
+            </div>
+            <div class="preview-device d-flex w-0 justify-content-end">
+            <button type="submit" class="btn btn-outline-danger ms-1 back" data-mlr-text>Edit</button>
+            <button type="submit" class="btn btn-primary ms-1 save-draft" data-mlr-text>Save Draft</button>
+            <button type="submit" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#ipfsmodal" data-mlr-text>Print On IPFS</button>
+            </div>
         </div>
       </div>
     </div>
@@ -384,7 +386,7 @@
         <div class="modal-body" data-mlr-text>Are you sure you want to publish this item on Ipfs? You won't be able to edit it anymore.</div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" data-mlr-text>No</button>
-          <button type="button" class="btn btn-primary  printipfs" data-mlr-text>Yes, print it!</button>
+          <button type="button" class="btn btn-primary" id="printipfs" data-mlr-text>Yes, print it!</button>
         </div>
       </div>
     </div>

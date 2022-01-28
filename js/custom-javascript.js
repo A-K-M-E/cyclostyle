@@ -255,16 +255,17 @@ document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal'
       // vars
 
       // bottone per Ipfs
-      const ipsf_button = document.querySelectorAll('.printipfs');
+      const ipsf_button = document.getElementById('.printipfs');
       var loadingCover = document.querySelector('.uploading');
       var el=document.querySelector('footer.footer');
 
-      ipsf_button.forEach(function(item) {
-        item.addEventListener('click', function(e) {
+     document.getElementById('.printipfs').addEventListener('click', function(e) {
           e.preventDefault();
           loadingCover.classList.remove('hide');
           el.style.display = 'none';
-        });
+          // qui va la funzione per stampare su ipfs, se vuoi puoi mettere tutto in un altra funzione e onclick
+          // c'è solo un bosttone per pubblicare su ipfs, è quello dentro la finestra modale #ipfsmodal
+          // si attiva sempre la stessa modale anche in draft (riempie i campi e genera la preview);
       });
 
 });
@@ -357,6 +358,11 @@ function renderPreview(){
     }
 }
 
+// la funzione per stampare su ipfs, dovrebbe andare alla riga 262
+// c'è solo un bottone per pubblicare su ipfs, è quello dentro la finestra modale #ipfsmodal
+// su tutti i bottoni si attiva sempre la stessa modale anche in draft (riempie i campi e genera la preview)
+
+/* ATTENZIONE PINQ leggi le rige sopra */
 async function sendInSpace()
 {
     const cs_ipfs = await node.add(finalSpace);
@@ -392,7 +398,7 @@ function addToDraft(obj){
   let list=document.getElementById("page-drafts").getElementsByClassName("list-group")[0];
   $('#page-drafts .empty-records').hide();
   const parser = new DOMParser();
-  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5 class="mb-1"><a href="#" onclick="retrieveInfo(\''+obj.titleInput+'\');previewDiv();renderPreview();" class="edit-link">'+obj.titleInput+'</a></h5><small>'+obj.dateInput+" "+obj.timeInput+'</small><div class="d-flex w-100 justify-content-between"><div class="d-flex w-100 justify-content-start"><a href="#" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a><a href="#" class="action-btn preview preview-link"   onclick="retrieveInfo(\''+obj.titleInput+'\');previewDiv();renderPreview();" title="Preview"></a><a href="#" onclick="retrieveInfo(\''+obj.titleInput+'\');editDiv();" class="action-btn edit edit-link" title="Edit"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
+  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5 class="mb-1"><a href="#" onclick="retrieveInfo(\''+obj.titleInput+'\');previewDiv();renderPreview();" class="edit-link">'+obj.titleInput+'</a></h5><small>'+obj.dateInput+" "+obj.timeInput+'</small><div class="d-flex w-100 justify-content-between"><div class="d-flex w-100 justify-content-start"><a href="#" onclick="retrieveInfo(\''+obj.titleInput+'\');previewDiv();renderPreview();" class="action-btn ipfs" title="Print to Ipfs" data-bs-toggle="modal" data-bs-target="#ipfsmodal"></a><a href="#" class="action-btn preview preview-link"   onclick="retrieveInfo(\''+obj.titleInput+'\');previewDiv();renderPreview();" title="Preview"></a><a href="#" onclick="retrieveInfo(\''+obj.titleInput+'\');editDiv();" class="action-btn edit edit-link" title="Edit"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
   parsedS=parsedS.body.children[0];
   list.append(parsedS);
 }
@@ -401,7 +407,7 @@ function addToBookmark(obj){
   let list=document.getElementById("page-bookmarks").getElementsByClassName("list-group")[0];
   $('#page-bookmarks .empty-records').hide();
   const parser = new DOMParser();
-  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5><a href="'+obj.url+'" class="out-link" target="_blank">'+obj.title+'</a></h5><p class="mb-0">'+obj.date+'</p><small class="hash mb-1">'+obj.url+'</small><div class="d-flex justify-content-between"><div class="d-flex w-100 justify-content-start" data-value="'+obj.url+'"><a href="#" class="action-btn copy" onclick="copyLink(this)" title="Copy link"></a><a href="#" onclick="shareLink(this)" class="action-btn share share-button" title="Share"></a><a href="#" class="action-btn qrcode" onclick="qrClick(this)" title="Qrcode"></a><a href="'+obj.pdf+'" class="action-btn pdf" title="Download pdf" target="_blank"></a></div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
+  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5><a href="'+obj.url+'" class="out-link" target="_blank">'+obj.title+'</a></h5><p class="mb-0">'+obj.date+'</p><small class="hash mb-1">'+obj.url+'</small><div class="d-flex justify-content-between"><div class="d-flex w-100 justify-content-start" data-value="'+obj.url+'"><a href="#" class="action-btn copy" onclick="copyLink(this)" title="Copy link"></a><a href="#" onclick="shareLink(this)" class="action-btn share share-button" title="Share"></a><a href="#" class="action-btn qrcode" onclick="qrClick(this)" title="Qrcode"></a>'+((obj.pdf != '') ? '<a href="'+obj.pdf+'" class="action-btn pdf" title="Download pdf" target="_blank"></a>':'')+'</div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal"></a></div></div>',"text/html");
   parsedS=parsedS.body.children[0];
   list.append(parsedS);
   document.getElementById("titleaddInput").value='',
