@@ -165,13 +165,17 @@
     <div class="container pt-3 pages hide" id="page-create">
       <h1 class="title-page" data-mlr-text>new flyer</h1>
       <form id="create-flyer" class="needs-validation" novalidate>
-
       <!--carousel content-->
       <div id="carousel-content" class="carousel carousel-dark slide mt-3" data-bs-ride="carousel" data-bs-interval="false">
          <div class="carousel-inner ">
            <!--panel tempalte-->
            <div class="carousel-item active">
+             <div class="d-flex justify-content-between">
              <h2 data-mlr-text>Template</h2>
+             <button class="carousel-control-next" type="button" data-bs-target="#carousel-content" data-bs-slide="next">
+               <span data-mlr-text>Next ></span>
+             </button>
+              </div>
                <div class="mb-3">
                  <label for="colorInput" class="form-label" data-mlr-text>Main color</label>
                  <input type="color" class="form-control form-control-color" id="colorInput" value="#0397BB" title="Choose your color">
@@ -189,20 +193,28 @@
                  <small>(1024px min-width)</small>
                  <!-- input file crop-->
                  <input class="form-control mb-3" type="file" id="cover">
-                 <button class="carousel-control-next" type="button" data-bs-target="#carousel-content" data-bs-slide="next">
-                   <span data-mlr-text>Next ></span>
-                 </button>
+
                  <!-- result of crop -->
                	<div class="box-2 img-result hide mb-3 mt-3">
                    <label for="cropImg" class="form-label" data-mlr-text>Preview cover</label>
                		<img id="croppedImage" class="cropped" src="" alt="">
                	</div>
-            </div>
 
+            </div>
           </div>
           <!--panel content-->
           <div class="carousel-item">
+            <div class="d-flex justify-content-between">
             <h2 data-mlr-text>Content</h2>
+            <div class="d-flex justify-content-end">
+              <button class="carousel-control-prev prev-content" type="button" data-bs-target="#carousel-content" data-bs-slide="prev">
+                <span data-mlr-text>< Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel-content" data-bs-slide="next">
+                <span data-mlr-text>Next ></span>
+              </button>
+            </div>
+            </div>
               <div class="mb-3">
                 <label for="titleInput" class="form-label" data-mlr-text>Title *</label>
                 <div class="invalid-feedback" data-mlr-text>Please provide a title.</div>
@@ -214,16 +226,16 @@
                 <textarea class="form-control" id="bodyTextarea" rows="3" placeholder="required text" required></textarea>
               </div>
 
-              <button class="carousel-control-prev prev-content" type="button" data-bs-target="#carousel-content" data-bs-slide="prev">
-                <span data-mlr-text>< Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carousel-content" data-bs-slide="next">
-                <span data-mlr-text>Next ></span>
-              </button>
+
           </div>
           <!--panel date-->
           <div class="carousel-item">
+            <div class="d-flex justify-content-between">
             <h2 data-mlr-text>Details</h2>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-content" data-bs-slide="prev">
+              <span data-mlr-text>< Previous</span>
+            </button>
+            </div>
             <div class="mb-3">
               <label for="whoInput" class="form-label" data-mlr-text>Who?</label>
               <input type="text" id="whoInput" class="form-control">
@@ -240,13 +252,10 @@
                 <label for="timeInput" class="form-label" data-mlr-text>Hours</label>
                 <input type="text" class="form-control" id="timeInput">
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carousel-content" data-bs-slide="prev">
-                <span data-mlr-text>< Previous</span>
-              </button>
           </div>
-          </div>
-        </form>
-        </div>
+    </div>
+  </div>
+  </form>
 
         <!-- preview flyer -->
         <div id="content-flyer" class="hide mt-3">

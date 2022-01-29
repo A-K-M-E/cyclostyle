@@ -106,13 +106,13 @@ var MLstrings = [{
     },
     {
         English: "Next >",
-        Italiano: "Succ. >",
+        Italiano: "Successivo >",
         Español: "Pròximo >",
         Français: "Prochain >",
     },
     {
         English: "< Previous",
-        Italiano: "< Prec.",
+        Italiano: "< Precedente",
         Español: "< Previo",
         Français: "< Dernier",
     },

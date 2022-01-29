@@ -543,15 +543,9 @@ footer .carousel-indicators [data-bs-target] {
 
 
 #carousel-content .carousel-control-next, #carousel-content .carousel-control-prev {
-  position: absolute;
-  top: 0;
-  bottom: auto;
-  z-index: 1;
-  display: flex;
-  align-items: end;
-  justify-content: end;
+  position: relative;
   width: auto;
-  padding: 8px 0;
+  padding: 8px;
   text-align: center;
   background: unset;
   border: 0;
@@ -562,14 +556,6 @@ footer .carousel-indicators [data-bs-target] {
   font-size: 13px;
 }
 
-#carousel-content .carousel-control-prev{
-  right: 0;
-  left: auto;
-}
-
-#carousel-content .prev-content{
-  right:60px;
-}
 
 
 
