@@ -65,8 +65,6 @@ document.addEventListener('DOMContentLoaded', async () => {
               cropBoxData = cropper.getCropBoxData();
               canvasData = cropper.getCanvasData();
             });
-
-
         }
       };
       reader.readAsDataURL(e.target.files[0]);
@@ -78,26 +76,26 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // save on click
   save.addEventListener('click',(e)=>{
-    e.preventDefault();
-    // get result to data uri
-    let imgSrc = cropper.getCroppedCanvas({
-      width: img_w.value //
-    }).toDataURL('image/jpeg');
-    // remove hide class of img
-    cropped.classList.remove('hide');
-    img_result.classList.remove('hide');
-    // show image cropped
-    cropped.src = imgSrc;
+      e.preventDefault();
+      // get result to data uri
+      let imgSrc = cropper.getCroppedCanvas({
+        width: img_w.value //
+      }).toDataURL('image/jpeg');
+      // remove hide class of img
+      cropped.classList.remove('hide');
+      img_result.classList.remove('hide');
+      // show image cropped
+      cropped.src = imgSrc;
   });
   document.getElementById('cropmodal').addEventListener('hide.bs.modal', function () {
-    let imgSrc = cropper.getCroppedCanvas({
-      width: img_w.value //
-    }).toDataURL('image/jpeg');
-    // remove hide class of img
-    cropped.classList.remove('hide');
-    img_result.classList.remove('hide');
-    // show image cropped
-    cropped.src = imgSrc;
+      let imgSrc = cropper.getCroppedCanvas({
+        width: img_w.value //
+      }).toDataURL('image/jpeg');
+      // remove hide class of img
+      cropped.classList.remove('hide');
+      img_result.classList.remove('hide');
+      // show image cropped
+      cropped.src = imgSrc;
     });
 
 
@@ -290,6 +288,7 @@ let oldObj = "";
 // checkSave variable & lastSave obj
 let checkSave=true;
 let lastSave;
+let checkDraft ="";
 
 function qrClick(e){
   var qr_result = document.getElementById('qrious');
@@ -352,7 +351,7 @@ function renderPreview(){
         post.whereInput = $("#whereInput").val();
         post.dateInput = $("#dateInput").val();
         post.timeInput = $("#timeInput").val();
-        console.log(post);
+        //console.log(post);
 
         // save post to tempObj
         tempObj=post;
@@ -382,27 +381,26 @@ async function sendInSpace()
 // save to localStorage
 function saveLocal(){
   if(tempObj!=oldObj){
-    if(tempObj.titleInput!=''){
-      tempObj.status='draft';
-      console.log(tempObj);
-      // append to localStorage
-      position = findIntoStorage(tempObj.titleInput);
+    tempObj.status='draft';
+    if(checkDraft!=''){
+      position = findIntoStorageCheck(checkDraft);
+      tempObj.check=checkDraft;
       tempObj=JSON.stringify(tempObj);
-      if(position == -1)
-      {
+      localStorage.setItem(position,tempObj);
+    }else{
+      // append to localStorage
+        tempObj.check=uuidv4();
+        checkDraft = tempObj.check;
+        tempObj=JSON.stringify(tempObj);
         localStorage.setItem(localStorage.length,tempObj);
-        addToDraft(tempObj);
-      }
-      else
-      {
-        localStorage.setItem(position,tempObj);
       }
       oldObj = tempObj;
       checkSave=true;
       refreshDraft();
-    } else { console.log("title vuoto")};
-  } else { console.log("oggetto vuoto")};
-}
+    }
+    console.log(tempObj);
+  }
+
 
 function addToDraft(obj){
   let list=document.getElementById("page-drafts").getElementsByClassName("list-group")[0];
@@ -469,12 +467,21 @@ function findIntoStorage(key)
   return -1;
 }
 
+function findIntoStorageCheck(key)
+{
+  for(let i=0;i<localStorage.length;i++){
+    if(localStorage[i].includes('"check":"'+key+'"')) return i;
+  }
+  return -1;
+}
+
 function retrieveInfo(text){
   let retrieved=JSON.parse(localStorage[findIntoStorage(text)]);
   console.log(retrieved);
   document.getElementById("titleInput").value=retrieved.titleInput;
   document.getElementById("selectTemplate").value=retrieved.template;
   document.getElementById("colorInput").value=retrieved.colorInput;
+  checkDraft = retrieved.check;
   document.getElementById("croppedImage").setAttribute("src",retrieved.cropped);
   $(".richText-editor").first().html(retrieved.bodyTextarea);
 //  document.getElementById("bodyTextarea").value=retrieved.bodyTextarea;
@@ -507,7 +514,7 @@ function cleanFlyer(ctr){
   if(ctr==1){
     document.getElementById('create-flyer').classList.remove('was-validated');
     document.getElementById("titleInput").value='';
-    document.getElementById("selectTemplate").value='1';
+    document.getElementById("selectTemplate").value='default';
     document.getElementById("colorInput").value='#0397BB';
     document.getElementById("croppedImage").setAttribute("src","");
     document.getElementById("croppedImage").parentElement.classList.add("hide");
@@ -517,6 +524,7 @@ function cleanFlyer(ctr){
     document.getElementById("whereInput").value='';
     document.getElementById("dateInput").value='';
     document.getElementById("timeInput").value='';
+    checkDraft = "";
     checkSave=true;
   }
   //let k = document.querySelectorAll(".carousel-inner")[0].children;
@@ -573,4 +581,10 @@ function addBookmarktoStorage(){
   }
   addModal.hide();
   addToBookmark(bookmark);
+}
+
+function uuidv4() {
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  );
 }

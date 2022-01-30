@@ -356,8 +356,6 @@ var MLstrings = [{
         Español: "File size exceeds 1.5Mb",
         Français: "File size exceeds 1.5Mb",
     },
-
-
 ];
 
 // Global var :(
