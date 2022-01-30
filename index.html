@@ -190,9 +190,9 @@
                </div>
                <div class="mb-3 pb-2 page">
                  <label for="formFile" class="form-label" data-mlr-text>Upload, Crop and save cover</label>
-                 <small>(1024px min-width)</small>
+                 <small>(1024px min-width, max-size 1.5Mb)</small>
                  <!-- input file crop-->
-                 <input class="form-control mb-3" type="file" id="cover">
+                 <input class="form-control mb-3" type="file" id="cover" accept="image/*">
 
                  <!-- result of crop -->
                	<div class="box-2 img-result hide mb-3 mt-3">
@@ -365,6 +365,14 @@
           <!-- save btn crop-->
           <button class="btn close btn-primary " data-mlr-text data-bs-dismiss="modal">Done</button>
         </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Invalid file -->
+  <div class="modal fade" id="invalidfilemodal"  tabindex="-1" aria-labelledby="invalidfilemodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center"><span data-mlr-text>File size exceeds 1.5Mb</span></div>
       </div>
     </div>
   </div>

@@ -350,6 +350,14 @@ var MLstrings = [{
         Español: "Aún no hay borradores guardados.",
         Français: "Il n’y a pas encore de brouillons enregistrés.",
     },
+    {
+        English: "File size exceeds 1.5Mb",
+        Italiano: "Il file pesa più di 1.5Mb",
+        Español: "File size exceeds 1.5Mb",
+        Français: "File size exceeds 1.5Mb",
+    },
+
+
 ];
 
 // Global var :(

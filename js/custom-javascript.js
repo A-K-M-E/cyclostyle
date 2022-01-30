@@ -11,6 +11,7 @@ var addModal="";
 var ipsfModal="";
 var pannelli ="";
 var cropModal = "";
+var invalidfileModal = "";
 var cropBoxData;
 var canvasData;
 var cropper;
@@ -29,11 +30,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   cropped = document.querySelector('.cropped'),
   upload = document.querySelector('#cover'),
   cropModal = new bootstrap.Modal(document.getElementById('cropmodal'), {keyboard: false});
-
+  invalidfileModal = new bootstrap.Modal(document.getElementById('invalidfilemodal'), {keyboard: false})
 
   // on change show image with crop options
   upload.addEventListener('change', (e) => {
-    if (e.target.files.length) {
+    var fileSize = e.target.files[0].size / 1024 / 1024;;
+    if (e.target.files.length && fileSize < 1.5) {
       // start file reader
       const reader = new FileReader();
       reader.onload = (e)=> {
@@ -68,6 +70,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       };
       reader.readAsDataURL(e.target.files[0]);
+    }else{
+      invalidfileModal.show();
+      setTimeout(function(){ invalidfileModal.hide(); }, 1500);
     }
   });
 
