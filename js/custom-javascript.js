@@ -162,7 +162,7 @@ document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal'
     cleanFlyer(0);
     unsavedChanges.hide();
   });
-
+  cleanFlyer(1);
   lastSave=currentFlyer();
 
   // eventListener edits on create-flyer values
@@ -399,7 +399,7 @@ function saveLocal(){
       refreshDraft();
     }
     console.log(tempObj);
-  }
+}
 
 
 function addToDraft(obj){
