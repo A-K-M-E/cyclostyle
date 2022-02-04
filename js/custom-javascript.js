@@ -123,11 +123,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
 
-  // check cookie 4 localStorage disclaimer
+  let create=document.getElementsByClassName("create");
+
   cookieDisc = new bootstrap.Modal(document.getElementById('disclaimer-storage'), {keyboard: false});
-  let storage = getCookie("disclaimerStorage");
-  if(!storage){
-    cookieDisc.show();
+
+  for(let ic=0;ic<create.length;ic++){
+   create[ic].addEventListener('click', function(){
+     let storage = getCookie("disclaimerStorage");
+     if(!storage){
+       cookieDisc.show();
+     }
+   })
   }
 
 document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal', function (event) {
