@@ -267,6 +267,21 @@ document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal'
           loadingCover.classList.remove('hide');
           $('footer').hide();
           ipfsModal.hide();
+          var hashFlyer = sendInSpace();
+          if(hashFlyer!=""){
+            let bookmark = {
+              title:document.getElementById("titleaddInput").value,
+              date:document.getElementById("dateaddInput").value,
+              url:hashFlyer+'https://ipfs.io/ipfs/',
+              status:'bookmark'
+            },
+            position = findIntoStorage(bookmark.title);
+            tempBook=JSON.stringify(bookmark);
+            localStorage.setItem(localStorage.length,tempBook);
+            addToBookmark(bookmark);
+            cleanFlyer(1);
+            $('.main-menu .bookmarks').click();
+          }
           // qui va la funzione per stampare su ipfs, se vuoi puoi mettere tutto in un altra funzione e onclick
           // c'è solo un bosttone per pubblicare su ipfs, è quello dentro la finestra modale #ipfsmodal
           // si attiva sempre la stessa modale anche in draft (riempie i campi e genera la preview);
@@ -375,7 +390,7 @@ function renderPreview(){
 async function sendInSpace()
 {
     const cs_ipfs = await node.add(finalSpace);
-    console.log(`https://ipfs.io/ipfs/${cs_ipfs.path}`);
+    return cs_ipfs;
 }
 
 // save to localStorage

@@ -25,6 +25,7 @@ function previewDiv(){
   $('#content-flyer').show();
 }
 
+
 $( document ).ready(function() {
 
   // menu sidebar
