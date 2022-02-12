@@ -269,6 +269,14 @@ document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal'
       var loadingCover = document.querySelector('.uploading');
 
      ipsf_button.addEventListener('click', function(e) {
+       // qui va la funzione per stampare su ipfs, se vuoi puoi mettere tutto in un altra funzione e onclick
+       // c'è solo un bosttone per pubblicare su ipfs, è quello dentro la finestra modale #ipfsmodal
+       // si attiva sempre la stessa modale anche in draft (riempie i campi e genera la preview);
+
+       // quando ha finito di caricare per andare a bookmarks il seguente codice:
+       /*   $('nav-link.bookmarks').click();
+           loadingCover.classList.add('hide');
+       */
           e.preventDefault();
           loadingCover.classList.remove('hide');
           $('footer').hide();
@@ -278,24 +286,17 @@ document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal'
             let bookmark = {
               title:document.getElementById("titleaddInput").value,
               date:document.getElementById("dateaddInput").value,
-              url:hashFlyer+'https://ipfs.io/ipfs/',
+              url:'https://ipfs.io/ipfs/'+hashFlyer,
               status:'bookmark'
             },
-            position = findIntoStorage(bookmark.title);
             tempBook=JSON.stringify(bookmark);
             localStorage.setItem(localStorage.length,tempBook);
             addToBookmark(bookmark);
             cleanFlyer(1);
+            loadingCover.classList.add('hide');
             $('.main-menu .bookmarks').click();
           }
-          // qui va la funzione per stampare su ipfs, se vuoi puoi mettere tutto in un altra funzione e onclick
-          // c'è solo un bosttone per pubblicare su ipfs, è quello dentro la finestra modale #ipfsmodal
-          // si attiva sempre la stessa modale anche in draft (riempie i campi e genera la preview);
 
-          // quando ha finito di caricare per andare a bookmarks il seguente codice:
-          /*   $('nav-link.bookmarks').click();
-              loadingCover.classList.add('hide');
-          */
       });
 
 });
