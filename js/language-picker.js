@@ -353,8 +353,8 @@ var MLstrings = [{
     {
         English: "File size exceeds 1.5Mb",
         Italiano: "Il file pesa più di 1.5Mb",
-        Español: "File size exceeds 1.5Mb",
-        Français: "File size exceeds 1.5Mb",
+        Español: "El tamaño del archivo supera 1.5Mb",
+        Français: "La taille du fichier dépasse 1,5 Mo",
     },
 ];
 
