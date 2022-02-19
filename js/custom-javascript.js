@@ -168,8 +168,6 @@ document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal'
     cleanFlyer(0);
     unsavedChanges.hide();
   });
-  cleanFlyer(1);
-  lastSave=currentFlyer();
 
   // eventListener edits on create-flyer values
   document.getElementById("titleInput").addEventListener('change', function(event){
@@ -281,26 +279,32 @@ document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal'
           loadingCover.classList.remove('hide');
           $('footer').hide();
           ipfsModal.hide();
-          var hashFlyer = sendInSpace();
-          if(hashFlyer!=""){
+          hashFlyer=sendInSpace();
+          hashFlyer.then(()=>{
             let bookmark = {
-              title:document.getElementById("titleaddInput").value,
-              date:document.getElementById("dateaddInput").value,
-              url:'https://ipfs.io/ipfs/'+hashFlyer,
+              title:document.getElementById("titleInput").value,
+              date:document.getElementById("dateInput").value,
+              url:'https://ipfs.io/ipfs/'+saveit,
               status:'bookmark'
             },
             tempBook=JSON.stringify(bookmark);
             localStorage.setItem(localStorage.length,tempBook);
+            saveit = hashFlyer;
             addToBookmark(bookmark);
             cleanFlyer(1);
             loadingCover.classList.add('hide');
             $('.main-menu .bookmarks').click();
-          }
+            saveit='';
+          })
+
 
       });
 
-});
+      cleanFlyer(1);
+      lastSave=currentFlyer();
 
+});
+var saveit = '';
 var finalSpace;
 
 // tempObj for drafts
@@ -397,7 +401,8 @@ function renderPreview(){
 async function sendInSpace()
 {
     const cs_ipfs = await node.add(finalSpace);
-    return cs_ipfs;
+    saveit = cs_ipfs.path;
+    return cs_ipfs
 }
 
 // save to localStorage
@@ -534,6 +539,8 @@ function newFlyer(){
 
 function cleanFlyer(ctr){
   if(ctr==1){
+    console.log(document.getElementsByClassName("richText-editor")[0])
+    console.log(document.getElementsByClassName("richText-editor")[0].textContent)
     document.getElementById('create-flyer').classList.remove('was-validated');
     document.getElementById("titleInput").value='';
     document.getElementById("selectTemplate").value='default';
