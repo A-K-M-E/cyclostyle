@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="description" content="">
 <meta name="keywords" content="">
-<link rel="manifest" href="js/manifest.json">
+<link rel="manifest" href="manifest.json">
 <title>Cyclostyle</title>
 <!-- Android  -->
 <meta name="theme-color" content="white">
@@ -112,6 +112,7 @@
 
 <!-- Tutto il javascript custom -->
 <script src="js/custom-javascript.js"></script>
+<script> if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js') .then(function(registration) { console.log('Registration successful, scope is:', registration.scope); }) .catch(function(error) { console.log('Service worker registration failed, error:', error); }); } </script>
 
 </head>
 <body class="d-flex flex-column h-100">
@@ -292,7 +293,7 @@
             <label class="input-group-text" for="inputGroupSelect02" data-mlr-text>Language</label>
             <select class="form-select" id="mbPOCControlsLangDrop2">
             </select>
-          </div
+          </div>
           <div class="mb-3">
             <h2 class="mb-3" data-mlr-text>Template</h2>
             <div class="input-group">
