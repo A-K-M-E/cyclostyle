@@ -605,7 +605,8 @@ function addBookmarktoStorage(){
     date:document.getElementById("dateaddInput").value,
     url:document.getElementById("urladdInput").value,
     pdf:document.getElementById("pdfaddInput").value,
-    status:'bookmark'
+    status:'bookmark',
+    check: uuidv4()
   },
   position = findIntoStorage(bookmark.title);
   tempBook=JSON.stringify(bookmark);
