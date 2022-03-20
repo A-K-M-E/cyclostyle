@@ -285,7 +285,8 @@ document.getElementById('disclaimer-storage').addEventListener('hidden.bs.modal'
               title:document.getElementById("titleInput").value,
               date:document.getElementById("dateInput").value,
               url:'https://ipfs.io/ipfs/'+saveit,
-              status:'bookmark'
+              status:'bookmark',
+              check: uuidv4()
             },
             tempBook=JSON.stringify(bookmark);
             localStorage.setItem(localStorage.length,tempBook);
@@ -442,7 +443,7 @@ function addToBookmark(obj){
   let list=document.getElementById("page-bookmarks").getElementsByClassName("list-group")[0];
   $('#page-bookmarks .empty-records').hide();
   const parser = new DOMParser();
-  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5><a href="'+obj.url+'" class="out-link" target="_blank">'+obj.title+'</a></h5><p class="mb-0">'+obj.date+'</p><small class="hash mb-1">'+obj.url+'</small><div class="d-flex justify-content-between"><div class="d-flex w-100 justify-content-start" data-value="'+obj.url+'"><a href="#" class="action-btn copy" onclick="copyLink(this)" title="Copy link"></a><a href="#" onclick="shareLink(this)" class="action-btn share share-button" title="Share"></a><a href="#" class="action-btn qrcode" onclick="qrClick(this)" title="Qrcode"></a>'+((obj.pdf != '') ? '<a href="'+obj.pdf+'" class="action-btn pdf" title="Download pdf" target="_blank"></a>':'')+'</div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal" onclick="deleteKey(\''+obj.check+'\')"></a></div></div>',"text/html");
+  let parsedS= parser.parseFromString('<div class="list-group-item list-group-item-action"><h5><a href="'+obj.url+'" class="out-link" target="_blank">'+obj.title+'</a></h5><p class="mb-0">'+obj.date+'</p><small class="hash mb-1">'+obj.url+'</small><div class="d-flex justify-content-between"><div class="d-flex w-100 justify-content-start" data-value="'+obj.url+'"><a href="#" class="action-btn copy" onclick="copyLink(this)" title="Copy link"></a><a href="#" onclick="shareLink(this)" class="action-btn share share-button" title="Share"></a><a href="#" class="action-btn qrcode" onclick="qrClick(this)" title="Qrcode"></a>'+((obj.pdf != '' && obj.pdf) ? '<a href="'+obj.pdf+'" class="action-btn pdf" title="Download pdf" target="_blank"></a>':'')+'</div><a href="#" class="action-btn delete" title="Delete" data-bs-toggle="modal" data-bs-target="#infomodal" onclick="deleteKey(\''+obj.check+'\')"></a></div></div>',"text/html");
   parsedS=parsedS.body.children[0];
   list.append(parsedS);
   document.getElementById("titleaddInput").value='',
@@ -529,12 +530,20 @@ function refreshDraft(){
   }
 }
 
-function refreshBookmark(){
-  let TBC= document.getElementById("page-bookmarks").getElementsByClassName("list-group")[0];
-  TBC.innerHTML='';
+function refreshList(){
+  let TBD= document.getElementById("page-bookmarks").getElementsByClassName("list-group")[0];
+  TBD.innerHTML='';
+  let TB= document.getElementById("page-drafts").getElementsByClassName("list-group")[0];
+  TB.innerHTML='';
   for(let i=0;i<localStorage.length;i++){
-    let bookmarkEl=JSON.parse(localStorage[i])
-    addToBookmark(bookmarkEl);
+    if(localStorage[i].includes('"status":"draft"')){
+      let draftEl=JSON.parse(localStorage[i])
+      addToDraft(draftEl);
+    }
+    if(localStorage[i].includes('"status":"bookmark"')){
+      let bookm=JSON.parse(localStorage[i])
+      addToBookmark(bookm);
+    }
   }
 }
 
@@ -648,8 +657,7 @@ function deleteItem(){
       localStorage.setItem(i,backup[i])
   }
 
-  refreshDraft();
-  refreshBookmark();
+  refreshList();
 }
 
 function deleteKey(r){

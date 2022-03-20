@@ -482,6 +482,10 @@ img {
   background: url('../icons/print-active.svg') -2px 0 no-repeat;
 }
 
+.anim-copied{
+  margin: 0 10px;
+}
+
 .show .anim-copied {
     -webkit-animation:spin 0.5s ease 1;
     -moz-animation:spin 0.5s ease 1;
